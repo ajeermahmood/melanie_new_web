@@ -4,9 +4,9 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { getFeaturedProperties } from "@/api/listings";
-import FeaturedListings from "./FeatuerdListings";
+import ProjectsListings from "./projects_listings";
 
-export default function PropertyListing() {
+export default function ProjectsListing() {
   const [pageData, setPageData] = useState([]);
 
   useEffect(() => {
@@ -27,27 +27,32 @@ export default function PropertyListing() {
   //   }
   // }, [currentType]);
   return (
-    <section className="bg-dark pt0 pb30">
+    <section className="bg-dark pt30">
       <div className="container pt30 top-border-grey">
         <div className="row">
           <div className="col-lg-8">
             <div className="main-title2 mb30">
               <h2 className="title fw400 text-light fz20 ">
-                Featured Properties
+                Investor Deals
               </h2>
             </div>
           </div>
           {/* End .col-lg-9 */}
 
-          <div className="col-lg-4">
+          {/* <div className="col-lg-4">
             <div className="dark-light-navtab style2 text-start text-lg-end mb20">
               <ul
                 className="nav nav-pills justify-content-start justify-content-lg-end"
                 id="pills-tab"
                 role="tablist"
               >
-                <li className="nav-item d-flex align-items-center mx30" role="presentation">
-                  <Link className="custom-link" href={"#"}>View More</Link>
+                <li
+                  className="nav-item d-flex align-items-center mx30"
+                  role="presentation"
+                >
+                  <Link className="custom-link" href={"#"}>
+                    View More
+                  </Link>
                 </li>
                 <li
                   className="nav-item"
@@ -83,12 +88,12 @@ export default function PropertyListing() {
                 </li>
               </ul>
             </div>
-          </div>
+          </div> */}
         </div>
         {/* End .row */}
 
         <div className="row">
-          <FeaturedListings data={pageData} />
+          <ProjectsListings />
         </div>
         {/* End .row */}
 

@@ -14,19 +14,23 @@ const HeroContent = () => {
   const tabs = [
     { id: "buy", label: "Buy" },
     { id: "rent", label: "Rent" },
-    { id: "sold", label: "Sold" },
+    { id: "off_plan", label: "Off-plan" },
   ];
 
   return (
-    <div className="advance-style2 mt80 mt0-md mb60 mx-auto" data-aos="fade-up">
-      <ul className="nav nav-tabs p-0">
+    <div className="advance-style2 mt20 mt0-md mb60 mx-auto">
+      <h2 className="text-light fw400">
+        The address for luxury property. <br />
+        Exceptional homes, unrivalled expertise.
+      </h2>
+      <ul className="nav mt40 nav-tabs p-0">
         {tabs.map((tab) => (
           <li className="nav-item" key={tab.id}>
             <button
-              className={`nav-link ${activeTab === tab.id ? "active" : ""}`}
+              className={`nav-link fz20 ${activeTab === tab.id ? "active" : ""}`}
               onClick={() => handleTabClick(tab.id)}
             >
-              {tab.label}
+             <span className="fw400">{tab.label}</span> 
             </button>
           </li>
         ))}

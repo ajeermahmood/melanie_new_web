@@ -18,31 +18,29 @@ const Header = () => {
     }
   };
 
-  useEffect(() => {
-    window.addEventListener("scroll", changeBackground);
-    return () => {
-      window.removeEventListener("scroll", changeBackground);
-    };
-  }, []);
+  // useEffect(() => {
+  //   window.addEventListener("scroll", changeBackground);
+  //   return () => {
+  //     window.removeEventListener("scroll", changeBackground);
+  //   };
+  // }, []);
 
   return (
     <>
       <header
-        className={`header-nav nav-homepage-style at-home2  main-menu ${
-          navbar ? "sticky slideInDown animated" : ""
-        }`}
+        className={`header-nav nav-homepage-style at-home2  main-menu`}
       >
         <nav className="posr">
-          <div className="container maxw1600 posr">
+          <div className="container maxw1400 posr">
             <div className="row align-items-center justify-content-between">
               <div className="col-auto">
                 <div className="d-flex align-items-center justify-content-between">
                   <div className="logos mr40">
                     <Link className="header-logo logo1" href="/">
                       <Image
-                        width={138}
+                        width={230}
                         height={44}
-                        src="/images/header-logo.svg"
+                        src="/images/logo/logo-1.svg"
                         alt="Header Logo"
                       />
                     </Link>
@@ -50,14 +48,14 @@ const Header = () => {
                       <Image
                         width={138}
                         height={44}
-                        src="/images/header-logo2.svg"
+                        src="/images/logo/logo-1.svg"
                         alt="Header Logo"
                       />
                     </Link>
                   </div>
                   {/* End Logo */}
 
-                  <MainMenu />
+                  {/* <MainMenu /> */}
                   {/* End Main Menu */}
                 </div>
               </div>
@@ -65,7 +63,7 @@ const Header = () => {
 
               <div className="col-auto">
                 <div className="d-flex align-items-center">
-                  <a
+                  {/* <a
                     className="login-info d-flex align-items-center me-3"
                     href="tel:+012305094502"
                   >
@@ -81,15 +79,15 @@ const Header = () => {
                   >
                     <i className="far fa-user-circle fz16 me-2" />{" "}
                     <span className="d-none d-xl-block">Login / Register</span>
-                  </a>
+                  </a> */}
                   <Link
-                    className="ud-btn add-property menu-btn bdrs60 mx-2 mx-xl-4"
-                    href="/dashboard-add-property"
+                    className="menu-btn-home-first bdrs60 mx-2 mx-xl-4"
+                    href="#"
                   >
-                    Add Property
-                    <i className="fal fa-arrow-right-long" />
+                    <i className="fal fa-bars mr10" />
+                    <i className="far fa-user-circle fz16" />
                   </Link>
-                  <a
+                  {/* <a
                     className="sidemenu-btn filter-btn-right"
                     href="#"
                     data-bs-toggle="offcanvas"
@@ -111,7 +109,7 @@ const Header = () => {
                       src="/images/icon/nav-icon-dark.svg"
                       alt="humberger menu"
                     />
-                  </a>
+                  </a> */}
                 </div>
               </div>
               {/* End .col-auto */}

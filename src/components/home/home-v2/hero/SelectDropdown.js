@@ -17,11 +17,11 @@ const SelectDropdown = () => {
       return {
         ...styles,
         backgroundColor: isSelected
-          ? "#eb6753"
+          ? "#c49f5a"
           : isHovered
-          ? "#eb675312"
+          ? "#c49f5a12"
           : isFocused
-          ? "#eb675312"
+          ? "#c49f5a12"
           : undefined,
       };
     },

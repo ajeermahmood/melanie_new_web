@@ -1,28 +1,29 @@
-
 import Image from "next/image";
 import Link from "next/link";
 
-const FeaturedListings = ({data}) => {
+const FeaturedListings = ({ data }) => {
+  const currencyFormatter = new Intl.NumberFormat("en-IN", {
+    style: "currency",
+    currency: "AED",
+    minimumFractionDigits: 0,
+  });
   return (
     <>
-      {data.slice(0, 6).map((listing) => (
+      {data.map((listing) => (
         <div className="col-sm-6 col-lg-4" key={listing.id}>
           <div className="listing-style8">
             <div className="list-thumb">
               <Image
                 width={382}
                 height={248}
-                className="w-100 h-100 cover"
-                src={listing.image}
+                // style={{
+                //   height: "15rem !Important",
+                // }}
+                className="w-100 cover"
+                src={`https://premium.indusre.com/Admin/pages/forms/uploads/property/${listing.image1}`}
                 alt="listings"
               />
               <div className="sale-sticker-wrap">
-                {listing.featured && (
-                  <div className="list-tag rounded-0 fz12">
-                    <span className="flaticon-electricity" />
-                    FEATURED
-                  </div>
-                )}
                 <div className="list-tag2 rounded-0 fz12">FOR SALE</div>
               </div>
               <div className="list-meta">
@@ -39,26 +40,32 @@ const FeaturedListings = ({data}) => {
             </div>
             <div className="list-content">
               <h6 className="list-title">
-                <Link href={`/single-v5/${listing.id}`}>{listing.title}</Link>
+                <Link
+                  className="text-light hover-gold"
+                  href={`#`}
+                  style={{
+                    overflow: "hidden",
+                    whiteSpace: "nowrap",
+                    textOverflow: "ellipsis",
+                    display: "block",
+                  }}
+                >
+                  {listing.address}
+                </Link>
               </h6>
-              <p className="list-text">{listing.location}</p>
-
-              <div className="d-flex justify-content-between align-items-center mt-3">
-                <div className="list-meta2 d-flex align-items-center">
-                  <a href="#" className="mr10">
-                    <span className="flaticon-bed" /> {listing.bed}
-                  </a>
-                  <a href="#" className="mr10">
-                    <span className="flaticon-shower" /> {listing.bath}
-                  </a>
-                  <a href="#">
-                    <span className="flaticon-expand" /> {listing.sqft}
-                  </a>
-                </div>
-                <div className="list-price">
-                  {listing.price} / <span>mo</span>
-                </div>
-              </div>
+              <p className="list-text text-light">
+                For {listing.status} . {listing.completion_status}
+              </p>
+              <p className="list-text text-light">
+                {currencyFormatter.format(listing.price)}
+              </p>
+              <p className="list-text text-light">
+                {listing.cat_name} . {listing.beds} Beds .{" "}
+                {new Intl.NumberFormat("en-IN", {
+                  maximumSignificantDigits: 3,
+                }).format(listing.area)}{" "}
+                sq. ft.
+              </p>
             </div>
           </div>
         </div>
