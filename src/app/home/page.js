@@ -63,7 +63,7 @@ const HomePage = () => {
             focusing on a specific areas of Dubai, with in-depth knowledge at a
             hyperlocal level. Leveraging their extensive networking and
             negotiating skills, they will work diligently to help you achieve
-            the desired results, whether it's making a sound property
+            the desired results, whether it&apos;s making a sound property
             investment, finding the perfect property, or obtaining the accurate
             price for your property.
           </p>
@@ -89,7 +89,7 @@ const HomePage = () => {
             elegant form, and its design emulates the brilliance and sharpness
             of diamonds by incorporating an angled glass façade. This serves to
             reinforce the significant trade mission of DMCC and highlights
-            Dubai's status as a premier global business hub.
+            Dubai&apos;s status as a premier global business hub.
           </p>
         </div>
         <Image
@@ -149,7 +149,7 @@ const HomePage = () => {
             <button className="custom-btn h-75">See All</button>
           </div>
           <p className="text-light text-start mb30 mt0">
-            Discover Dubai's finest: Explore our collection of premium rental
+            Discover Dubai&apos;s finest: Explore our collection of premium rental
             properties, where luxury meets lifestyle.
           </p>
 
@@ -173,7 +173,7 @@ const HomePage = () => {
                 <p className="text-start mb30 mt0 font-style-2 fw400 fz20 lh-sm">
                   Throughout the years, land financial specialists have earned
                   unrivaled capital returns in the worldwide property showcase.
-                  Today, Dubai's land market is comparable to that of New York
+                  Today, Dubai&apos;s land market is comparable to that of New York
                   or London. It is controlled and maintainable.
                 </p>
                 <ul className="p0">
