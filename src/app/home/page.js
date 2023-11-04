@@ -37,7 +37,6 @@ const HomePage = () => {
       {/* Home Banner Style V2 */}
       <section className="home-banner-style2 p0">
         <div className="home-style2">
-          <AllBannersHome />
           <div className="container maxw1600">
             <div className="row">
               <div className="col-xl-10 mx-auto">
@@ -45,11 +44,11 @@ const HomePage = () => {
               </div>
             </div>
           </div>
+          <AllBannersHome />
         </div>
       </section>
-      <section className="bg-dark pb200 pb30-md"></section>
 
-      <section className="bg-dark pb60 pb30-md">
+      <section className="bg-dark pb60 pb30-md pt0">
         <div className="container">
           <p className="text-light text-center fz20 mb0">WELCOME</p>
           <p className="text-light text-center fz30 color-gold">
@@ -82,7 +81,14 @@ const HomePage = () => {
         <div className="container top-border-grey pt30">
           <div className="nav justify-content-between">
             <p className="text-light text-start fz20 mb10">In Focus</p>
-            <button className="custom-btn h-75">Learn More</button>
+            <li
+              className="nav-item d-flex align-items-center "
+              role="presentation"
+            >
+              <Link className="custom-link" href={"#"}>
+                Learn More
+              </Link>
+            </li>
           </div>
           <p className="text-light text-start mb20 mt10">
             This architectural masterpiece is characterized by its slim and
@@ -146,11 +152,18 @@ const HomePage = () => {
         <div className="container pt30 top-border-grey">
           <div className="nav justify-content-between">
             <p className="text-light text-start fz20 mb10">Premium Rentals</p>
-            <button className="custom-btn h-75">See All</button>
+            <li
+              className="nav-item d-flex align-items-center "
+              role="presentation"
+            >
+              <Link className="custom-link" href={"#"}>
+                See All
+              </Link>
+            </li>
           </div>
           <p className="text-light text-start mb30 mt0">
-            Discover Dubai&apos;s finest: Explore our collection of premium rental
-            properties, where luxury meets lifestyle.
+            Discover Dubai&apos;s finest: Explore our collection of premium
+            rental properties, where luxury meets lifestyle.
           </p>
 
           <div className="row">
@@ -161,7 +174,7 @@ const HomePage = () => {
       <section className="w-100 p0">
         <div className="row">
           <div className="col-lg-6">
-            <div className="row h-100">
+            <div className="row h-100 pt30 pb30">
               <div className="col-3"></div>
               <div className="col-9 my-auto pr50">
                 <p className="text-dark text-start fz20 fw500 mb10">
@@ -173,8 +186,8 @@ const HomePage = () => {
                 <p className="text-start mb30 mt0 font-style-2 fw400 fz20 lh-sm">
                   Throughout the years, land financial specialists have earned
                   unrivaled capital returns in the worldwide property showcase.
-                  Today, Dubai&apos;s land market is comparable to that of New York
-                  or London. It is controlled and maintainable.
+                  Today, Dubai&apos;s land market is comparable to that of New
+                  York or London. It is controlled and maintainable.
                 </p>
                 <ul className="p0">
                   <div className="row">

@@ -58,7 +58,7 @@ const AllBannersHome = () => {
                   className="container position-absolute"
                   style={{
                     zIndex: 2,
-                    top: "15rem",
+                    top: "10rem",
                     left: "13rem",
                   }}
                 >

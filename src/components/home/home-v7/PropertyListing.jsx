@@ -8,33 +8,24 @@ import FeaturedListings from "./FeatuerdListings";
 
 export default function PropertyListing() {
   const [pageData, setPageData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getFeaturedProperties().then((res) => {
-      setPageData(res);
-      console.log(res);
-    });
+    setLoading(true);
+    getFeaturedProperties()
+      .then((res) => {
+        setPageData(res);
+        console.log(res);
+      })
+      .finally(() => setLoading(false));
   }, []);
-
-  const [currentType, setCurrentType] = useState("rent");
-  // useEffect(() => {
-  //   if (currentType == "rent") {
-  //     const filtered = listings.filter((elm) => elm.forRent);
-  //     setPageData(filtered);
-  //   } else {
-  //     const filtered = listings.filter((elm) => !elm.forRent);
-  //     setPageData(filtered);
-  //   }
-  // }, [currentType]);
   return (
     <section className="bg-dark pt0 pb30">
       <div className="container pt30 top-border-grey">
         <div className="row">
           <div className="col-lg-8">
             <div className="main-title2 mb30">
-              <h2 className="title fw400 text-light fz20 ">
-                Featured Properties
-              </h2>
+              <h2 className="title fw400 text-light fz20 ">Premium Sales</h2>
             </div>
           </div>
           {/* End .col-lg-9 */}
@@ -46,40 +37,13 @@ export default function PropertyListing() {
                 id="pills-tab"
                 role="tablist"
               >
-                <li className="nav-item d-flex align-items-center mx30" role="presentation">
-                  <Link className="custom-link" href={"#"}>View More</Link>
-                </li>
                 <li
-                  className="nav-item"
+                  className="nav-item d-flex align-items-center "
                   role="presentation"
-                  onClick={() => setCurrentType("rent")}
                 >
-                  <button
-                    className={`nav-link ${
-                      currentType == "rent"
-                        ? "sort-btn-active"
-                        : "sort-btn-not-active"
-                    } `}
-                    type="button"
-                  >
-                    For Rent
-                  </button>
-                </li>
-                <li
-                  className="nav-item"
-                  role="presentation"
-                  onClick={() => setCurrentType("sale")}
-                >
-                  <button
-                    className={`nav-link me-0 ${
-                      currentType == "sale"
-                        ? "sort-btn-active"
-                        : "sort-btn-not-active"
-                    } `}
-                    type="button"
-                  >
-                    For Sale
-                  </button>
+                  <Link className="custom-link" href={"#"}>
+                    View More
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -88,7 +52,7 @@ export default function PropertyListing() {
         {/* End .row */}
 
         <div className="row">
-          <FeaturedListings data={pageData} />
+          <FeaturedListings data={pageData} loading={loading} />
         </div>
         {/* End .row */}
 

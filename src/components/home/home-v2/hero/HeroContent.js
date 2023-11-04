@@ -27,7 +27,7 @@ const HeroContent = () => {
         {tabs.map((tab) => (
           <li className="nav-item" key={tab.id}>
             <button
-              className={`nav-link fz20 ${activeTab === tab.id ? "active" : ""}`}
+              className={`nav-link fz20 ${activeTab === tab.id ? "active color-white02" : "color-white01"}`}
               onClick={() => handleTabClick(tab.id)}
             >
              <span className="fw400">{tab.label}</span> 

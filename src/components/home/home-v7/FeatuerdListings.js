@@ -1,15 +1,63 @@
+import { Skeleton } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 
-const FeaturedListings = ({ data }) => {
+const FeaturedListings = ({ data, loading }) => {
+  const skeleton = [1, 2, 3, 4, 5, 6];
   const currencyFormatter = new Intl.NumberFormat("en-IN", {
     style: "currency",
     currency: "AED",
     minimumFractionDigits: 0,
   });
-  return (
-    <>
-      {data.map((listing) => (
+  return loading
+    ? skeleton.map((listing, index) => (
+        <div className="col-sm-6 col-lg-4" key={index}>
+          <div className="listing-style8">
+            <div className="list-thumb">
+              <Skeleton
+                // className="w-100 h-100"
+                variant="rectangular"
+                className="w-100 cover bg-grey"
+                width={382}
+                height={248}
+              />
+            </div>
+            <div className="list-content">
+              <h6 className="list-title lh-lg mb10">
+                <Skeleton
+                  // className="w-100 h-100"
+                  variant="rectangular"
+                  className=" cover bg-grey"
+                  width={180}
+                  height={20}
+                />
+              </h6>
+              <Skeleton
+                // className="w-100 h-100"
+                variant="rectangular"
+                className=" cover bg-grey mb10"
+                width={150}
+                height={15}
+              />
+              <Skeleton
+                // className="w-100 h-100"
+                variant="rectangular"
+                className=" cover bg-grey mb10"
+                width={150}
+                height={15}
+              />
+              <Skeleton
+                // className="w-100 h-100"
+                variant="rectangular"
+                className=" cover bg-grey"
+                width={250}
+                height={15}
+              />
+            </div>
+          </div>
+        </div>
+      ))
+    : data.map((listing) => (
         <div className="col-sm-6 col-lg-4" key={listing.id}>
           <div className="listing-style8">
             <div className="list-thumb">
@@ -54,7 +102,9 @@ const FeaturedListings = ({ data }) => {
                 </Link>
               </h6>
               <p className="list-text text-light lh-base">
-                For {listing.status}{" · "}{listing.completion_status}
+                For {listing.status}
+                {" · "}
+                {listing.completion_status}
               </p>
               <p className="list-text text-light lh-base">
                 {currencyFormatter.format(listing.price)}
@@ -69,9 +119,7 @@ const FeaturedListings = ({ data }) => {
             </div>
           </div>
         </div>
-      ))}
-    </>
-  );
+      ));
 };
 
 export default FeaturedListings;

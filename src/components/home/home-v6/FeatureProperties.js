@@ -44,11 +44,11 @@ const FeatureProperties = () => {
                   <div className="row align-items-center">
                     <div className="list-content mb30-md col-md-8 col-lg-6 col-xl-5 p-xl-0">
                       <h4 className="list-title">
-                        <Link className="color-gold" href="#">
+                        <Link className="color-gold fz24 fw400" href="#">
                           {property.address}
                         </Link>
                       </h4>
-                      <p className="list-text fz15 text-light">
+                      <p className="list-text fz13 text-light fw300">
                         {property.cat_name}
                         {" · "}
                         {property.completion_status}
@@ -83,12 +83,12 @@ const FeatureProperties = () => {
                       <div className="row mb20">
                         <div className="col-auto">
                           <div className="contact-info">
-                            <p className="info-title ff-heading mb-2 text-light lh-sm">
+                            <p className="info-title ff-heading mb-0 text-light lh-sm fz13">
                               Customer Care
                             </p>
-                            <h6 className="info-phone">
+                            <h6 className="info-phone lh-sm">
                               <a
-                                className="text-light fw400"
+                                className="text-light fz11 fw300 lh-sm color-white-grey"
                                 href="tel:+012305094502"
                               >
                                 +(0) 123 050 945 02
@@ -100,12 +100,12 @@ const FeatureProperties = () => {
 
                         <div className="col-auto">
                           <div className="contact-info">
-                            <p className="info-title ff-heading mb-2 text-light lh-sm">
+                            <p className="info-title ff-heading mb-0 text-light lh-sm fz13">
                               Need Support?
                             </p>
                             <h6 className="info-mail">
                               <a
-                                className="text-light fw400"
+                                className="text-light fw300 fz11 lh-sm color-white-grey"
                                 href="mailto:tristan.blanza@indusre.ae"
                               >
                                 tristan.blanza@indusre.ae
