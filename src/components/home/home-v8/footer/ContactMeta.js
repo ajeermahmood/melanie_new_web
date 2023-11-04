@@ -9,25 +9,25 @@ const ContactMeta = () => {
     },
     {
       title: "Need Live Support?",
-      mail: "hi@homez.com",
-      mailLink: "mailto:ibthemes21@gmail.com",
+      mail: "tristan.blanza@indusre.ae",
+      mailLink: "mailto:tristan.blanza@indusre.ae",
     },
   ];
 
   return (
-    <div className="row mb-4 mb-lg-5">
+    <div className="row mb20">
       {contactInfoList.map((contact, index) => (
         <div className="col-auto" key={index}>
           <div className="contact-info">
             <p className="info-title">{contact.title}</p>
             {contact.phone && (
               <h6 className="info-phone">
-                <a href={contact.phoneLink}>{contact.phone}</a>
+                <a className="fw300" href={contact.phoneLink}>{contact.phone}</a>
               </h6>
             )}
             {contact.mail && (
               <h6 className="info-mail">
-                <a href={contact.mailLink}>{contact.mail}</a>
+                <a className="fw300" href={contact.mailLink}>{contact.mail}</a>
               </h6>
             )}
           </div>

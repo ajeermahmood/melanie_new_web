@@ -23,7 +23,7 @@ const AllBannersHome = () => {
           spaceBetween={0}
           slidesPerView={1}
           speed={1400} // Set the slide transition speed in milliseconds
-          autoplay={{ delay: 4000, disableOnInteraction: false }}
+          autoplay={{ delay: 3000 }}
           modules={[Navigation]}
           navigation={{
             nextEl: ".hero9-next__active",
@@ -43,7 +43,7 @@ const AllBannersHome = () => {
                 <Image
                   src={`https://premium.indusre.com/Admin/pages/forms/uploads/property/${item.image1}`}
                   alt="img"
-                  className="w-100 h-100 cover "
+                  className="w-100 h-100 cover"
                   width={1000}
                   height={400}
                 />
@@ -82,10 +82,13 @@ const AllBannersHome = () => {
                     </p> */}
                   <div className="row">
                     <div className="col-xl-7">
-                      <h2 className="banner-title text-light fw400 mb0">
+                      <p className="banner-title text-light fw400 mb10">
+                        Featured Property
+                      </p>
+                      <h2 className="banner-title text-light fz40 fw400 mb0">
                         {item.address}
                       </h2>
-                      <p className="text-light fz20">
+                      <p className="text-light">
                         {item.cat_name} <span className="color-gold">|</span>{" "}
                         {item.completion_status}
                       </p>

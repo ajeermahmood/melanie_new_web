@@ -16,10 +16,10 @@ const Footer = () => {
             <div className="footer-widget mb-4 mb-lg-5">
               <Link className="footer-logo" href="/">
                 <Image
-                  width={138}
+                  width={200}
                   height={44}
                   className="mb40"
-                  src="/images/header-logo.svg"
+                  src="/images/logo/logo-1.svg"
                   alt=""
                 />
               </Link>

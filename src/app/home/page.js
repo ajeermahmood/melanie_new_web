@@ -9,13 +9,14 @@ import Testimonial from "@/components/home/home-v2/Testimonial";
 import About from "@/components/home/home-v2/about";
 import Hero from "@/components/home/home-v2/hero";
 import React from "react";
-import Footer from "@/components/common/default-footer";
+import Footer from "@/components/home/home-v8/footer";
 import Cta from "@/components/home/home-v2/Cta";
 
 import Link from "next/link";
 import AllBannersHome from "./all_banners";
 import PropertyListing from "@/components/home/home-v7/PropertyListing";
 import ProjectsListing from "@/components/home/featured-projects/ProgectsListing";
+import FeatureProperties from "@/components/home/home-v6/FeatureProperties";
 import Image from "next/image";
 
 export const metadata = {
@@ -34,7 +35,7 @@ const HomePage = () => {
       {/* End Mobile Nav  */}
 
       {/* Home Banner Style V2 */}
-      <section className="home-banner-style2 p0 pb150">
+      <section className="home-banner-style2 p0">
         <div className="home-style2">
           <AllBannersHome />
           <div className="container maxw1600">
@@ -46,8 +47,9 @@ const HomePage = () => {
           </div>
         </div>
       </section>
+      <section className="bg-dark pb200 pb30-md"></section>
 
-      <section className="pt200 bg-dark pb50">
+      <section className="bg-dark pb60 pb30-md">
         <div className="container">
           <p className="text-light text-center fz20 mb0">WELCOME</p>
           <p className="text-light text-center fz30 color-gold">
@@ -65,14 +67,30 @@ const HomePage = () => {
             investment, finding the perfect property, or obtaining the accurate
             price for your property.
           </p>
+
+          <div className="nav-item d-flex justify-content-center mt30">
+            <button className="custom-btn">Buying Guide</button>
+            <button className="custom-btn">Talk To Us</button>
+            <button className="custom-btn">List Your Property</button>
+          </div>
         </div>
       </section>
 
       <PropertyListing />
 
       <section className="p0 bg-dark">
-        <div className="container top-border-grey pt20">
-          <p className="text-light text-start fz20 mb20">In Focus</p>
+        <div className="container top-border-grey pt30">
+          <div className="nav justify-content-between">
+            <p className="text-light text-start fz20 mb10">In Focus</p>
+            <button className="custom-btn h-75">Learn More</button>
+          </div>
+          <p className="text-light text-start mb20 mt10">
+            This architectural masterpiece is characterized by its slim and
+            elegant form, and its design emulates the brilliance and sharpness
+            of diamonds by incorporating an angled glass façade. This serves to
+            reinforce the significant trade mission of DMCC and highlights
+            Dubai's status as a premier global business hub.
+          </p>
         </div>
         <Image
           style={{
@@ -90,8 +108,8 @@ const HomePage = () => {
           className="home-banner-slider w-100 position-absolute"
           style={{
             zIndex: 1,
-            top: "4.8rem",
-            height: "89%",
+            top: "9.9rem",
+            height: "79.2%",
           }}
         ></div>
         <div
@@ -104,10 +122,10 @@ const HomePage = () => {
         >
           <div className="row">
             <div className="col-xl-7">
-              <h2 className="banner-title text-light fw400 mb0">
+              <h2 className="banner-title text-light fz40 fw400 mb0">
                 SO/UPTOWN DUBAI RESIDENCES
               </h2>
-              <p className="text-light fz20">Residential, Retail and Hotel</p>
+              <p className="text-light">Residential, Retail and Hotel</p>
               <a
                 target="_blank"
                 href="#"
@@ -124,8 +142,82 @@ const HomePage = () => {
 
       <ProjectsListing />
 
+      <section className="bg-dark pt30 pb50">
+        <div className="container pt30 top-border-grey">
+          <div className="nav justify-content-between">
+            <p className="text-light text-start fz20 mb10">Premium Rentals</p>
+            <button className="custom-btn h-75">See All</button>
+          </div>
+          <p className="text-light text-start mb30 mt0">
+            Discover Dubai's finest: Explore our collection of premium rental
+            properties, where luxury meets lifestyle.
+          </p>
+
+          <div className="row">
+            <FeatureProperties />
+          </div>
+        </div>
+      </section>
+      <section className="w-100 p0">
+        <div className="row">
+          <div className="col-lg-6">
+            <div className="row h-100">
+              <div className="col-3"></div>
+              <div className="col-9 my-auto pr50">
+                <p className="text-dark text-start fz20 fw500 mb10">
+                  Why Dubai
+                </p>
+                <p className="text-dark text-start fw300 fz20 mb0 color-gold">
+                  Best Opportunity to invest in Dubai
+                </p>
+                <p className="text-start mb30 mt0 font-style-2 fw400 fz20 lh-sm">
+                  Throughout the years, land financial specialists have earned
+                  unrivaled capital returns in the worldwide property showcase.
+                  Today, Dubai's land market is comparable to that of New York
+                  or London. It is controlled and maintainable.
+                </p>
+                <ul className="p0">
+                  <div className="row">
+                    <div className="col-6">
+                      <li className="list-style-custom">
+                        High return on investment (ROI)
+                      </li>
+                      <li className="list-style-custom">
+                        World class Infrastructure
+                      </li>
+                      <li className="list-style-custom">
+                        Political and social stability
+                      </li>
+                    </div>
+                    <div className="col-6">
+                      <li className="list-style-custom">
+                        High demand for real estate
+                      </li>
+                      <li className="list-style-custom">
+                        Favorable business regulations
+                      </li>
+                      <li className="list-style-custom">Relaxed Visa Rules</li>
+                    </div>
+                  </div>
+                </ul>
+                <button className="custom-btn-2 h-75 mt20">Contact Us</button>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-6 p0">
+            <Image
+              src={"/images/why-dubai/dubai.avif"}
+              className="w-100 h-100 cover"
+              height={600}
+              width={1000}
+              alt="in focus"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Start Our Footer */}
-      <section className="footer-style1 at-home2 pb-0">
+      <section className="footer-style1 at-home2 pb-0 pt40">
         <Footer />
       </section>
       {/* End Our Footer */}

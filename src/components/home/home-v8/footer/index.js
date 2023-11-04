@@ -11,15 +11,15 @@ const Footer = () => {
   return (
     <>
       <div className="container">
-        <div className="row bb-white-light pb30 mb60">
+        <div className="row bb-white-light pb10 mb30">
           <div className="col-sm-5">
             <div className="footer-widget text-center text-sm-start">
               <Link className="footer-logo" href="/">
                 <Image
-                  width={138}
+                  width={200}
                   height={44}
-                  className="mb40"
-                  src="/images/header-logo.svg"
+                  className="mb10"
+                  src="/images/logo/logo-1.svg"
                   alt=""
                 />
               </Link>
@@ -45,18 +45,18 @@ const Footer = () => {
           {/* End .col */}
 
           <div className="col-md-6 col-lg-4 offset-lg-2">
-            <div className="footer-widget mb-4 mb-lg-5">
+            <div className="footer-widget">
               <ContactMeta />
-              <div className="footer-widget mb-4 mb-lg-5">
-                <div className="mailchimp-widget mb-4 mb-lg-5">
-                  <h6 className="title text-white mb20">
+              <div className="footer-widget">
+                <div className="mailchimp-widget mb30">
+                  <h6 className="title text-white mb20 fw300">
                     Keep Yourself Up to Date
                   </h6>
                   <Subscribe />
                 </div>
               </div>
 
-              <AppWidget />
+              {/* <AppWidget /> */}
             </div>
           </div>
           {/* End .col */}

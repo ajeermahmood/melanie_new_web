@@ -163,6 +163,10 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
   border-top: 1.5px solid var(--theme-black-grey) !important;
 }
 
+.font-style-2 {
+  font-family: Heldane, serif !important;
+}
+
 .hover-gold {
   &:hover {
     color: var(--theme-gold) !important;
@@ -186,6 +190,46 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
     color: var(--theme-gold) !important;
     text-decoration: underline;
   }
+}
+
+.custom-btn {
+  border: 1px solid white;
+  background-color: var(--theme-black);
+  color: white;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  margin-right: 10px;
+  padding: 6px 17px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border: 1px solid var(--theme-gold);
+    color: var(--theme-gold);
+  }
+}
+
+.custom-btn-2 {
+  border: 1px solid black;
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  margin-right: 10px;
+  padding: 6px 30px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border: 1px solid var(--theme-gold);
+    color: var(--theme-gold);
+  }
+}
+
+.list-style-custom {
+  margin-left: 15px;
+  list-style-type: circle;
+  display: list-item;
 }
 
 /// new styles end----------------------------------------------------------------------------------------------------------------------------------------------
@@ -336,7 +380,7 @@ li {
 
 /* All Type Of Footer Styles */
 .footer-style1 {
-  background-color: var(--headings-color);
+  background-color: var(--theme-black);
 }
 .footer-style1.at-home2 {
   padding-top: 230px;
@@ -421,12 +465,12 @@ li {
 .mailchimp-style1 .form-control {
   background-color: rgba(255, 255, 255, 0.04);
   border: none;
-  border-radius: 12px;
+  border-radius: 5px;
   color: #ffffff;
   font-size: 14px;
   font-weight: 400;
-  height: 70px;
-  padding-left: 30px;
+  height: 50px;
+  padding-left: 20px;
 }
 .mailchimp-style1 .form-control:placeholder {
   color: #ffffff;
@@ -448,7 +492,7 @@ li {
   font-weight: 600;
   position: absolute;
   right: 25px;
-  top: 20px;
+  top: 11px;
 }
 .mailchimp-style1.white-version .form-control {
   background-color: #ffffff;
@@ -2005,6 +2049,13 @@ li {
   -o-transition: all 0.4s ease;
   transition: all 0.4s ease;
 }
+
+.listing-style8 .list-content {
+  -webkit-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
 .listing-style8 .list-tag {
   background-color: #c49f5a;
   border-radius: 6px;
@@ -2097,7 +2148,7 @@ li {
   transition: all 0.4s ease;
 }
 .listing-style8 .list-content {
-  background-color: var(--theme-black-grey);
+  background-color: var(--theme-black);
   padding: 20px;
   position: relative;
 }
@@ -2140,9 +2191,12 @@ li {
   transform: translateY(0px);
 }
 .listing-style8:hover .list-thumb img {
-  -webkit-transform: scale(1.1) rotate(-1deg);
-  -ms-transform: scale(1.1) rotate(-1deg);
-  transform: scale(1.1) rotate(-1deg);
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.listing-style8:hover .list-content {
+  background-color: var(--theme-black-grey);
 }
 
 .listing-style9 {
@@ -2153,6 +2207,11 @@ li {
   -webkit-transition: all 0.4s ease;
   -o-transition: all 0.4s ease;
   transition: all 0.4s ease;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
 .listing-style9 .list-thumb {
   overflow: hidden;
@@ -2270,7 +2329,7 @@ li {
   transition: all 0.4s ease;
 }
 .listing-style9 .list-title a:hover {
-  color: #ffffff;
+  color: var(--theme-gold);
 }
 .listing-style9:hover {
   -webkit-box-shadow: 0px 10px 40px rgba(24, 26, 32, 0.05);
@@ -2458,8 +2517,8 @@ li {
 }
 
 .listing-style11 {
-  background-color: #f4eff7;
-  border-radius: 12px;
+  background-color: var(--theme-black-grey);
+  border-radius: 5px;
   margin: 50px 0;
   padding: 70px 60px;
   position: relative;
@@ -2470,12 +2529,12 @@ li {
   }
 }
 .listing-style11 .list-thumb .img-1 {
-  border-radius: 12px;
+  border-radius: 5px;
   position: absolute;
   right: 0;
   top: -50px;
   max-width: 560px;
-  max-height: 610px;
+  max-height: 440px;
 }
 @media (max-width: 1199.98px) {
   .listing-style11 .list-thumb .img-1 {
@@ -2533,19 +2592,16 @@ li {
   }
 }
 .listing-style11 .list-meta span {
-  background-color: #ffffff;
-  border-radius: 12px;
+  // border-radius: 12px;
   -webkit-box-shadow: 0px 6px 15px rgba(64, 79, 104, 0.05);
   -o-box-shadow: 0px 6px 15px rgba(64, 79, 104, 0.05);
   box-shadow: 0px 6px 15px rgba(64, 79, 104, 0.05);
-  color: var(--headings-color);
+  color: white;
   display: block;
   font-size: 17px;
-  height: 50px;
   line-height: 50px;
   margin-right: 10px;
   text-align: center;
-  width: 50px;
 }
 .listing-style11 .list-meta2 a {
   background-color: #ffffff;

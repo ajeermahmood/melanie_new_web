@@ -39,7 +39,7 @@ const FeaturedListings = ({ data }) => {
               </div>
             </div>
             <div className="list-content">
-              <h6 className="list-title">
+              <h6 className="list-title lh-lg">
                 <Link
                   className="text-light hover-gold"
                   href={`#`}
@@ -53,14 +53,14 @@ const FeaturedListings = ({ data }) => {
                   {listing.address}
                 </Link>
               </h6>
-              <p className="list-text text-light">
-                For {listing.status} . {listing.completion_status}
+              <p className="list-text text-light lh-base">
+                For {listing.status}{" · "}{listing.completion_status}
               </p>
-              <p className="list-text text-light">
+              <p className="list-text text-light lh-base">
                 {currencyFormatter.format(listing.price)}
               </p>
-              <p className="list-text text-light">
-                {listing.cat_name} . {listing.beds} Beds .{" "}
+              <p className="list-text text-light lh-base">
+                {listing.cat_name} {" · "} {listing.beds} Beds {" · "}{" "}
                 {new Intl.NumberFormat("en-IN", {
                   maximumSignificantDigits: 3,
                 }).format(listing.area)}{" "}

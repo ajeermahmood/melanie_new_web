@@ -13,3 +13,10 @@ export async function getFeaturedProperties() {
   );
   return response.data;
 }
+
+export async function getFeaturedPremiumRentals() {
+  const response = await axios.get(
+    "https://indusspeciality.com/api/melanie/home/get_featured_premium_rentals.php"
+  );
+  return response.data;
+}
