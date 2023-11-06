@@ -8,6 +8,16 @@
   }
 }
 
+.swiper--pagination-2 {
+  .swiper-pagination-bullet-active {
+    background: white;
+  }
+  .swiper-pagination-bullet {
+    background: var(--theme-gold);
+    margin: 0 6px !important;
+  }
+}
+
 .swiper_button {
   background: transparent;
   border: none;

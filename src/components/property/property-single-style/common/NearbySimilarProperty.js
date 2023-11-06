@@ -6,11 +6,16 @@ import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";
 
-const NearbySimilarProperty = () => {
+const NearbySimilarProperty = ({ data }) => {
+  const currencyFormatter = new Intl.NumberFormat("en-IN", {
+    style: "currency",
+    currency: "AED",
+    minimumFractionDigits: 0,
+  });
   return (
     <>
       <Swiper
-        spaceBetween={30}
+        spaceBetween={10}
         modules={[Navigation, Pagination]}
         navigation={{
           nextEl: ".featured-next__active",
@@ -36,61 +41,65 @@ const NearbySimilarProperty = () => {
           },
         }}
       >
-        {listings.slice(0, 5).map((listing) => (
+        {data.slice(0, 5).map((listing) => (
           <SwiperSlide key={listing.id}>
-            <div className="item">
-              <div className="listing-style1">
+            <div className="listing-style8">
+              <div className="p10">
                 <div className="list-thumb">
                   <Image
                     width={382}
                     height={248}
-                    className="w-100 h-100 cover"
-                    src={listing.image}
+                    className="w-100 cover"
+                    src={`https://premium.indusre.com/Admin/pages/forms/uploads/property/${listing.image1}`}
                     alt="listings"
                   />
                   <div className="sale-sticker-wrap">
-                    {listing.forRent && (
-                      <div className="list-tag rounded-0 fz12">
-                        <span className="flaticon-electricity" />
-                        FEATURED
-                      </div>
-                    )}
-                  </div>
-                  <div className="list-price">
-                    {listing.price} / <span>mo</span>
-                  </div>
-                </div>
-                <div className="list-content">
-                  <h6 className="list-title">
-                    <Link href={`/single-v1/${listing.id}`}>{listing.title}</Link>
-                  </h6>
-                  <p className="list-text">{listing.location}</p>
-                  <div className="list-meta d-flex align-items-center">
-                    <a href="#">
-                      <span className="flaticon-bed" /> {listing.bed} bed
-                    </a>
-                    <a href="#">
-                      <span className="flaticon-shower" /> {listing.bath} bath
-                    </a>
-                    <a href="#">
-                      <span className="flaticon-expand" /> {listing.sqft} sqft
-                    </a>
-                  </div>
-                  <hr className="mt-2 mb-2" />
-                  <div className="list-meta2 d-flex justify-content-between align-items-center">
-                    <span className="for-what">For Rent</span>
-                    <div className="icons d-flex align-items-center">
-                      <a href="#">
-                        <span className="flaticon-fullscreen" />
-                      </a>
-                      <a href="#">
-                        <span className="flaticon-new-tab" />
-                      </a>
-                      <a href="#">
-                        <span className="flaticon-like" />
-                      </a>
+                    <div className="list-tag2 rounded-0 fz12 bg-light color-dark">
+                      FOR SALE
                     </div>
                   </div>
+                  <div className="list-meta">
+                    <a className="rounded-0 mr5" href="#">
+                      <span className="flaticon-like"></span>
+                    </a>
+                    <a className="rounded-0 mr5" href="#">
+                      <span className="flaticon-new-tab"></span>
+                    </a>
+                    <a className="rounded-0" href="#">
+                      <span className="flaticon-fullscreen"></span>
+                    </a>
+                  </div>
+                </div>
+                <div className="list-content bg-light-grey pl0">
+                  <h6 className="list-title lh-lg">
+                    <Link
+                      className="text-dark hover-gold fw500"
+                      href={`/property-details?id=${listing.prop_id}`}
+                      style={{
+                        overflow: "hidden",
+                        whiteSpace: "nowrap",
+                        textOverflow: "ellipsis",
+                        display: "block",
+                      }}
+                    >
+                      {listing.address}
+                    </Link>
+                  </h6>
+                  <p className="list-text lh-base color-black-grey-2">
+                    For {listing.status}
+                    {" · "}
+                    {listing.completion_status}
+                  </p>
+                  <p className="list-text text-dark lh-base">
+                    {currencyFormatter.format(listing.price)}
+                  </p>
+                  <p className="list-text text-dark lh-base">
+                    {listing.cat_name} {" · "} {listing.beds} Beds {" · "}{" "}
+                    {new Intl.NumberFormat("en-IN", {
+                      maximumSignificantDigits: 3,
+                    }).format(listing.area)}{" "}
+                    sq. ft.
+                  </p>
                 </div>
               </div>
             </div>

@@ -77,9 +77,14 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
 
   --theme-black: #0a0a0a;
   --theme-black-grey: #2a2a2a;
+  --theme-black-grey-2: #7f7f7f;
   --theme-white-grey: #bebdbd;
+  --theme-light-grey: #efefed;
+  --theme-white-01: #f9f9f8;
+  --theme-white-02: #ffffff;
   --theme-gold: #c49f5a;
-  --theme-separator-list-dots-bg-url: url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' fill='%23fff' cy='50' r='50'/%3E%3C/svg%3E");
+
+  --theme-box-shadow: 0 1px 6px rgb(0 0 0/4%);
 }
 
 /// new styles----------------------------------------------------------------------------------------------------------------------------------------------
@@ -91,6 +96,22 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
   border: none !important;
   color: white !important;
   border: 1px solid var(--theme-black-grey) !important;
+
+  &:hover {
+    border: 1px solid var(--theme-gold) !important;
+    color: var(--theme-gold) !important;
+  }
+}
+
+.menu-btn-home-first-2 {
+  font-size: 14px;
+  height: 40px;
+  padding: 5px 20px;
+  background-color: var(--theme-white-02) !important;
+  border: none !important;
+  color: var(--theme-black) !important;
+  border: 1px solid var(--theme-white-02) !important;
+  box-shadow: var(--theme-box-shadow);
 
   &:hover {
     border: 1px solid var(--theme-gold) !important;
@@ -132,16 +153,63 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
   }
 }
 
+.underline-text {
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-thickness: 0;
+  text-underline-offset: 4px;
+  transition: 300ms all ease-in-out;
+
+  &:hover {
+    text-decoration: none;
+    color: var(--theme-gold) !important;
+  }
+}
+
+.arrow-after {
+  &::after {
+    content: "›";
+    display: inline;
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+}
+
+.dot-after {
+  &::after {
+    content: "·";
+    display: inline;
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+}
+
 .bg-dark {
   background-color: var(--theme-black) !important;
+}
+
+.bg-light {
+  background-color: white !important;
 }
 
 .bg-grey {
   background-color: var(--theme-black-grey) !important;
 }
 
+.bg-light-grey {
+  background-color: var(--theme-light-grey) !important;
+}
+
 .bg-gold {
   background-color: var(--theme-gold) !important;
+}
+
+.bg-white01 {
+  background-color: var(--theme-white-01) !important;
+}
+
+.bg-white02 {
+  background-color: var(--theme-white-02) !important;
 }
 
 .color-dark {
@@ -150,6 +218,10 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
 
 .color-black-grey {
   color: var(--theme-black-grey) !important;
+}
+
+.color-black-grey-2 {
+  color: var(--theme-black-grey-2) !important;
 }
 
 .color-white-grey {
@@ -174,6 +246,10 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
 
 .top-border-grey {
   border-top: 1.5px solid var(--theme-black-grey) !important;
+}
+
+.top-border-grey-2 {
+  border-top: 1.5px solid #dddddc !important;
 }
 
 .font-style-2 {
@@ -230,6 +306,22 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
   font-size: 14px;
   font-weight: 500;
   margin-right: 10px;
+  padding: 6px 30px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border: 1px solid var(--theme-gold);
+    color: var(--theme-gold);
+  }
+}
+
+.custom-btn-3 {
+  border: 1px solid #c6c6c5;
+  background-color: white;
+  color: var(--theme-black-grey-2);
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 500;
   padding: 6px 30px;
   transition: all 0.3s ease;
 
@@ -2182,9 +2274,9 @@ li {
   margin-bottom: 0;
 }
 .listing-style8:hover {
-  -webkit-box-shadow: 0px 10px 40px rgba(24, 26, 32, 0.05);
-  -o-box-shadow: 0px 10px 40px rgba(24, 26, 32, 0.05);
-  box-shadow: 0px 10px 40px rgba(24, 26, 32, 0.05);
+  -webkit-box-shadow: 0 0 20px rgba(0,0,0,.1);
+  -o-box-shadow:0 0 20px rgba(0,0,0,.1);
+  box-shadow: 0 0 20px rgba(0,0,0,.1);
 }
 .listing-style8:hover .list-tag,
 .listing-style8:hover .list-tag2 {
@@ -3031,8 +3123,7 @@ li {
   position: relative;
 }
 .sp-img-content .preview-img-1 {
-  border-radius: 12px 0 0 12px;
-  height: 558px;
+  height: 400px;
 }
 @media (max-width: 1199.98px) {
   .sp-img-content .preview-img-1 {
@@ -3136,7 +3227,7 @@ li {
   }
 }
 .sp-img-content .preview-img-3 {
-  border-radius: 0 12px 0 0;
+  // border-radius: 0 12px 0 0;
 }
 @media (max-width: 575.98px) {
   .sp-img-content .preview-img-3 {
@@ -5782,14 +5873,13 @@ section {
   position: relative;
 }
 .form-style1 .form-control {
-  border-radius: 8px;
+  border-radius: 5px;
   border: 1px solid #dddddd;
-  -webkit-box-shadow: none;
   box-shadow: none;
-  font-size: 14px;
-  height: 55px;
+  font-size: 13px;
+  height: 40px;
   outline: none;
-  padding-left: 15px;
+  padding-left: 10px;
 }
 .form-style1 .form-control::-webkit-input-placeholder {
   color: #717171;
@@ -5814,7 +5904,7 @@ section {
 .form-style1 .form-control.active,
 .form-style1 .form-control:focus {
   border: 1px solid transparent;
-  outline: 2px solid var(--headings-color);
+  outline: 1px solid var(--theme-gold);
   color: var(--headings-color);
 }
 .form-style1 .form-label {
@@ -5876,15 +5966,16 @@ section {
 
 textarea {
   border: 1px solid #dddddd;
-  border-radius: 8px;
+  border-radius: 5px;
   font-family: var(--title-font-family);
   height: auto;
   width: 100%;
-  padding: 25px 20px;
+  padding: 10px 10px;
+  font-size: 13px;
 }
 textarea:focus {
   border: 1px solid transparent;
-  outline: 2px solid var(--headings-color);
+  outline: 1px solid var(--theme-gold);
   -webkit-box-shadow: none;
   box-shadow: none;
 }
@@ -7492,6 +7583,7 @@ header.nav-homepage-style {
   width: 100%;
   z-index: 3;
 }
+
 header.nav-homepage-style .ace-responsive-menu .sub-menu {
   background-color: #ffffff;
   border-radius: 12px;
@@ -10480,6 +10572,10 @@ input:focus-visible {
   font-size: 20px;
 }
 
+.fz22 {
+  font-size: 22px;
+}
+
 .fz24 {
   font-size: 24px;
 }
@@ -10490,6 +10586,10 @@ input:focus-visible {
 
 .fz30 {
   font-size: 30px;
+}
+
+.fz35 {
+  font-size: 35px;
 }
 
 .fz40 {
@@ -10742,6 +10842,10 @@ input:focus-visible {
 
 .bdrs6 {
   border-radius: 6px;
+}
+
+.bdrs8 {
+  border-radius: 8px;
 }
 
 .bdrs12 {

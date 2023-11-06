@@ -20,3 +20,13 @@ export async function getFeaturedPremiumRentals() {
   );
   return response.data;
 }
+
+export async function getPropertyDetails(id) {
+  const response = await axios.post(
+    "https://indusspeciality.com/api/melanie/home/get_property_details.php",
+    {
+      prop_id: id,
+    }
+  );
+  return response.data;
+}

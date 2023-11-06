@@ -58,7 +58,7 @@ const FeaturedListings = ({ data, loading }) => {
         </div>
       ))
     : data.map((listing) => (
-        <div className="col-sm-6 col-lg-4" key={listing.id}>
+        <div className="col-sm-6 col-lg-4" key={listing.prop_id}>
           <div className="listing-style8">
             <div className="list-thumb">
               <Image
@@ -90,7 +90,7 @@ const FeaturedListings = ({ data, loading }) => {
               <h6 className="list-title lh-lg">
                 <Link
                   className="text-light hover-gold"
-                  href={`#`}
+                  href={`/property-details?id=${listing.prop_id}`}
                   style={{
                     overflow: "hidden",
                     whiteSpace: "nowrap",

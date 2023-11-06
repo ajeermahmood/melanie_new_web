@@ -3,37 +3,39 @@ import { Gallery, Item } from "react-photoswipe-gallery";
 import "photoswipe/dist/photoswipe.css";
 import Image from "next/image";
 import listings from "@/data/listings";
+import { useLayoutEffect, useRef, useState } from "react";
 
-const images = [
-  {
-    src: "/images/listings/listing-single-3.jpg",
-    alt: "2.jpg",
-  },
-  {
-    src: "/images/listings/listing-single-5.jpg",
-    alt: "5.jpg",
-  },
-];
+const PropertyGallery = ({ images }) => {
+  const targetRef = useRef();
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const imgsCount = [images.g_image2, images.g_image3];
 
-const PropertyGallery = ({id}) => {
-  const data = listings.filter((elm) => elm.id == id)[0] || listings[0];
+  useLayoutEffect(() => {
+    if (targetRef.current) {
+      setDimensions({
+        width: targetRef.current.offsetWidth,
+        height: targetRef.current.offsetHeight,
+      });
+    }
+  }, []);
+
   return (
     <>
       <Gallery>
-        <div className="col-sm-9">
+        <div className="col-sm-8">
           <div className="sp-img-content mb15-md">
-            <div className="popup-img preview-img-1 sp-img">
+            <div className="popup-img preview-img-1 sp-img" ref={targetRef}>
               <Item
-                original={'/images/listings/listing-single-8.jpg'}
-                thumbnail={'/images/listings/listing-single-8.jpg'}
-                width={890}
-                height={510}
+                original={`https://premium.indusre.com/Admin/pages/forms/uploads/galary/${images.g_image1}`}
+                thumbnail={`https://premium.indusre.com/Admin/pages/forms/uploads/galary/${images.g_image1}`}
+                width={1000}
+                height={700}
               >
                 {({ ref, open }) => (
                   <Image
-                    src={'/images/listings/listing-single-8.jpg'}
+                    src={`https://premium.indusre.com/Admin/pages/forms/uploads/galary/${images.g_image1}`}
                     width={890}
-                    height={510}
+                    height={400}
                     ref={ref}
                     onClick={open}
                     alt="image"
@@ -47,19 +49,22 @@ const PropertyGallery = ({id}) => {
         </div>
         {/* End .col-6 */}
 
-        <div className="col-sm-3">
+        <div className="col-sm-4">
           <div className="row">
-            {images.map((image, index) => (
+            {imgsCount.map((image, index) => (
               <div className="col-sm-12 ps-lg-0" key={index}>
                 <div className="sp-img-content">
                   <div
                     className={`popup-img preview-img-${index + 2} sp-img mb10`}
+                    style={{
+                      height: `${dimensions.height / 2 - 5}px`,
+                    }}
                   >
                     <Item
-                      original={image.src}
-                      thumbnail={image.src}
-                      width={270}
-                      height={250}
+                      original={`https://premium.indusre.com/Admin/pages/forms/uploads/galary/${image}`}
+                      thumbnail={`https://premium.indusre.com/Admin/pages/forms/uploads/galary/${image}`}
+                      width={1000}
+                      height={700}
                     >
                       {({ ref, open }) => (
                         <Image
@@ -69,8 +74,8 @@ const PropertyGallery = ({id}) => {
                           ref={ref}
                           onClick={open}
                           role="button"
-                          src={image.src}
-                          alt={image.alt}
+                          src={`https://premium.indusre.com/Admin/pages/forms/uploads/galary/${image}`}
+                          alt={index}
                         />
                       )}
                     </Item>
