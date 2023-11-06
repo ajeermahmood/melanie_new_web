@@ -88,6 +88,43 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
 }
 
 /// new styles----------------------------------------------------------------------------------------------------------------------------------------------
+.home-banner-inner-content{
+  z-index: 2;
+  top: 10rem;
+  left: 13rem;
+}
+@media (max-width: 700px) {
+  .mobile-hide {
+    display: none;
+  }
+
+  .advance-search-field {
+    .form-control {
+      height: 45px;
+    }
+
+    .box-search {
+      .icon {
+        bottom: 8px !important;
+      }
+    }
+  }
+  .advance-search-icon{
+    border-radius: 10px !important;
+  }
+
+  .home-banner-inner-content{
+    z-index: 2;
+    top: 1rem;
+    left: 1rem;
+  }
+}
+
+@media (min-width: 700px) {
+  .pc-hide {
+    display: none;
+  }
+}
 
 .dropdown-sub-menu {
   padding: 2px 9px;
@@ -3622,7 +3659,7 @@ li {
 }
 @media (max-width: 991.98px) {
   .home2-hero-banner {
-    top: 100px;
+    top: -80px;
   }
 }
 
@@ -3658,6 +3695,7 @@ li {
 }
 @media (max-width: 991.98px) {
   .home-banner-style2 .home-style2 {
+    padding-top: 20px;
     height: 500px;
   }
 }
@@ -8285,6 +8323,7 @@ li.mm-listitem:focus {
   overflow: hidden;
   position: relative;
 }
+
 .advance-style2 .nav-item:first-child {
   border-radius: 12px 0 0 0;
 }
@@ -8321,6 +8360,10 @@ li.mm-listitem:focus {
 @media (max-width: 767.98px) {
   .advance-style2 .tab-content {
     border-radius: 20px;
+  }
+
+  .advance-style2 .nav-item .nav-link {
+    font-size: 15px;
   }
 }
 

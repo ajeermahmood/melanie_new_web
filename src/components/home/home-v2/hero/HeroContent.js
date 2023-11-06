@@ -27,15 +27,45 @@ const HeroContent = () => {
         {tabs.map((tab) => (
           <li className="nav-item" key={tab.id}>
             <button
-              className={`nav-link fz20 ${activeTab === tab.id ? "active color-white02" : "color-white01"}`}
+              className={`nav-link fz20 ${
+                activeTab === tab.id ? "active color-white02" : "color-white01"
+              }`}
               onClick={() => handleTabClick(tab.id)}
             >
-             <span className="fw400">{tab.label}</span> 
+              <span className="fw400">{tab.label}</span>
             </button>
           </li>
         ))}
       </ul>
-      <div className="tab-content">
+      <div className="mobile-tab-content pc-hide">
+        <div className="col-12 row m-0">
+          <div className="col-10 pl0 pr5">
+            <div className="advance-search-field position-relative text-start bdrr1 bdrrn-sm">
+              <form className="form-search position-relative">
+                <div className="box-search">
+                  <span className="icon flaticon-home-1" />
+                  <input
+                    className="form-control "
+                    type="text"
+                    name="search"
+                    placeholder={`Enter Keyword for`}
+                  />
+                </div>
+              </form>
+            </div>
+          </div>
+          <div className="col-2 p0">
+            <button
+              className="advance-search-icon ud-btn btn-thm"
+              type="button"
+              onClick={() => {}}
+            >
+              <span className="flaticon-search" />
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className="tab-content mobile-hide">
         {tabs.map((tab) => (
           <div
             className={`${activeTab === tab.id ? "active" : ""} tab-pane`}

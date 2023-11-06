@@ -55,32 +55,7 @@ const AllBannersHome = () => {
                     top: "0",
                   }}
                 ></div>
-                <div
-                  className="container position-absolute"
-                  style={{
-                    zIndex: 2,
-                    top: "10rem",
-                    left: "13rem",
-                  }}
-                >
-                  {/* <h3
-                      className="banner-title"
-                      style={{
-                        position: "absolute",
-                        top: "-230px",
-                      }}
-                    >
-                      {item.address}
-                    </h3>
-                    <p
-                      className="text-light fz20"
-                      style={{
-                        position: "absolute",
-                        top: "-150px",
-                      }}
-                    >
-                      Hightlights
-                    </p> */}
+                <div className="container position-absolute home-banner-inner-content">
                   <div className="row">
                     <div className="col-xl-7">
                       <p className="banner-title text-light fw400 mb10">

@@ -9,10 +9,10 @@ const MobileMenu = () => {
   return (
     <div className="mobilie_header_nav stylehome1">
       <div className="mobile-menu">
-        <div className="header innerpage-style">
+        <div className="header innerpage-style bg-dark">
           <div className="menu_and_widgets">
-            <div className="mobile_menu_bar d-flex justify-content-between align-items-center">
-              <a
+            <div className="mobile_menu_bar d-flex justify-content-center align-items-center">
+              {/* <a
                 className="menubar"
                 href="#"
                 data-bs-toggle="offcanvas"
@@ -22,21 +22,21 @@ const MobileMenu = () => {
                 <Image
                   width={25}
                   height={9}
-                  src="/images/mobile-dark-nav-icon.svg"
+                  src="/images/logo/logo-1.svg"
                   alt="mobile icon"
                 />
-              </a>
+              </a> */}
               <Link className="mobile_logo" href="/">
                 <Image
                   width={138}
                   height={44}
-                  src="/images/header-logo2.svg"
+                  src="/images/logo/logo-1.svg"
                   alt="logo"
                 />
               </Link>
-              <Link href="/login">
+              {/* <Link href="/login">
                 <span className="icon fz18 far fa-user-circle" />
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>

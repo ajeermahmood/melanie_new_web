@@ -6,7 +6,6 @@ const Hero = () => {
     <>
       <div className="inner-banner-style2 text-center position-relative">
         <HeroContent />
-        
       </div>
       {/* End Hero content */}
 
