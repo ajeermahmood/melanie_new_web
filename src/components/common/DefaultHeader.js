@@ -1,11 +1,60 @@
 "use client";
 
-import MainMenu from "@/components/common/MainMenu";
-import SidebarPanel from "@/components/common/sidebar-panel";
 import LoginSignupModal from "@/components/common/login-signup-modal";
+import SidebarPanel from "@/components/common/sidebar-panel";
+import { Divider } from "@mui/material";
+import Button from "@mui/material/Button";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import { alpha, styled } from "@mui/material/styles";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
+
+
+
+const StyledMenu = styled((props) => (
+  <Menu
+    elevation={0}
+    anchorOrigin={{
+      vertical: "bottom",
+      horizontal: "right",
+    }}
+    transformOrigin={{
+      vertical: "top",
+      horizontal: "right",
+    }}
+    {...props}
+  />
+))(({ theme }) => ({
+  "& .MuiPaper-root": {
+    borderRadius: 6,
+    marginTop: theme.spacing(1),
+    width: 380,
+    color:
+      theme.palette.mode === "light"
+        ? "rgb(55, 65, 81)"
+        : theme.palette.grey[300],
+    boxShadow:
+      "rgb(255, 255, 255) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px",
+    "& .MuiMenu-list": {
+      padding: "4px 0",
+    },
+    "& .MuiMenuItem-root": {
+      "& .MuiSvgIcon-root": {
+        fontSize: 18,
+        color: theme.palette.text.secondary,
+        marginRight: theme.spacing(1.5),
+      },
+      "&:active": {
+        backgroundColor: alpha(
+          theme.palette.primary.main,
+          theme.palette.action.selectedOpacity
+        ),
+      },
+    },
+  },
+}));
 
 const DefaultHeader = () => {
   const [navbar, setNavbar] = useState(false);
@@ -18,18 +67,36 @@ const DefaultHeader = () => {
     }
   };
 
-  // useEffect(() => {
-  //   window.addEventListener("scroll", changeBackground);
-  //   return () => {
-  //     window.removeEventListener("scroll", changeBackground);
-  //   };
-  // }, []);
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const [subMenuSaleOpen, setSubMenuSaleOpen] = useState(false);
+  const [subMenuRentOpen, setSubMenuRentOpen] = useState(false);
+
+  const open = Boolean(anchorEl);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const subHandleClick = (event) => {
+    if (event == "sale") {
+      subMenuSaleOpen ? setSubMenuSaleOpen(false) : setSubMenuSaleOpen(true);
+    } else {
+      subMenuRentOpen ? setSubMenuRentOpen(false) : setSubMenuRentOpen(true);
+    }
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   return (
     <>
-      <header className={`header-nav nav-homepage-style at-home2  main-menu bg-white01`}>
+      <header
+        className={`header-nav nav-homepage-style at-home2  main-menu bg-white01`}
+      >
         <nav className="posr">
-          <div className="container maxw1400 posr">
+          <div className="container posr">
             <div className="row align-items-center justify-content-between">
               <div className="col-auto">
                 <div className="d-flex align-items-center justify-content-between">
@@ -61,53 +128,133 @@ const DefaultHeader = () => {
 
               <div className="col-auto">
                 <div className="d-flex align-items-center">
-                  {/* <a
-                    className="login-info d-flex align-items-center me-3"
-                    href="tel:+012305094502"
-                  >
-                    <i className="far fa-phone fz16 me-2"></i>{" "}
-                    <span className="d-none d-xl-block">2 911 098 7654</span>
-                  </a>
-                  <a
-                    href="#"
-                    className="login-info d-flex align-items-center"
-                    data-bs-toggle="modal"
-                    data-bs-target="#loginSignupModal"
-                    role="button"
-                  >
-                    <i className="far fa-user-circle fz16 me-2" />{" "}
-                    <span className="d-none d-xl-block">Login / Register</span>
-                  </a> */}
-                  <Link
-                    className="menu-btn-home-first-2 bdrs60 mx-2 mx-xl-4"
-                    href="#"
+                  <Button
+                    id="demo-customized-button"
+                    aria-controls={open ? "demo-customized-menu" : undefined}
+                    aria-haspopup="true"
+                    aria-expanded={open ? "true" : undefined}
+                    variant="contained"
+                    disableElevation
+                    onClick={handleClick}
+                    className="menu-btn-home-first-2 mx-2 mx-xl-4"
                   >
                     <i className="fal fa-bars mr10" />
                     <i className="far fa-user-circle fz16" />
-                  </Link>
-                  {/* <a
-                    className="sidemenu-btn filter-btn-right"
-                    href="#"
-                    data-bs-toggle="offcanvas"
-                    data-bs-target="#SidebarPanel"
-                    aria-controls="SidebarPanelLabel"
-                  >
-                    <Image
-                      width={25}
-                      height={9}
-                      className="img-1"
-                      src="/images/icon/nav-icon-white.svg"
-                      alt="humberger menu"
-                    />
+                  </Button>
 
-                    <Image
-                      width={25}
-                      height={9}
-                      className="img-2"
-                      src="/images/icon/nav-icon-dark.svg"
-                      alt="humberger menu"
-                    />
-                  </a> */}
+                  <StyledMenu
+                    id="demo-customized-menu"
+                    MenuListProps={{
+                      "aria-labelledby": "demo-customized-button",
+                    }}
+                    anchorEl={anchorEl}
+                    open={open}
+                    onClose={handleClose}
+                  >
+                    <div className="row m-0">
+                      <div className="col-6 p0">
+                        <MenuItem onClick={handleClose} disableRipple>
+                          <p className="fz15 fw500 m0">Premium Sales</p>
+                        </MenuItem>
+                        <MenuItem onClick={handleClose} disableRipple>
+                          <p className="fz15 fw500 m0">Premium Rentals</p>
+                        </MenuItem>
+                        <MenuItem
+                          onClick={() => subHandleClick("sale")}
+                          disableRipple
+                        >
+                          <div className="w-100">
+                            <div className="row m-0 w-100 justify-content-between">
+                              <div className="col-11 p0">
+                                <p className="fz15 fw500 m0">Buy</p>
+                              </div>
+                              <div className="col-1 p0">
+                                {subMenuSaleOpen ? (
+                                  <i className="fal fa-angle-up" />
+                                ) : (
+                                  <i className="fal fa-angle-down" />
+                                )}
+                              </div>
+                            </div>
+                            {subMenuSaleOpen ? (
+                              <>
+                                <Divider sx={{ my: 0.5 }} />
+                                <p className="mt10 mb0 fz14 dropdown-sub-menu">
+                                  All Properties
+                                </p>
+                                <p className="mt3 mb0 fz14 dropdown-sub-menu">
+                                  Apartments
+                                </p>
+                                <p className="mt3 mb0 fz14 dropdown-sub-menu">
+                                  Villas
+                                </p>
+                                <p className="mt3 mb0 fz14 dropdown-sub-menu">
+                                  Studios
+                                </p>
+                              </>
+                            ) : (
+                              <></>
+                            )}
+                          </div>
+                        </MenuItem>
+                        <MenuItem
+                          onClick={() => subHandleClick("rent")}
+                          disableRipple
+                        >
+                          <div className="w-100">
+                            <div className="row m-0 w-100 justify-content-between">
+                              <div className="col-11 p0">
+                                <p className="fz15 fw500 m0">Rent</p>
+                              </div>
+                              <div className="col-1 p0">
+                                {subMenuRentOpen ? (
+                                  <i className="fal fa-angle-up" />
+                                ) : (
+                                  <i className="fal fa-angle-down" />
+                                )}
+                              </div>
+                            </div>
+                            {subMenuRentOpen ? (
+                              <>
+                                <Divider sx={{ my: 0.5 }} />
+                                <p className="mt10 mb0 fz14 dropdown-sub-menu">
+                                  All Properties
+                                </p>
+                                <p className="mt3 mb0 fz14 dropdown-sub-menu">
+                                  Apartments
+                                </p>
+                                <p className="mt3 mb0 fz14 dropdown-sub-menu">
+                                  Villas
+                                </p>
+                                <p className="mt3 mb0 fz14 dropdown-sub-menu">
+                                  Studios
+                                </p>
+                              </>
+                            ) : (
+                              <></>
+                            )}
+                          </div>
+                        </MenuItem>
+                        <MenuItem onClick={handleClose} disableRipple>
+                          <p className="fz15 fw500 m0">Off-plan</p>
+                        </MenuItem>
+                      </div>
+                      <div className="col-6 p0">
+                        <MenuItem onClick={handleClose} disableRipple>
+                          <p className="fz15 fw500 m0">In Focus</p>
+                        </MenuItem>
+                        <MenuItem onClick={handleClose} disableRipple>
+                          <p className="fz15 fw500 m0">Deals</p>
+                        </MenuItem>
+                        <MenuItem onClick={handleClose} disableRipple>
+                          <p className="fz15 fw500 m0">Why Dubai</p>
+                        </MenuItem>
+                        <MenuItem onClick={handleClose} disableRipple>
+                          <p className="fz15 fw500 m0">About Us</p>
+                        </MenuItem>
+                      </div>
+                    </div>
+                  </StyledMenu>
                 </div>
               </div>
               {/* End .col-auto */}

@@ -2,6 +2,7 @@
 
 import { getAllBannersHome } from "@/api/listings";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -92,13 +93,12 @@ const AllBannersHome = () => {
                         {item.cat_name} <span className="color-gold">|</span>{" "}
                         {item.completion_status}
                       </p>
-                      <a
-                        target="_blank"
-                        href="#"
+                      <Link
+                        href={`/property-details?id=${item.prop_id}`}
                         className="ud-btn banner-btn fw500 btn-thm mt10 mt0-xs"
                       >
                         VIEW PROPERTY
-                      </a>
+                      </Link>
                     </div>
 
                     <div className="col-sm-6 col-xl-4 offset-xl-3"></div>

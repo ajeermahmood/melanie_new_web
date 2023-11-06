@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import React from "react";
 import ListingStatus from "../../sidebar/ListingStatus";
@@ -7,45 +7,27 @@ import PriceRange from "../../sidebar/PriceRange";
 import Bedroom from "../../sidebar/Bedroom";
 import Bathroom from "../../sidebar/Bathroom";
 
-const TopFilterBar = ({filterFunctions,setCurrentSortingOption,colstyle,setColstyle}) => {
-  
+const TopFilterBar = ({
+  filterFunctions,
+  setCurrentSortingOption,
+  colstyle,
+  setColstyle,
+  totalLength,
+}) => {
   return (
     <>
       <div className="col-xl-9 d-none d-lg-block">
         <div className="dropdown-lists">
           <ul className="p-0 text-center text-xl-start">
             <li className="list-inline-item position-relative">
-              <button
-                type="button"
-                className="open-btn mb15 dropdown-toggle"
-                data-bs-toggle="dropdown"
-                data-bs-auto-close="outside"
-              >
-                For Sale <i className="fa fa-angle-down ms-2" />
-              </button>
-              <div className="dropdown-menu">
-                <div className="widget-wrapper bdrb1 pb25 mb0 pl20">
-                  <h6 className="list-title">Listing Status</h6>
-                  <div className="radio-element">
-                    <ListingStatus filterFunctions={filterFunctions} />
-                  </div>
-                </div>
-                <div className="text-end mt10 pr10">
-                  <button
-                    type="button"
-                    className="done-btn ud-btn btn-thm drop_btn"
-                  >
-                    Done
-                  </button>
-                </div>
-              </div>
+              <p className="mr10 fw500">{totalLength} Properties</p>
             </li>
             {/* End li Listing Status */}
 
             <li className="list-inline-item position-relative">
               <button
                 type="button"
-                className="open-btn mb15 dropdown-toggle"
+                className="open-btn mb15 dropdown-toggle color-black-grey-2 fw300"
                 data-bs-toggle="dropdown"
                 data-bs-auto-close="outside"
               >
@@ -55,7 +37,7 @@ const TopFilterBar = ({filterFunctions,setCurrentSortingOption,colstyle,setColst
                 <div className="widget-wrapper bdrb1 pb25 mb0 pl20">
                   <h6 className="list-title">Property Type</h6>
                   <div className="checkbox-style1">
-                    <PropertyType filterFunctions={filterFunctions}/>
+                    <PropertyType filterFunctions={filterFunctions} />
                   </div>
                 </div>
                 <div className="text-end mt10 pr10">
@@ -73,7 +55,7 @@ const TopFilterBar = ({filterFunctions,setCurrentSortingOption,colstyle,setColst
             <li className="list-inline-item position-relative">
               <button
                 type="button"
-                className="open-btn mb15 dropdown-toggle"
+                className="open-btn mb15 dropdown-toggle color-black-grey-2 fw300"
                 data-bs-toggle="dropdown"
                 data-bs-auto-close="outside"
               >
@@ -85,7 +67,7 @@ const TopFilterBar = ({filterFunctions,setCurrentSortingOption,colstyle,setColst
                   <h6 className="list-title">Price Range</h6>
                   {/* Range Slider Desktop Version */}
                   <div className="range-slider-style1">
-                    <PriceRange filterFunctions={filterFunctions}/>
+                    <PriceRange filterFunctions={filterFunctions} />
                   </div>
                 </div>
                 <div className="text-end mt10 pr10">
@@ -103,7 +85,7 @@ const TopFilterBar = ({filterFunctions,setCurrentSortingOption,colstyle,setColst
             <li className="list-inline-item position-relative">
               <button
                 type="button"
-                className="open-btn mb15 dropdown-toggle"
+                className="open-btn mb15 dropdown-toggle color-black-grey-2 fw300"
                 data-bs-toggle="dropdown"
                 data-bs-auto-close="outside"
               >
@@ -113,14 +95,14 @@ const TopFilterBar = ({filterFunctions,setCurrentSortingOption,colstyle,setColst
                 <div className="widget-wrapper pl20 pr20">
                   <h6 className="list-title">Bedrooms</h6>
                   <div className="d-flex">
-                    <Bedroom filterFunctions={filterFunctions}/>
+                    <Bedroom filterFunctions={filterFunctions} />
                   </div>
                 </div>
 
                 <div className="widget-wrapper bdrb1 pb25 mb0 pl20 pr20">
                   <h6 className="list-title">Bathrooms</h6>
                   <div className="d-flex">
-                    <Bathroom filterFunctions={filterFunctions}/>
+                    <Bathroom filterFunctions={filterFunctions} />
                   </div>
                 </div>
                 <div className="text-end mt10 pr10">
@@ -139,7 +121,7 @@ const TopFilterBar = ({filterFunctions,setCurrentSortingOption,colstyle,setColst
               {/* Advance Features modal trigger */}
               <button
                 type="button"
-                className="open-btn mb15"
+                className="open-btn mb15 color-black-grey-2 fw300"
                 data-bs-toggle="modal"
                 data-bs-target="#advanceSeachModal"
               >
@@ -155,7 +137,13 @@ const TopFilterBar = ({filterFunctions,setCurrentSortingOption,colstyle,setColst
         <div className="page_control_shorting d-flex align-items-center justify-content-center justify-content-sm-end">
           <div className="pcs_dropdown pr10 d-flex align-items-center">
             <span style={{ minWidth: "60px" }}>Sort by</span>
-            <select className="form-select" onChange={(e)=>setCurrentSortingOption && setCurrentSortingOption(e.target.value)} >
+            <select
+              className="form-select"
+              onChange={(e) =>
+                setCurrentSortingOption &&
+                setCurrentSortingOption(e.target.value)
+              }
+            >
               <option>Newest</option>
               <option>Best Seller</option>
               <option>Best Match</option>
@@ -163,12 +151,12 @@ const TopFilterBar = ({filterFunctions,setCurrentSortingOption,colstyle,setColst
               <option>Price High</option>
             </select>
           </div>
-          <div className={`pl15 pr15 bdrl1 bdrr1 d-none d-md-block  cursor ${!colstyle? 'menuActive':'#' } `}    onClick={()=>setColstyle(false)}>
+          {/* <div className={`color-black-grey-2 fw300 pl15 pr15 bdrl1 bdrr1 d-none d-md-block  cursor ${!colstyle? 'menuActive':'#' } `}    onClick={()=>setColstyle(false)}>
             Grid
           </div>
-          <div className={`pl15 d-none d-md-block  cursor ${colstyle? 'menuActive':'#' }`}   onClick={()=>setColstyle(true)}>
+          <div className={`color-black-grey-2 fw300 pl15 d-none d-md-block  cursor ${colstyle? 'menuActive':'#' }`}   onClick={()=>setColstyle(true)}>
             List
-          </div>
+          </div> */}
         </div>
       </div>
       {/* End .col-3 */}

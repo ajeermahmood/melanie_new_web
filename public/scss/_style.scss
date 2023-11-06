@@ -88,7 +88,18 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
 }
 
 /// new styles----------------------------------------------------------------------------------------------------------------------------------------------
+
+.dropdown-sub-menu {
+  padding: 2px 9px;
+  border-radius: 3px;
+  transition: 200ms all ease-in-out;
+  &:hover {
+    background-color: #c49f5a1c;
+  }
+}
+
 .menu-btn-home-first {
+  border-radius: 60px !important;
   font-size: 14px;
   height: 40px;
   padding: 5px 20px;
@@ -104,14 +115,14 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
 }
 
 .menu-btn-home-first-2 {
+  border-radius: 60px !important;
   font-size: 14px;
   height: 40px;
   padding: 5px 20px;
   background-color: var(--theme-white-02) !important;
-  border: none !important;
   color: var(--theme-black) !important;
   border: 1px solid var(--theme-white-02) !important;
-  box-shadow: var(--theme-box-shadow);
+  box-shadow: 0 1px 6px rgb(0 0 0 / 5%) !important;
 
   &:hover {
     border: 1px solid var(--theme-gold) !important;
@@ -190,6 +201,17 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
 
 .bg-light {
   background-color: white !important;
+}
+
+.bg-light-hover {
+  border-radius: 8px;
+  &:hover {
+    background-color: white !important;
+
+    .list-content {
+      background-color: white !important;
+    }
+  }
 }
 
 .bg-grey {
@@ -2274,9 +2296,9 @@ li {
   margin-bottom: 0;
 }
 .listing-style8:hover {
-  -webkit-box-shadow: 0 0 20px rgba(0,0,0,.1);
-  -o-box-shadow:0 0 20px rgba(0,0,0,.1);
-  box-shadow: 0 0 20px rgba(0,0,0,.1);
+  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  -o-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 .listing-style8:hover .list-tag,
 .listing-style8:hover .list-tag2 {
@@ -10070,7 +10092,7 @@ input:focus-visible {
 }
 .dropdown-lists .open-btn {
   background-color: #ffffff;
-  border-radius: 60px;
+  border-radius: 10px;
   border: none;
   -webkit-box-shadow: 0px 1px 4px rgba(24, 26, 32, 0.07);
   -o-box-shadow: 0px 1px 4px rgba(24, 26, 32, 0.07);
@@ -10681,31 +10703,31 @@ input:focus-visible {
 }
 
 .fw300 {
-  font-weight: 300;
+  font-weight: 300 !important;
 }
 
 .fw400 {
-  font-weight: 400;
+  font-weight: 400 !important;
 }
 
 .fw500 {
-  font-weight: 500;
+  font-weight: 500 !important;
 }
 
 .fw600 {
-  font-weight: 600;
+  font-weight: 600 !important;
 }
 
 .fw700 {
-  font-weight: 700;
+  font-weight: 700 !important;
 }
 
 .fw800 {
-  font-weight: 800;
+  font-weight: 800 !important;
 }
 
 .fw900 {
-  font-weight: 900;
+  font-weight: 900 !important;
 }
 
 .fwn {

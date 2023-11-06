@@ -30,3 +30,15 @@ export async function getPropertyDetails(id) {
   );
   return response.data;
 }
+
+export async function getAllPremiumSales(limit, pageNumber, filter) {
+  const response = await axios.post(
+    "https://indusspeciality.com/api/melanie/home/get_all_premium_sales.php",
+    {
+      limit: limit,
+      pageNumber: pageNumber,
+      filter: filter,
+    }
+  );
+  return response.data;
+}

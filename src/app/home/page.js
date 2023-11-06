@@ -20,7 +20,7 @@ import FeatureProperties from "@/components/home/home-v6/FeatureProperties";
 import Image from "next/image";
 
 export const metadata = {
-  title: "Premium Indus Real Estate",
+  title: "Indus Premium | Luxury Properties",
 };
 
 const HomePage = () => {
