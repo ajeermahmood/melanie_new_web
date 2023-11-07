@@ -34,7 +34,7 @@ const AllDialogs = () => {
         <DialogTitle className="mt10" align="center">Premium Buying Guide</DialogTitle>
         <DialogContent>
           <DialogContentText className="font-style-2" fontSize={20} align="center">
-            Before you start looking for a home, it's important to determine
+            Before you start looking for a home, it&apos;s important to determine
             your budget. This will help you narrow down your search and avoid
             wasting time looking at homes that are out of your price range.
           </DialogContentText>
