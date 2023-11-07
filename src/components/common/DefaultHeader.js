@@ -11,8 +11,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-
-
 const StyledMenu = styled((props) => (
   <Menu
     elevation={0}
@@ -153,12 +151,16 @@ const DefaultHeader = () => {
                   >
                     <div className="row m-0">
                       <div className="col-6 p0">
-                        <MenuItem onClick={handleClose} disableRipple>
-                          <p className="fz15 fw500 m0">Premium Sales</p>
-                        </MenuItem>
-                        <MenuItem onClick={handleClose} disableRipple>
-                          <p className="fz15 fw500 m0">Premium Rentals</p>
-                        </MenuItem>
+                        <Link href={"/premium-sales"}>
+                          <MenuItem onClick={handleClose} disableRipple>
+                            <p className="fz15 fw500 m0">Premium Sales</p>
+                          </MenuItem>
+                        </Link>
+                        <Link href={"/premium-rentals"}>
+                          <MenuItem onClick={handleClose} disableRipple>
+                            <p className="fz15 fw500 m0">Premium Rentals</p>
+                          </MenuItem>
+                        </Link>
                         <MenuItem
                           onClick={() => subHandleClick("sale")}
                           disableRipple

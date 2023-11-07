@@ -157,14 +157,16 @@ const Header = () => {
                   >
                     <div className="row m-0">
                       <div className="col-6 p0">
-                        <MenuItem onClick={handleClose} disableRipple>
-                          <Link href={"/premium-sales"}>
+                        <Link href={"/premium-sales"}>
+                          <MenuItem onClick={handleClose} disableRipple>
                             <p className="fz15 fw500 m0">Premium Sales</p>
-                          </Link>
-                        </MenuItem>
-                        <MenuItem onClick={handleClose} disableRipple>
-                          <p className="fz15 fw500 m0">Premium Rentals</p>
-                        </MenuItem>
+                          </MenuItem>
+                        </Link>
+                        <Link href={"/premium-rentals"}>
+                          <MenuItem onClick={handleClose} disableRipple>
+                            <p className="fz15 fw500 m0">Premium Rentals</p>
+                          </MenuItem>
+                        </Link>
                         <MenuItem
                           onClick={() => subHandleClick("sale")}
                           disableRipple

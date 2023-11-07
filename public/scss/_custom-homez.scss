@@ -188,18 +188,18 @@ html {
         background-image: url(../images/icon/range-slider-range-bg-line.svg);
         background-repeat: no-repeat;
         background-position: center;
-        border: 2px solid var(--headings-color);
-        border-radius: 50%;
-        height: 29px;
+        border: 1px solid var(--theme-black-grey-2);
+        border-radius: 40%;
+        height: 22px;
         left: 0;
-        top: -8px;
-        width: 29px;
+        top: -5px;
+        width: 22px;
         -webkit-box-shadow: 0px 0px 5px 0px rgba(19, 19, 28, 0.2);
         -o-box-shadow: 0px 0px 5px 0px rgba(19, 19, 28, 0.2);
         box-shadow: 0px 0px 5px 0px rgba(19, 19, 28, 0.2);
     }
     .input-range__track--active {
-        background-color: var(--headings-color);
+        background-color: var(--theme-gold);
         border-radius: 30px;
     }
     .input-range {

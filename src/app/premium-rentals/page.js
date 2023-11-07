@@ -8,7 +8,7 @@ import ProperteyFiltering from "@/components/listing/grid-view/grid-full-3-col/P
 import React from "react";
 
 export const metadata = {
-  title: "Indus Premium | Premium Sales",
+  title: "Indus Premium | Premium Rentals",
 };
 
 const PremiumSales = () => {
@@ -28,7 +28,7 @@ const PremiumSales = () => {
           <div className="row">
             <div className="col-lg-12">
               <div className="breadcumb-style1">
-                <h2 className="title fw400 text-center">Premium Sales</h2>
+                <h2 className="title fw400 text-center">Premium Rentals</h2>
               </div>
             </div>
           </div>
@@ -37,7 +37,7 @@ const PremiumSales = () => {
       {/* End Breadcumb Sections */}
 
       {/* Property Filtering */}
-      <ProperteyFiltering status={"sale"} />
+      <ProperteyFiltering status={'rent'}/>
       {/* Property Filtering */}
 
       {/* Start Our Footer */}

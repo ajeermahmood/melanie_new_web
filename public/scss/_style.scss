@@ -126,6 +126,14 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
   }
 }
 
+.maxw400{
+  max-width: 400px !important;
+}
+
+.maxw800{
+  max-width: 800px !important;
+}
+
 .dropdown-sub-menu {
   padding: 2px 9px;
   border-radius: 3px;
@@ -263,6 +271,10 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
   background-color: var(--theme-gold) !important;
 }
 
+.border-gold {
+  border-color: var(--theme-gold) !important;
+}
+
 .bg-white01 {
   background-color: var(--theme-white-01) !important;
 }
@@ -281,6 +293,10 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
 
 .color-black-grey-2 {
   color: var(--theme-black-grey-2) !important;
+}
+
+.border-grey-2 {
+  border-color: var(--theme-black-grey-2) !important;
 }
 
 .color-white-grey {
@@ -8783,7 +8799,7 @@ li.mm-listitem:focus {
 
 .range-slider-style1,
 .range-slider-style2 {
-  max-width: 300px;
+  max-width: 360px;
   position: relative;
   width: 100%;
 }
@@ -8876,8 +8892,8 @@ input:focus-visible {
   font-size: 14px;
   font-weight: 400;
   letter-spacing: 0em;
-  padding: 10px 15px;
-  width: 130px;
+  padding: 5px 12px;
+  width: 170px;
 }
 
 .modal-version #slider-range-value1,
@@ -10029,28 +10045,28 @@ input:focus-visible {
   margin-right: 0;
 }
 .room-list a:last-child {
-  border-radius: 0 12px 12px 0;
+  border-radius: 0 8px 8px 0;
   margin-right: 0;
 }
 
 .selection:first-child label {
-  border-radius: 12px 0px 0px 12px;
+  border-radius: 8px 0px 0px 8px;
 }
 .selection:last-child label {
-  border-radius: 0px 12px 12px 0px;
+  border-radius: 0px 8px 8px 0px;
 }
 .selection label {
   background-color: #ffffff;
   border: 2px solid transparent;
   cursor: pointer;
   display: inline-block;
-  color: var(--headings-color);
+  color: var(--theme-black-grey-2);
   font-family: var(--title-font-family);
   font-weight: 600;
   font-size: 13px;
   outline: 1px solid #dddddd;
   margin-right: 1px;
-  padding: 7px 12px;
+  padding: 4px 10px;
 }
 
 .selection input[type="radio"] {
@@ -10058,7 +10074,7 @@ input:focus-visible {
 }
 
 .selection input[type="radio"]:checked ~ label {
-  border: 2px solid #181a20;
+  border: 2px solid var(--theme-gold);
   outlinie: transparent;
   z-index: 1;
 }
@@ -10183,10 +10199,10 @@ input:focus-visible {
 }
 .dropdown-lists .dropdown-menu.dd3,
 .dropdown-lists .dropdown-menu.dd4 {
-  width: 330px;
+  width: 370px;
 }
 .dropdown-lists .done-btn {
-  height: 36px;
+  height: 30px;
   line-height: 5px;
 }
 .dropdown-lists.at-home8 .open-btn {

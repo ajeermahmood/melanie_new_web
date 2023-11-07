@@ -34,19 +34,10 @@ const TopFilterBar = ({
                 Property Type <i className="fa fa-angle-down ms-2" />
               </button>
               <div className="dropdown-menu">
-                <div className="widget-wrapper bdrb1 pb25 mb0 pl20">
-                  <h6 className="list-title">Property Type</h6>
+                <div className="widget-wrapper pb5 mb0 pl20">
                   <div className="checkbox-style1">
                     <PropertyType filterFunctions={filterFunctions} />
                   </div>
-                </div>
-                <div className="text-end mt10 pr10">
-                  <button
-                    type="button"
-                    className="done-btn ud-btn btn-thm dropdown-toggle"
-                  >
-                    Done
-                  </button>
                 </div>
               </div>
             </li>
@@ -63,10 +54,10 @@ const TopFilterBar = ({
               </button>
 
               <div className="dropdown-menu dd3">
-                <div className="widget-wrapper bdrb1 pb25 mb0 pl20 pr20">
-                  <h6 className="list-title">Price Range</h6>
+                <div className="widget-wrapper bdrb1 pb25 mb0 pl20 pr30">
+                  {/* <h6 className="list-title">Price Range</h6> */}
                   {/* Range Slider Desktop Version */}
-                  <div className="range-slider-style1">
+                  <div className="range-slider-style1 mt10">
                     <PriceRange filterFunctions={filterFunctions} />
                   </div>
                 </div>
@@ -74,6 +65,12 @@ const TopFilterBar = ({
                   <button
                     type="button"
                     className="done-btn ud-btn btn-thm drop_btn3"
+                    onClick={() => {
+                      filterFunctions.setListings([]);
+                      filterFunctions.setPriceRangeSetted(
+                        filterFunctions.priceRangeSetted + 1
+                      );
+                    }}
                   >
                     Done
                   </button>
@@ -91,34 +88,42 @@ const TopFilterBar = ({
               >
                 Beds / Baths <i className="fa fa-angle-down ms-2" />
               </button>
-              <div className="dropdown-menu dd4 pb20">
+              <div
+                className="dropdown-menu dd4 pb20"
+                style={{
+                  width: "295px !important",
+                }}
+              >
                 <div className="widget-wrapper pl20 pr20">
-                  <h6 className="list-title">Bedrooms</h6>
+                  <h6 className="list-title color-black-grey-2 fw400">
+                    Bedrooms
+                  </h6>
                   <div className="d-flex">
                     <Bedroom filterFunctions={filterFunctions} />
                   </div>
                 </div>
 
-                <div className="widget-wrapper bdrb1 pb25 mb0 pl20 pr20">
-                  <h6 className="list-title">Bathrooms</h6>
+                <div className="widget-wrapper pb5 mb0 pl20 pr20">
+                  <h6 className="list-title color-black-grey-2 fw400">
+                    Bathrooms
+                  </h6>
                   <div className="d-flex">
                     <Bathroom filterFunctions={filterFunctions} />
                   </div>
                 </div>
-                <div className="text-end mt10 pr10">
+                {/* <div className="text-end mt10 pr10">
                   <button
                     type="button"
                     className="done-btn ud-btn btn-thm drop_btn4"
                   >
                     Done
                   </button>
-                </div>
+                </div> */}
               </div>
             </li>
             {/* End bed and bathroom check */}
 
-            <li className="list-inline-item">
-              {/* Advance Features modal trigger */}
+            {/* <li className="list-inline-item">
               <button
                 type="button"
                 className="open-btn mb15 color-black-grey-2 fw300"
@@ -127,7 +132,7 @@ const TopFilterBar = ({
               >
                 <i className="flaticon-settings me-2" /> More Filter
               </button>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>

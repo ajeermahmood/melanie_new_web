@@ -7,46 +7,13 @@ import { useEffect, useState } from "react";
 import ListingSidebar from "../../sidebar";
 import FeaturedListings from "./FeatuerdListings";
 import TopFilterBar from "./TopFilterBar";
-import { useSearchParams } from "next/navigation";
 
-export default function ProperteyFiltering() {
-  // params
-  const searchParams = useSearchParams();
-  const property_status_param = searchParams.get("st");
-  const property_purpose_param = searchParams.get("ps");
-  const location_param = searchParams.get("lc");
-  const property_type_param = searchParams.get("t");
-  // params end
-
-  const getPropertyTypesAccordingToPurpose = (purpose) => {
-    switch (purpose) {
-      case "residential":
-        return [1, 2, 3, 4];
-      case "commercial":
-        return [26];
-      default:
-        break;
-    }
-  };
-
+export default function ProperteyFiltering({ status }) {
   const [listings, setListings] = useState([]);
   const [listingsCount, setListingsCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
-  const [listingStatus, setListingStatus] = useState(
-    property_status_param != "" && property_status_param != null
-      ? property_status_param
-      : "All"
-  );
-  const [propertyTypes, setPropertyTypes] = useState(
-    property_purpose_param != "" && property_purpose_param != null
-      ? getPropertyTypesAccordingToPurpose(property_purpose_param)
-      : property_type_param != "" &&
-        property_type_param != "All" &&
-        property_type_param != null
-      ? [Number(property_type_param)]
-      : []
-  );
-  const [priceRange, setPriceRange] = useState([0, 40000000]);
+  const [propertyTypes, setPropertyTypes] = useState([]);
+  const [priceRange, setPriceRange] = useState([20, 100000000]);
   const [priceRangeSetted, setPriceRangeSetted] = useState(1);
   const [bedrooms, setBedrooms] = useState(-1);
   const [bathroms, setBathroms] = useState(0);
@@ -55,9 +22,7 @@ export default function ProperteyFiltering() {
 
   const [colstyle, setColstyle] = useState(false);
 
-  const [location, setLocation] = useState(
-    location_param != "" && location_param != null ? location_param : "0"
-  );
+  const [location, setLocation] = useState("0");
   const [squirefeet, setSquirefeet] = useState([]);
   const [yearBuild, setyearBuild] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -65,7 +30,7 @@ export default function ProperteyFiltering() {
   useEffect(() => {
     setLoading(true);
     getAllPremiumSales(9, currentPage, {
-      status: listingStatus,
+      status: status,
       prop_types: propertyTypes,
       price_range: priceRange,
       beds: bedrooms,
@@ -78,12 +43,11 @@ export default function ProperteyFiltering() {
       .then((res) => {
         setListings(res.listings);
         setListingsCount(res.count);
-        console.log(res)
+        console.log(res);
       })
       .finally(() => setLoading(false));
   }, [
     currentPage,
-    listingStatus,
     propertyTypes,
     priceRangeSetted,
     bedrooms,
@@ -95,7 +59,6 @@ export default function ProperteyFiltering() {
   ]);
 
   const resetFilter = () => {
-    setListingStatus("All");
     setPropertyTypes([]);
     setPriceRange([0, 40000000]);
     setBedrooms(0);
@@ -112,10 +75,6 @@ export default function ProperteyFiltering() {
     document.querySelectorAll(".filterSelect").forEach(function (element) {
       element.value = "All Cities";
     });
-  };
-
-  const handlelistingStatus = (elm) => {
-    setListingStatus((pre) => (pre == elm ? "All" : elm));
   };
 
   const handlepropertyTypes = (elm) => {
@@ -156,7 +115,6 @@ export default function ProperteyFiltering() {
     }
   };
   const filterFunctions = {
-    handlelistingStatus,
     handlepropertyTypes,
     handlepriceRange,
     handlebedrooms,
@@ -166,7 +124,6 @@ export default function ProperteyFiltering() {
     handleyearBuild,
     handlecategories,
     priceRange,
-    listingStatus,
     propertyTypes,
     resetFilter,
 
@@ -182,7 +139,6 @@ export default function ProperteyFiltering() {
     setCurrentSortingOption,
     priceRangeSetted,
   };
-
 
   return (
     <section className="pt0 pb90 bgc-f7">
@@ -235,6 +191,23 @@ export default function ProperteyFiltering() {
           />
         </div>
         {/* End TopFilterBar */}
+        {listings.length == 0 && !loading ? (
+          <div className="mb100">
+            <p className="text-center fz20 mb0 mt100">
+              Sorry, we don't have any matches for your search
+            </p>
+            <p className="text-center fz20 maxw800 mx-auto color-black-grey-2 font-style-2">
+              While we currently don't have the property you require in our
+              portfolio. Please reach out our team for your specific
+              requirements.
+            </p>
+            <div className="d-flex w-100 justify-content-center">
+              <button className="custom-btn-3">Contact Now</button>
+            </div>
+          </div>
+        ) : (
+          <></>
+        )}
 
         <div className="row">
           <FeaturedListings
@@ -257,10 +230,12 @@ export default function ProperteyFiltering() {
               }}
             />
             <span className="mt10">
-              {(9 * currentPage) - 9 + 1} - {(9 * currentPage) - 9 + listings.length} of {listingsCount} results
+              {9 * currentPage - 9 + 1} -{" "}
+              {9 * currentPage - 9 + listings.length} of {listingsCount} results
             </span>
           </Stack>
         </div>
+
         {/* End .row */}
       </div>
       {/* End .container */}
