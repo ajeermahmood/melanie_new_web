@@ -8,7 +8,7 @@ import ProperteyFiltering from "@/components/listing/grid-view/grid-full-3-col/P
 import React from "react";
 
 export const metadata = {
-  title: "Indus Premium | Premium Rentals",
+  title: "Indus Premium | 1 Beds",
 };
 
 const PremiumSales = () => {

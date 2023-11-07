@@ -1,12 +1,12 @@
 import DefaultHeader from "@/components/common/DefaultHeader";
-import Footer from "@/components/common/default-footer";
+import Footer from "@/components/home/home-v8/footer";
 import MobileMenu from "@/components/common/mobile-menu";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 export const metadata = {
-  title: "Not-Found  || Homez - Real Estate NextJS Template",
+  title: "Indus Premium | Page Not Found",
 };
 
 const NotFound = () => {
