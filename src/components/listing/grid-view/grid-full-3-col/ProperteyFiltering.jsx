@@ -194,10 +194,10 @@ export default function ProperteyFiltering({ status }) {
         {listings.length == 0 && !loading ? (
           <div className="mb100">
             <p className="text-center fz20 mb0 mt100">
-              Sorry, we don't have any matches for your search
+              Sorry, we don&apos;t have any matches for your search
             </p>
             <p className="text-center fz20 maxw800 mx-auto color-black-grey-2 font-style-2">
-              While we currently don't have the property you require in our
+              While we currently don&apos;t have the property you require in our
               portfolio. Please reach out our team for your specific
               requirements.
             </p>
