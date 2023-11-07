@@ -6,6 +6,8 @@ import { useRouter } from "next/navigation";
 const HeroContent = () => {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState("buy");
+  const [selectedPropType, setSelectedPropType] = useState("all");
+  const [search, setSearch] = useState("");
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
@@ -14,7 +16,7 @@ const HeroContent = () => {
   const tabs = [
     { id: "buy", label: "Buy" },
     { id: "rent", label: "Rent" },
-    { id: "off_plan", label: "Off-plan" },
+    { id: "projects", label: "Projects" },
   ];
 
   return (
@@ -49,6 +51,7 @@ const HeroContent = () => {
                     type="text"
                     name="search"
                     placeholder={`Enter Keyword for`}
+                    onChange={(e) => setSearch(e.target.value)}
                   />
                 </div>
               </form>
@@ -73,7 +76,7 @@ const HeroContent = () => {
           >
             <div className="advance-content-style2">
               <div className="row align-items-center justify-content-start justify-content-md-center">
-                <div className="col-md-5 col-lg-6">
+                <div className="col-md-5 col-lg-7">
                   <div className="advance-search-field position-relative text-start bdrr1 bdrrn-sm bb1-sm">
                     <form className="form-search position-relative">
                       <div className="box-search">
@@ -83,6 +86,7 @@ const HeroContent = () => {
                           type="text"
                           name="search"
                           placeholder={`Enter Keyword for ${tab.label}`}
+                          onChange={(e) => setSearch(e.target.value)}
                         />
                       </div>
                     </form>
@@ -93,26 +97,34 @@ const HeroContent = () => {
                 <div className="col-md-3 col-lg-3 ps-md-0">
                   <div className="bdrr1 bdrrn-sm pe-0 pe-lg-3 bb1-sm">
                     <div className="bootselect-multiselect">
-                      <SelectDropdown />
+                      <SelectDropdown
+                        setSelectedPropType={setSelectedPropType}
+                      />
                     </div>
                   </div>
                 </div>
                 {/* End .col-md-3 */}
 
-                <div className="col-md-4 col-lg-3">
+                <div className="col-md-4 col-lg-2 d-flex justify-content-end">
                   <div className="d-flex align-items-center justify-content-start justify-content-md-center mt-3 mt-md-0">
                     <button
-                      className="advance-search-btn"
+                      className="advance-search-icon ud-btn btn-thm"
                       type="button"
-                      data-bs-toggle="modal"
-                      data-bs-target="#advanceSeachModal"
-                    >
-                      <span className="flaticon-settings" /> Advanced
-                    </button>
-                    <button
-                      className="advance-search-icon ud-btn btn-thm ms-4"
-                      type="button"
-                      onClick={() => {}}
+                      onClick={() => {
+                        if (activeTab == "buy") {
+                          router.push(
+                            `/premium-sales?s=${search}&t=${selectedPropType}`
+                          );
+                        } else if (activeTab == "rent") {
+                          router.push(
+                            `/premium-rentals?s=${search}&t=${selectedPropType}`
+                          );
+                        } else {
+                          router.push(
+                            `/projects?s=${search}`
+                          );
+                        }
+                      }}
                     >
                       <span className="flaticon-search" />
                     </button>

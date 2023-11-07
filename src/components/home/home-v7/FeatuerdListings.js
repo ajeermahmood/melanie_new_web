@@ -72,7 +72,9 @@ const FeaturedListings = ({ data, loading }) => {
                 alt="listings"
               />
               <div className="sale-sticker-wrap">
-                <div className="list-tag2 rounded-0 fz12">FOR SALE</div>
+                <div className="list-tag2 rounded-0 fz12">
+                  {listing.status == "Sale" ? "FOR SALE" : "FOR RENT"}
+                </div>
               </div>
               <div className="list-meta">
                 <a className="rounded-0 mr5" href="#">

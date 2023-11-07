@@ -1,7 +1,5 @@
 "use client";
-import listings from "@/data/listings";
 import Image from "next/image";
-import Link from "next/link";
 import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";
@@ -55,7 +53,7 @@ const NearbySimilarProperty = ({ data }) => {
                   />
                   <div className="sale-sticker-wrap">
                     <div className="list-tag2 rounded-0 fz12 bg-light color-dark">
-                      FOR SALE
+                      {listing.status == "Sale" ? "FOR SALE" : "FOR RENT"}
                     </div>
                   </div>
                   <div className="list-meta">
@@ -72,7 +70,7 @@ const NearbySimilarProperty = ({ data }) => {
                 </div>
                 <div className="list-content bg-light-grey pl0">
                   <h6 className="list-title lh-lg">
-                    <Link
+                    <a
                       className="text-dark hover-gold fw500"
                       href={`/property-details?id=${listing.prop_id}`}
                       style={{
@@ -83,7 +81,7 @@ const NearbySimilarProperty = ({ data }) => {
                       }}
                     >
                       {listing.address}
-                    </Link>
+                    </a>
                   </h6>
                   <p className="list-text lh-base color-black-grey-2">
                     For {listing.status}
@@ -91,10 +89,16 @@ const NearbySimilarProperty = ({ data }) => {
                     {listing.completion_status}
                   </p>
                   <p className="list-text text-dark lh-base">
-                    {currencyFormatter.format(listing.price)}
+                    {listing.price != "0"
+                      ? currencyFormatter.format(listing.price)
+                      : "Price On Application"}
                   </p>
                   <p className="list-text text-dark lh-base">
-                    {listing.cat_name} {" · "} {listing.beds} Beds {" · "}{" "}
+                    {listing.cat_name} {" · "}{" "}
+                    {listing.beds != "0"
+                      ? listing.beds + " " + "Beds"
+                      : "Studio"}{" "}
+                    {" · "}{" "}
                     {new Intl.NumberFormat("en-IN", {
                       maximumSignificantDigits: 3,
                     }).format(listing.area)}{" "}

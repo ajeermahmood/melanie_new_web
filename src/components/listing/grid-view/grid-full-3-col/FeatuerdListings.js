@@ -34,9 +34,24 @@ const FeaturedListings = ({ data, colstyle, loading }) => {
                 <h6 className="list-title lh-lg">
                   <Skeleton variant="rectangular" width={230} height={20} />
                 </h6>
-                <Skeleton className="mt5" variant="rectangular" width={200} height={15} />
-                <Skeleton className="mt5" variant="rectangular" width={200} height={15} />
-                <Skeleton className="mt5" variant="rectangular" width={240} height={15} />
+                <Skeleton
+                  className="mt5"
+                  variant="rectangular"
+                  width={200}
+                  height={15}
+                />
+                <Skeleton
+                  className="mt5"
+                  variant="rectangular"
+                  width={200}
+                  height={15}
+                />
+                <Skeleton
+                  className="mt5"
+                  variant="rectangular"
+                  width={240}
+                  height={15}
+                />
               </div>
             </div>
           </div>
@@ -61,7 +76,7 @@ const FeaturedListings = ({ data, colstyle, loading }) => {
                 />
                 <div className="sale-sticker-wrap">
                   <div className="list-tag2 rounded-0 fz12 bg-light color-dark fw400">
-                    FOR SALE
+                    {listing.status == "Sale" ? 'FOR SALE' : 'FOR RENT'}
                   </div>
                 </div>
                 <div className="list-meta">
@@ -97,10 +112,12 @@ const FeaturedListings = ({ data, colstyle, loading }) => {
                   {listing.completion_status}
                 </p>
                 <p className="list-text text-dark lh-base">
-                  {currencyFormatter.format(listing.price)}
+                  {listing.price != '0' ? currencyFormatter.format(listing.price) : 'Price On Application'}
                 </p>
                 <p className="list-text text-dark lh-base">
-                  {listing.cat_name} {" · "} {listing.beds} Beds {" · "}{" "}
+                  {listing.cat_name} {" · "}{" "}
+                  {listing.beds != "0" ? listing.beds + " " + "Beds" : "Studio"}{" "}
+                  {" · "}{" "}
                   {new Intl.NumberFormat("en-IN", {
                     maximumSignificantDigits: 3,
                   }).format(listing.area)}{" "}

@@ -2,15 +2,14 @@
 
 import LoginSignupModal from "@/components/common/login-signup-modal";
 import SidebarPanel from "@/components/common/sidebar-panel";
-import Image from "next/image";
-import Link from "next/link";
-import { useState } from "react";
-import * as React from "react";
-import { styled, alpha } from "@mui/material/styles";
+import { Divider } from "@mui/material";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import { Divider } from "@mui/material";
+import { alpha, styled } from "@mui/material/styles";
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
 
 const StyledMenu = styled((props) => (
   <Menu
@@ -70,6 +69,7 @@ const Header = () => {
 
   const [subMenuSaleOpen, setSubMenuSaleOpen] = useState(false);
   const [subMenuRentOpen, setSubMenuRentOpen] = useState(false);
+  const [subMenuDealsOpen, setSubMenuDealsOpen] = useState(false);
 
   const open = Boolean(anchorEl);
 
@@ -80,8 +80,10 @@ const Header = () => {
   const subHandleClick = (event) => {
     if (event == "sale") {
       subMenuSaleOpen ? setSubMenuSaleOpen(false) : setSubMenuSaleOpen(true);
-    } else {
+    } else if (event == "rent") {
       subMenuRentOpen ? setSubMenuRentOpen(false) : setSubMenuRentOpen(true);
+    } else {
+      subMenuDealsOpen ? setSubMenuDealsOpen(false) : setSubMenuDealsOpen(true);
     }
   };
 
@@ -132,6 +134,9 @@ const Header = () => {
 
               <div className="col-auto">
                 <div className="d-flex align-items-center">
+                  <p className="text-light m0 custom-link">
+                    List Your Property
+                  </p>
                   <Button
                     id="demo-customized-button"
                     aria-controls={open ? "demo-customized-menu" : undefined}
@@ -156,7 +161,7 @@ const Header = () => {
                     onClose={handleClose}
                   >
                     <div className="row m-0">
-                      <div className="col-6 p0">
+                      <div className="col-6 p0 border-right">
                         <Link href={"/premium-sales"}>
                           <MenuItem onClick={handleClose} disableRipple>
                             <p className="fz15 fw500 m0">Premium Sales</p>
@@ -187,18 +192,31 @@ const Header = () => {
                             {subMenuSaleOpen ? (
                               <>
                                 <Divider sx={{ my: 0.5 }} />
-                                <p className="mt10 mb0 fz14 dropdown-sub-menu">
-                                  All Properties
-                                </p>
-                                <p className="mt3 mb0 fz14 dropdown-sub-menu">
-                                  Apartments
-                                </p>
-                                <p className="mt3 mb0 fz14 dropdown-sub-menu">
-                                  Villas
-                                </p>
-                                <p className="mt3 mb0 fz14 dropdown-sub-menu">
-                                  Studios
-                                </p>
+                                <Link href={"/premium-sales?t=all"}>
+                                  <p className="mt10 mb0 fz14 dropdown-sub-menu">
+                                    All Properties
+                                  </p>
+                                </Link>
+                                <Link href={"/premium-sales?t=1"}>
+                                  <p className="mt10 mb0 fz14 dropdown-sub-menu">
+                                    Villa
+                                  </p>
+                                </Link>
+                                <Link href={"/premium-sales?t=2"}>
+                                  <p className="mt10 mb0 fz14 dropdown-sub-menu">
+                                    Apartment
+                                  </p>
+                                </Link>
+                                <Link href={"/premium-sales?t=4"}>
+                                  <p className="mt10 mb0 fz14 dropdown-sub-menu">
+                                    Duplex
+                                  </p>
+                                </Link>
+                                <Link href={"/premium-sales?t=14"}>
+                                  <p className="mt10 mb0 fz14 dropdown-sub-menu">
+                                    Townhouse
+                                  </p>
+                                </Link>
                               </>
                             ) : (
                               <></>
@@ -225,38 +243,105 @@ const Header = () => {
                             {subMenuRentOpen ? (
                               <>
                                 <Divider sx={{ my: 0.5 }} />
-                                <p className="mt10 mb0 fz14 dropdown-sub-menu">
-                                  All Properties
-                                </p>
-                                <p className="mt3 mb0 fz14 dropdown-sub-menu">
-                                  Apartments
-                                </p>
-                                <p className="mt3 mb0 fz14 dropdown-sub-menu">
-                                  Villas
-                                </p>
-                                <p className="mt3 mb0 fz14 dropdown-sub-menu">
-                                  Studios
-                                </p>
+                                <Link href={"/premium-rentals?t=all"}>
+                                  <p className="mt10 mb0 fz14 dropdown-sub-menu">
+                                    All Properties
+                                  </p>
+                                </Link>
+                                <Link href={"/premium-rentals?t=1"}>
+                                  <p className="mt10 mb0 fz14 dropdown-sub-menu">
+                                    Villa
+                                  </p>
+                                </Link>
+                                <Link href={"/premium-rentals?t=2"}>
+                                  <p className="mt10 mb0 fz14 dropdown-sub-menu">
+                                    Apartment
+                                  </p>
+                                </Link>
+                                <Link href={"/premium-rentals?t=4"}>
+                                  <p className="mt10 mb0 fz14 dropdown-sub-menu">
+                                    Duplex
+                                  </p>
+                                </Link>
+                                <Link href={"/premium-rentals?t=14"}>
+                                  <p className="mt10 mb0 fz14 dropdown-sub-menu">
+                                    Townhouse
+                                  </p>
+                                </Link>
                               </>
                             ) : (
                               <></>
                             )}
                           </div>
                         </MenuItem>
-                        <MenuItem onClick={handleClose} disableRipple>
-                          <p className="fz15 fw500 m0">Off-plan</p>
-                        </MenuItem>
+                        <Link href={"/projects"}>
+                          <MenuItem onClick={handleClose} disableRipple>
+                            <p className="fz15 fw500 m0">Projects</p>
+                          </MenuItem>
+                        </Link>
                       </div>
                       <div className="col-6 p0">
-                        <MenuItem onClick={handleClose} disableRipple>
-                          <p className="fz15 fw500 m0">In Focus</p>
+                        <Link href={"/#in-focus"}>
+                          <MenuItem onClick={handleClose} disableRipple>
+                            <p className="fz15 fw500 m0">In Focus</p>
+                          </MenuItem>
+                        </Link>
+                        <MenuItem
+                          onClick={() => subHandleClick("deals")}
+                          disableRipple
+                        >
+                          <div className="w-100">
+                            <div className="row m-0 w-100 justify-content-between">
+                              <div className="col-11 p0">
+                                <p className="fz15 fw500 m0">Deals</p>
+                              </div>
+                              <div className="col-1 p0">
+                                {subMenuDealsOpen ? (
+                                  <i className="fal fa-angle-up" />
+                                ) : (
+                                  <i className="fal fa-angle-down" />
+                                )}
+                              </div>
+                            </div>
+                            {subMenuDealsOpen ? (
+                              <>
+                                <Divider sx={{ my: 0.5 }} />
+                                <Link href={"/see-all"}>
+                                  <p className="mt10 mb0 fz14 dropdown-sub-menu">
+                                    See All
+                                  </p>
+                                </Link>
+                                <Link href={"/studios"}>
+                                  <p className="mt10 mb0 fz14 dropdown-sub-menu">
+                                    Studios
+                                  </p>
+                                </Link>
+                                <Link href={"/1-beds"}>
+                                  <p className="mt10 mb0 fz14 dropdown-sub-menu">
+                                    1 Beds
+                                  </p>
+                                </Link>
+                                <Link href={"/2plus-beds"}>
+                                  <p className="mt10 mb0 fz14 dropdown-sub-menu">
+                                    2+ Beds
+                                  </p>
+                                </Link>
+                                <Link href={"/projects"}>
+                                  <p className="mt10 mb0 fz14 dropdown-sub-menu">
+                                    Projects
+                                  </p>
+                                </Link>
+                              </>
+                            ) : (
+                              <></>
+                            )}
+                          </div>
                         </MenuItem>
-                        <MenuItem onClick={handleClose} disableRipple>
-                          <p className="fz15 fw500 m0">Deals</p>
-                        </MenuItem>
-                        <MenuItem onClick={handleClose} disableRipple>
-                          <p className="fz15 fw500 m0">Why Dubai</p>
-                        </MenuItem>
+                        <Link href={"/#why-dubai"}>
+                          <MenuItem onClick={handleClose} disableRipple>
+                            <p className="fz15 fw500 m0">Why Dubai</p>
+                          </MenuItem>
+                        </Link>
                         <MenuItem onClick={handleClose} disableRipple>
                           <p className="fz15 fw500 m0">About Us</p>
                         </MenuItem>

@@ -28,8 +28,11 @@ const PremiumSales = () => {
           <div className="row">
             <div className="col-lg-12">
               <div className="breadcumb-style1">
-                <h2 className="title fw400 text-center">Premium Rentals</h2>
-                <p className="text-center fz20 maxw1000 mx-auto color-black-grey-2 font-style-2">Discover Dubai&apos;s finest: Explore our collection of premium rental properties, where luxury meets lifestyle.</p>
+                <h2 className="title fw400 text-center">Studios</h2>
+                <p className="text-center fz20 maxw1000 mx-auto color-black-grey-2 font-style-2">
+                  Prime Dubai Investments{" · "}Explore Lucrative Real Estate
+                  Deals
+                </p>
               </div>
             </div>
           </div>
@@ -38,7 +41,7 @@ const PremiumSales = () => {
       {/* End Breadcumb Sections */}
 
       {/* Property Filtering */}
-      <ProperteyFiltering status={'rent'} deals={"no"}/>
+      <ProperteyFiltering deals={'studio'}/>
       {/* Property Filtering */}
 
       {/* Start Our Footer */}

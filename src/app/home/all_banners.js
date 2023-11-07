@@ -13,7 +13,7 @@ const AllBannersHome = () => {
   useEffect(() => {
     getAllBannersHome().then((res) => {
       setData(res);
-      console.log(res);
+      // console.log(res);
     });
   }, []);
   return (
@@ -45,8 +45,8 @@ const AllBannersHome = () => {
                   src={`https://premium.indusre.com/Admin/pages/forms/uploads/property/${item.image1}`}
                   alt="img"
                   className="w-100 h-100 cover"
-                  width={1000}
-                  height={400}
+                  width={1652}
+                  height={640}
                 />
                 <div
                   className="home-banner-slider w-100 h-100 position-absolute"

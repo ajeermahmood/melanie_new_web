@@ -9,25 +9,25 @@ const ProjectsListings = () => {
       title: "Studios",
       image:
         "https://premium.indusre.com/Admin/pages/forms/uploads/property/29_1771030087152406_main.webp",
-      link: "#",
+      link: "/studios",
     },
     {
       title: "1 Beds",
       image:
         "https://premium.indusre.com/Admin/pages/forms/uploads/property/12_1770842749813807_main.webp",
-      link: "#",
+      link: "/1-beds",
     },
     {
       title: "2+ Beds",
       image:
         "https://premium.indusre.com/Admin/pages/forms/uploads/property/34_1771215218439336_main_.webp",
-      link: "#",
+      link: "/2plus-beds",
     },
     {
       title: "Projects",
       image:
         "https://premium.indusre.com/Admin/pages/forms/uploads/property/32_1771128471555195_main_.webp",
-      link: "#",
+      link: "/projects",
     },
   ];
   return (

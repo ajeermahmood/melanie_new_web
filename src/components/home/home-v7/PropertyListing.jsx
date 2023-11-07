@@ -15,7 +15,7 @@ export default function PropertyListing() {
     getFeaturedProperties()
       .then((res) => {
         setPageData(res);
-        console.log(res);
+        // console.log(res);
       })
       .finally(() => setLoading(false));
   }, []);
@@ -41,7 +41,7 @@ export default function PropertyListing() {
                   className="nav-item d-flex align-items-center "
                   role="presentation"
                 >
-                  <Link className="custom-link" href={"#"}>
+                  <Link className="custom-link" href={"/premium-sales"}>
                     View More
                   </Link>
                 </li>

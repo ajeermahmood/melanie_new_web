@@ -3,7 +3,7 @@ import React from "react";
 const ProperytyDescriptions = ({ desc }) => {
   return (
     <>
-      <p className="text mb10 font-style-2" dangerouslySetInnerHTML={{ __html: desc }}></p>
+      <p className="text mt15 mb10 font-style-2" dangerouslySetInnerHTML={{ __html: desc }}></p>
       {/* <div className="agent-single-accordion">
         <div className="accordion accordion-flush" id="accordionFlushExample">
           <div className="accordion-item">

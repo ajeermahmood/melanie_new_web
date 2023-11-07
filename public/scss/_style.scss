@@ -88,12 +88,22 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
 }
 
 /// new styles----------------------------------------------------------------------------------------------------------------------------------------------
-.home-banner-inner-content{
+.home-banner-inner-content {
   z-index: 2;
   top: 10rem;
   left: 13rem;
 }
+.h195 {
+  height: 195px !important;
+}
+@media (max-width: 1500px) {
+  .home-style2{
+    height: 59rem;
+  }
+}
+
 @media (max-width: 700px) {
+  
   .mobile-hide {
     display: none;
   }
@@ -109,11 +119,11 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
       }
     }
   }
-  .advance-search-icon{
+  .advance-search-icon {
     border-radius: 10px !important;
   }
 
-  .home-banner-inner-content{
+  .home-banner-inner-content {
     z-index: 2;
     top: 1rem;
     left: 1rem;
@@ -126,12 +136,20 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
   }
 }
 
-.maxw400{
+.maxw400 {
   max-width: 400px !important;
 }
 
-.maxw800{
+.maxw800 {
   max-width: 800px !important;
+}
+
+.maxw1000 {
+  max-width: 1000px !important;
+}
+
+.border-right {
+  border-right: 1px solid #efefed !important;
 }
 
 .dropdown-sub-menu {
@@ -140,6 +158,37 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
   transition: 200ms all ease-in-out;
   &:hover {
     background-color: #c49f5a1c;
+  }
+}
+
+.search-bar-form {
+  .search-icon{
+    position: absolute;
+    top: 7px;
+    font-size: 11px;
+    font-weight: 400;
+    left: 15px;
+    color: var(--theme-black-grey-2);
+  }
+  .search-bar-filter {
+    width: 250px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #bebdbd99;
+    -webkit-box-shadow: 0px 1px 4px rgba(24, 26, 32, 0.07);
+    -o-box-shadow: 0px 1px 4px rgba(24, 26, 32, 0.07);
+    box-shadow: 0px 1px 4px rgba(24, 26, 32, 0.07);
+    color: var(--theme-black-grey-2);
+    font-family: var(--title-font-family);
+    letter-spacing: 0em;
+    padding: 6px 20px;
+    padding-left: 30px;
+    font-weight: 400;
+  }
+
+  .search-bar-filter:focus {
+    outline: none;
+    border: 1px solid var(--theme-gold) !important;
   }
 }
 
@@ -348,11 +397,11 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
 }
 
 .custom-link {
+  cursor: pointer;
   color: white !important;
-
+  transition: 200ms all ease-in-out;
   &:hover {
     color: var(--theme-gold) !important;
-    text-decoration: underline;
   }
 }
 
@@ -8322,7 +8371,7 @@ li.mm-listitem:focus {
 }
 
 .advance-style2 {
-  max-width: 970px;
+  max-width: 50rem;
   position: relative;
   z-index: 1;
 }

@@ -6,15 +6,15 @@ import Footer from "@/components/home/home-v8/footer";
 import NearbySimilarProperty from "@/components/property/property-single-style/common/NearbySimilarProperty";
 import PropertyHeader from "@/components/property/property-single-style/common/PropertyHeader";
 import ProperytyDescriptions from "@/components/property/property-single-style/common/ProperytyDescriptions";
-import PropertyGallery from "@/components/property/property-single-style/single-v2/PropertyGallery";
-import { Box, CircularProgress } from "@mui/material";
+import ScheduleForm from "@/components/property/property-single-style/single-v2/ScheduleForm";
+import { Box, CircularProgress, Skeleton } from "@mui/material";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import FeaturesPropDetails from "./features";
-import ScheduleForm from "@/components/property/property-single-style/single-v2/ScheduleForm";
 
 const PropertyDetailsPage = () => {
+  const targetRef = useRef();
   const currencyFormatter = new Intl.NumberFormat("en-IN", {
     style: "currency",
     currency: "AED",
@@ -25,12 +25,29 @@ const PropertyDetailsPage = () => {
 
   const [data, setData] = useState("");
 
+  const [mainImageLoading, setMainImageLoading] = useState(true);
+  const [firstImageLoading, setFirstImageLoading] = useState(true);
+  const [secondImageLoading, setSecondImageLoading] = useState(true);
+  const [thirdImageLoading, setThirdImageLoading] = useState(true);
+
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+
+  useLayoutEffect(() => {
+    if (targetRef.current) {
+      setDimensions({
+        width: targetRef.current.offsetWidth,
+        height: targetRef.current.offsetHeight,
+      });
+    }
+  }, []);
+
   useEffect(() => {
     getPropertyDetails(id).then((res) => {
       setData(res);
       console.log(res);
     });
   }, []);
+
   return data == "" ? (
     <Box
       sx={{
@@ -68,13 +85,29 @@ const PropertyDetailsPage = () => {
               maxHeight: "40rem",
             }}
           >
+            {mainImageLoading ? (
+              <Skeleton
+                variant="rectangular"
+                className="w-100 cover"
+                width={1652}
+                height={640}
+              />
+            ) : (
+              <></>
+            )}
+
             <Image
               width={1652}
-              height={1239}
-              className="w-100 h-100 cover"
+              height={640}
+              className={`${
+                mainImageLoading
+                  ? "opacity-0 position-absolute w-100 h-100 cover"
+                  : "opacity-100 w-100 h-100 cover position-relative"
+              }}`}
               role="button"
               src={`https://premium.indusre.com/Admin/pages/forms/uploads/property/${data.image1}`}
               alt={"img"}
+              onLoadingComplete={() => setMainImageLoading(false)}
             />
           </div>
         </div>
@@ -108,7 +141,101 @@ const PropertyDetailsPage = () => {
                 <ProperytyDescriptions desc={data.description} />
               </div>
               <div className="col-lg-12 w-100 row">
-                <PropertyGallery images={data.gallary} />
+                <div className="col-sm-8">
+                  <div className="sp-img-content mb15-md">
+                    <div className="">
+                      {firstImageLoading ? (
+                        <Skeleton
+                          variant="rectangular"
+                          className="w-100 cover"
+                          width={500}
+                          height={400}
+                        />
+                      ) : (
+                        <></>
+                      )}
+                      <Image
+                        src={`https://premium.indusre.com/Admin/pages/forms/uploads/galary/${data.gallary.g_image1}`}
+                        width={500}
+                        height={400}
+                        alt="image"
+                        className={`${
+                          firstImageLoading
+                            ? "opacity-0 position-absolute w-100 cover"
+                            : "opacity-100 w-100 cover position-relative"
+                        }}`}
+                        onLoadingComplete={() => setFirstImageLoading(false)}
+                      />
+                    </div>
+                  </div>
+                </div>
+                {/* End .col-6 */}
+
+                <div className="col-sm-4">
+                  <div className="row">
+                    <div className="col-sm-12 ps-lg-0">
+                      <div className="sp-img-content">
+                        <div className="mb10 h195">
+                          {secondImageLoading ? (
+                            <Skeleton
+                              variant="rectangular"
+                              className="w-100 cover"
+                              width={270}
+                              height={195}
+                            />
+                          ) : (
+                            <></>
+                          )}
+                          <Image
+                            width={270}
+                            height={195}
+                            className={`${
+                              secondImageLoading
+                                ? "opacity-0 position-absolute w-100 cover"
+                                : "opacity-100 w-100 cover position-relative"
+                            }}`}
+                            src={`https://premium.indusre.com/Admin/pages/forms/uploads/galary/${data.gallary.g_image2}`}
+                            alt={"img"}
+                            onLoadingComplete={() =>
+                              setSecondImageLoading(false)
+                            }
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-sm-12 ps-lg-0">
+                      <div className="sp-img-content">
+                        <div className="mb10 h195">
+                          {thirdImageLoading ? (
+                            <Skeleton
+                              variant="rectangular"
+                              className="w-100 cover"
+                              width={270}
+                              height={195}
+                            />
+                          ) : (
+                            <></>
+                          )}
+                          <Image
+                            width={270}
+                            height={195}
+                            className={`${
+                              thirdImageLoading
+                                ? "opacity-0 position-absolute w-100 cover"
+                                : "opacity-100 w-100 cover position-relative"
+                            }}`}
+                            role="button"
+                            src={`https://premium.indusre.com/Admin/pages/forms/uploads/galary/${data.gallary.g_image3}`}
+                            alt={"img"}
+                            onLoadingComplete={() =>
+                              setThirdImageLoading(false)
+                            }
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <button className="custom-btn-3 w-25 mt20 ml10">
                   Show All Photos
                 </button>

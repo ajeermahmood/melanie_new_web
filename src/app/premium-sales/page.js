@@ -37,7 +37,7 @@ const PremiumSales = () => {
       {/* End Breadcumb Sections */}
 
       {/* Property Filtering */}
-      <ProperteyFiltering status={"sale"} />
+      <ProperteyFiltering status={"sale"} deals={"no"} />
       {/* Property Filtering */}
 
       {/* Start Our Footer */}

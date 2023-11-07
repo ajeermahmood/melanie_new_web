@@ -7,6 +7,20 @@ export async function getAllBannersHome() {
   return response.data;
 }
 
+export async function getInFocusData() {
+  const response = await axios.get(
+    "https://indusspeciality.com/api/melanie/home/get_in_focus.php"
+  );
+  return response.data;
+}
+
+export async function getInvestorDealsData() {
+  const response = await axios.get(
+    "https://indusspeciality.com/api/melanie/home/get_investor_deals_data.php"
+  );
+  return response.data;
+}
+
 export async function getFeaturedProperties() {
   const response = await axios.get(
     "https://indusspeciality.com/api/melanie/home/get_featured_properties.php"
@@ -31,9 +45,21 @@ export async function getPropertyDetails(id) {
   return response.data;
 }
 
-export async function getAllPremiumSales(limit, pageNumber, filter) {
+export async function getAllListings(limit, pageNumber, filter) {
   const response = await axios.post(
-    "https://indusspeciality.com/api/melanie/home/get_all_premium_sales.php",
+    "https://indusspeciality.com/api/melanie/home/get_all_listings.php",
+    {
+      limit: limit,
+      pageNumber: pageNumber,
+      filter: filter,
+    }
+  );
+  return response.data;
+}
+
+export async function getAllDeals(limit, pageNumber, filter) {
+  const response = await axios.post(
+    "https://indusspeciality.com/api/melanie/home/get_all_deals.php",
     {
       limit: limit,
       pageNumber: pageNumber,

@@ -1,18 +1,35 @@
 "use client";
 
-import { getAllPremiumSales } from "@/api/listings";
+import { getAllDeals, getAllListings } from "@/api/listings";
 import AdvanceFilterModal from "@/components/common/advance-filter-two";
 import { Pagination, Stack } from "@mui/material";
 import { useEffect, useState } from "react";
 import ListingSidebar from "../../sidebar";
 import FeaturedListings from "./FeatuerdListings";
 import TopFilterBar from "./TopFilterBar";
+import { useSearchParams } from "next/navigation";
 
-export default function ProperteyFiltering({ status }) {
+export default function ProperteyFiltering({ status, deals }) {
+  // params
+  const searchParams = useSearchParams();
+  const property_type_param = searchParams.get("t");
+  const search_txt_param = searchParams.get("s");
+  // params end
+
+  const [search, setSearch] = useState(
+    search_txt_param != "" && search_txt_param != null ? search_txt_param : ""
+  );
+
   const [listings, setListings] = useState([]);
   const [listingsCount, setListingsCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
-  const [propertyTypes, setPropertyTypes] = useState([]);
+  const [propertyTypes, setPropertyTypes] = useState(
+    property_type_param != "" &&
+      property_type_param != "all" &&
+      property_type_param != null
+      ? [Number(property_type_param)]
+      : []
+  );
   const [priceRange, setPriceRange] = useState([20, 100000000]);
   const [priceRangeSetted, setPriceRangeSetted] = useState(1);
   const [bedrooms, setBedrooms] = useState(-1);
@@ -29,24 +46,41 @@ export default function ProperteyFiltering({ status }) {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setLoading(true);
-    getAllPremiumSales(9, currentPage, {
-      status: status,
-      prop_types: propertyTypes,
-      price_range: priceRange,
-      beds: bedrooms,
-      baths: bathroms,
-      location: location,
-      sqft_range: squirefeet,
-      features: categories,
-      sort: currentSortingOption,
-    })
-      .then((res) => {
-        setListings(res.listings);
-        setListingsCount(res.count);
-        console.log(res);
+    if (deals == "no") {
+      getAllListings(9, currentPage, {
+        search: search,
+        status: status,
+        prop_types: propertyTypes,
+        price_range: priceRange,
+        beds: bedrooms,
+        baths: bathroms,
+        location: location,
+        sqft_range: squirefeet,
+        features: categories,
+        sort: currentSortingOption,
       })
-      .finally(() => setLoading(false));
+        .then((res) => {
+          setListings(res.listings);
+          setListingsCount(res.count);
+          console.log(res);
+        })
+        .finally(() => setLoading(false));
+    } else {
+      getAllDeals(9, currentPage, {
+        search: search,
+        deals: deals,
+        price_range: priceRange,
+        sort: currentSortingOption,
+      })
+        .then((res) => {
+          setListings(res.listings);
+          setListingsCount(res.count);
+          console.log(res);
+        })
+        .finally(() => setLoading(false));
+    }
   }, [
+    search,
     currentPage,
     propertyTypes,
     priceRangeSetted,
@@ -138,6 +172,8 @@ export default function ProperteyFiltering({ status }) {
     setPriceRangeSetted,
     setCurrentSortingOption,
     priceRangeSetted,
+    setSearch,
+    search
   };
 
   return (
@@ -188,6 +224,7 @@ export default function ProperteyFiltering({ status }) {
             filterFunctions={filterFunctions}
             setCurrentSortingOption={setCurrentSortingOption}
             totalLength={listingsCount}
+            deals={deals}
           />
         </div>
         {/* End TopFilterBar */}

@@ -7,19 +7,12 @@ import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";
 
-const FeatureProperties = () => {
+const FeatureProperties = ({data}) => {
   const currencyFormatter = new Intl.NumberFormat("en-IN", {
     style: "currency",
     currency: "AED",
     minimumFractionDigits: 0,
   });
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    getFeaturedPremiumRentals().then((res) => {
-      setData(res);
-      console.log(res);
-    });
-  }, []);
   return (
     <>
       <Swiper

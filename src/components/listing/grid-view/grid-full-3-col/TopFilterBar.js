@@ -1,11 +1,9 @@
 "use client";
 
-import React from "react";
-import ListingStatus from "../../sidebar/ListingStatus";
-import PropertyType from "../../sidebar/PropertyType";
-import PriceRange from "../../sidebar/PriceRange";
-import Bedroom from "../../sidebar/Bedroom";
 import Bathroom from "../../sidebar/Bathroom";
+import Bedroom from "../../sidebar/Bedroom";
+import PriceRange from "../../sidebar/PriceRange";
+import PropertyType from "../../sidebar/PropertyType";
 
 const TopFilterBar = ({
   filterFunctions,
@@ -13,6 +11,7 @@ const TopFilterBar = ({
   colstyle,
   setColstyle,
   totalLength,
+  deals,
 }) => {
   return (
     <>
@@ -23,24 +22,28 @@ const TopFilterBar = ({
               <p className="mr10 fw500">{totalLength} Properties</p>
             </li>
             {/* End li Listing Status */}
-
-            <li className="list-inline-item position-relative">
-              <button
-                type="button"
-                className="open-btn mb15 dropdown-toggle color-black-grey-2 fw300"
-                data-bs-toggle="dropdown"
-                data-bs-auto-close="outside"
-              >
-                Property Type <i className="fa fa-angle-down ms-2" />
-              </button>
-              <div className="dropdown-menu">
-                <div className="widget-wrapper pb5 mb0 pl20">
-                  <div className="checkbox-style1">
-                    <PropertyType filterFunctions={filterFunctions} />
+            {deals == "no" ? (
+              <li className="list-inline-item position-relative">
+                <button
+                  type="button"
+                  className="open-btn mb15 dropdown-toggle color-black-grey-2 fw300"
+                  data-bs-toggle="dropdown"
+                  data-bs-auto-close="outside"
+                >
+                  Property Type <i className="fa fa-angle-down ms-2" />
+                </button>
+                <div className="dropdown-menu">
+                  <div className="widget-wrapper pb5 mb0 pl20">
+                    <div className="checkbox-style1">
+                      <PropertyType filterFunctions={filterFunctions} />
+                    </div>
                   </div>
                 </div>
-              </div>
-            </li>
+              </li>
+            ) : (
+              <></>
+            )}
+
             {/* End li Property Type */}
 
             <li className="list-inline-item position-relative">
@@ -78,40 +81,40 @@ const TopFilterBar = ({
               </div>
             </li>
             {/* End li Price */}
-
-            <li className="list-inline-item position-relative">
-              <button
-                type="button"
-                className="open-btn mb15 dropdown-toggle color-black-grey-2 fw300"
-                data-bs-toggle="dropdown"
-                data-bs-auto-close="outside"
-              >
-                Beds / Baths <i className="fa fa-angle-down ms-2" />
-              </button>
-              <div
-                className="dropdown-menu dd4 pb20"
-                style={{
-                  width: "295px !important",
-                }}
-              >
-                <div className="widget-wrapper pl20 pr20">
-                  <h6 className="list-title color-black-grey-2 fw400">
-                    Bedrooms
-                  </h6>
-                  <div className="d-flex">
-                    <Bedroom filterFunctions={filterFunctions} />
+            {deals == "no" ? (
+              <li className="list-inline-item position-relative">
+                <button
+                  type="button"
+                  className="open-btn mb15 dropdown-toggle color-black-grey-2 fw300"
+                  data-bs-toggle="dropdown"
+                  data-bs-auto-close="outside"
+                >
+                  Beds / Baths <i className="fa fa-angle-down ms-2" />
+                </button>
+                <div
+                  className="dropdown-menu dd4 pb20"
+                  style={{
+                    width: "295px !important",
+                  }}
+                >
+                  <div className="widget-wrapper pl20 pr20">
+                    <h6 className="list-title color-black-grey-2 fw400">
+                      Bedrooms
+                    </h6>
+                    <div className="d-flex">
+                      <Bedroom filterFunctions={filterFunctions} />
+                    </div>
                   </div>
-                </div>
 
-                <div className="widget-wrapper pb5 mb0 pl20 pr20">
-                  <h6 className="list-title color-black-grey-2 fw400">
-                    Bathrooms
-                  </h6>
-                  <div className="d-flex">
-                    <Bathroom filterFunctions={filterFunctions} />
+                  <div className="widget-wrapper pb5 mb0 pl20 pr20">
+                    <h6 className="list-title color-black-grey-2 fw400">
+                      Bathrooms
+                    </h6>
+                    <div className="d-flex">
+                      <Bathroom filterFunctions={filterFunctions} />
+                    </div>
                   </div>
-                </div>
-                {/* <div className="text-end mt10 pr10">
+                  {/* <div className="text-end mt10 pr10">
                   <button
                     type="button"
                     className="done-btn ud-btn btn-thm drop_btn4"
@@ -119,8 +122,24 @@ const TopFilterBar = ({
                     Done
                   </button>
                 </div> */}
-              </div>
+                </div>
+              </li>
+            ) : (
+              <></>
+            )}
+            <li className="list-inline-item position-relative">
+              <form className="search-bar-form">
+                <i className="fa fa-search search-icon" />
+                <input
+                  className="search-bar-filter"
+                  type="text"
+                  placeholder="Search"
+                  onChange={(e) => filterFunctions.setSearch(e.target.value)}
+                  value={filterFunctions.search}
+                />
+              </form>
             </li>
+
             {/* End bed and bathroom check */}
 
             {/* <li className="list-inline-item">
