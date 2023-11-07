@@ -1,9 +1,27 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 
-const ProperytyDescriptions = ({ desc }) => {
+const ProperytyDescriptions = ({ desc, infocus }) => {
+  const [bodyText, setBodyText] = useState("");
+  var body_text_div =
+    typeof document !== "undefined" && document.createElement("div");
+
+  useEffect(() => {
+    body_text_div.innerHTML = infocus.description;
+    setBodyText(body_text_div.innerText);
+  }, []);
   return (
     <>
-      <p className="text mt15 mb10 font-style-2" dangerouslySetInnerHTML={{ __html: desc }}></p>
+      {infocus != "no" ? (
+        <p className="text mt15 mb10 font-style-2 fz17"><i>{bodyText}</i></p>
+      ) : (
+        <></>
+      )}
+
+      <p
+        className="text mt15 mb10 font-style-2"
+        dangerouslySetInnerHTML={{ __html: desc }}
+      ></p>
       {/* <div className="agent-single-accordion">
         <div className="accordion accordion-flush" id="accordionFlushExample">
           <div className="accordion-item">

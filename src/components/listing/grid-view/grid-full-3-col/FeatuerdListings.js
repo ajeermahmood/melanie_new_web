@@ -76,7 +76,7 @@ const FeaturedListings = ({ data, colstyle, loading }) => {
                 />
                 <div className="sale-sticker-wrap">
                   <div className="list-tag2 rounded-0 fz12 bg-light color-dark fw400">
-                    {listing.status == "Sale" ? 'FOR SALE' : 'FOR RENT'}
+                    {listing.status == "Sale" ? "FOR SALE" : "FOR RENT"}
                   </div>
                 </div>
                 <div className="list-meta">
@@ -95,7 +95,9 @@ const FeaturedListings = ({ data, colstyle, loading }) => {
                 <h6 className="list-title lh-lg">
                   <Link
                     className="text-dark hover-gold fw500"
-                    href={`/property-details?id=${listing.prop_id}`}
+                    href={`/property-details?id=${listing.prop_id}&prj=${
+                      listing.completion_status == "Off Plan" ? "1" : "0"
+                    }`}
                     style={{
                       overflow: "hidden",
                       whiteSpace: "nowrap",
@@ -112,7 +114,9 @@ const FeaturedListings = ({ data, colstyle, loading }) => {
                   {listing.completion_status}
                 </p>
                 <p className="list-text text-dark lh-base">
-                  {listing.price != '0' ? currencyFormatter.format(listing.price) : 'Price On Application'}
+                  {listing.price != "0"
+                    ? currencyFormatter.format(listing.price)
+                    : "Price On Application"}
                 </p>
                 <p className="list-text text-dark lh-base">
                   {listing.cat_name} {" · "}{" "}

@@ -37,7 +37,7 @@ const InFocus = () => {
               className="nav-item d-flex align-items-center "
               role="presentation"
             >
-              <Link className="custom-link" href={"#"}>
+              <Link className="custom-link" href={`/property-details?id=${data.prop.prop_id}&prj=1`}>
                 Learn More
               </Link>
             </li>
@@ -77,7 +77,7 @@ const InFocus = () => {
               </h2>
               <p className="text-light">{subHeaderText}</p>
               <Link
-                href={`/property-details?id=${data.prop.prop_id}`}
+                href={`/property-details?id=${data.prop.prop_id}&prj=1`}
                 className="ud-btn banner-btn fw500 btn-thm mt10 mt0-xs"
               >
                 VIEW PROPERTY

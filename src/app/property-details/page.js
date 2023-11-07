@@ -7,14 +7,29 @@ import NearbySimilarProperty from "@/components/property/property-single-style/c
 import PropertyHeader from "@/components/property/property-single-style/common/PropertyHeader";
 import ProperytyDescriptions from "@/components/property/property-single-style/common/ProperytyDescriptions";
 import ScheduleForm from "@/components/property/property-single-style/single-v2/ScheduleForm";
-import { Box, CircularProgress, Skeleton } from "@mui/material";
+import {
+  AppBar,
+  Box,
+  Button,
+  CircularProgress,
+  Dialog,
+  IconButton,
+  Skeleton,
+  Slide,
+  Toolbar,
+  Typography,
+} from "@mui/material";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import FeaturesPropDetails from "./features";
+import * as React from "react";
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 const PropertyDetailsPage = () => {
-  const targetRef = useRef();
   const currencyFormatter = new Intl.NumberFormat("en-IN", {
     style: "currency",
     currency: "AED",
@@ -24,22 +39,12 @@ const PropertyDetailsPage = () => {
   const id = param.get("id");
 
   const [data, setData] = useState("");
+  const [allPhotos, setAllPhotos] = useState([]);
 
   const [mainImageLoading, setMainImageLoading] = useState(true);
   const [firstImageLoading, setFirstImageLoading] = useState(true);
   const [secondImageLoading, setSecondImageLoading] = useState(true);
   const [thirdImageLoading, setThirdImageLoading] = useState(true);
-
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-
-  useLayoutEffect(() => {
-    if (targetRef.current) {
-      setDimensions({
-        width: targetRef.current.offsetWidth,
-        height: targetRef.current.offsetHeight,
-      });
-    }
-  }, []);
 
   useEffect(() => {
     getPropertyDetails(id).then((res) => {
@@ -47,6 +52,17 @@ const PropertyDetailsPage = () => {
       console.log(res);
     });
   }, []);
+
+  const [openShowAllPhotosDialog, setOpenShowAllPhotosDialog] = useState(false);
+
+  const handleClickOpenShowAllPhotosDialog = () => {
+    setOpenShowAllPhotosDialog(true);
+    setAllPhotos(JSON.parse(data.gallary.imgs)["imgs"]);
+  };
+
+  const handleCloseShowAllPhotosDialog = () => {
+    setOpenShowAllPhotosDialog(false);
+  };
 
   return data == "" ? (
     <Box
@@ -108,9 +124,66 @@ const PropertyDetailsPage = () => {
               src={`https://premium.indusre.com/Admin/pages/forms/uploads/property/${data.image1}`}
               alt={"img"}
               onLoadingComplete={() => setMainImageLoading(false)}
+              onClick={handleClickOpenShowAllPhotosDialog}
             />
           </div>
         </div>
+
+        {/* -------------------------------------------------------Show All Photos Dialog---------------------------------- */}
+        {/* -------------------------------------------------------Show All Photos Dialog---------------------------------- */}
+        {/* -------------------------------------------------------Show All Photos Dialog---------------------------------- */}
+        <Dialog
+          fullScreen
+          open={openShowAllPhotosDialog}
+          onClose={handleCloseShowAllPhotosDialog}
+          TransitionComponent={Transition}
+        >
+          <AppBar
+            className="bg-white appbar-all-photos position-fixed"
+            sx={{ position: "relative" }}
+          >
+            <Toolbar>
+              <IconButton
+                edge="start"
+                color="inherit"
+                onClick={handleCloseShowAllPhotosDialog}
+                aria-label="close"
+                className="w43"
+              >
+                <i className="far fa-close color-gold" />
+              </IconButton>
+              <Typography
+                className="color-gold"
+                sx={{ ml: 2, flex: 1 }}
+                variant="h6"
+                component="div"
+              >
+                Gallery
+              </Typography>
+            </Toolbar>
+          </AppBar>
+
+          <div className="col-lg-12 row mt100">
+            <div className="col-lg-5">
+              <h2 className="sp-lg-title text-center mb20 fz35 fw400 position-fixed all-photos-address">
+                {data.address}
+              </h2>
+            </div>
+            <div className="col-lg-7">
+              {allPhotos.map((ph, index) => (
+                <img
+                  key={index}
+                  src={`https://premium.indusre.com/Admin/pages/forms/uploads/galary/${ph}`}
+                  alt="image"
+                  className={`w-100 cover mb25`}
+                />
+              ))}
+            </div>
+          </div>
+        </Dialog>
+        {/* -------------------------------------------------------Show All Photos Dialog Ends---------------------------------- */}
+        {/* -------------------------------------------------------Show All Photos Dialog Ends---------------------------------- */}
+        {/* -------------------------------------------------------Show All Photos Dialog Ends---------------------------------- */}
         <div className="container">
           {/* End .row */}
 
@@ -123,22 +196,38 @@ const PropertyDetailsPage = () => {
                     {data.cat_name}
                   </p>
                   <li className="dot-after"></li>
-                  <p className="text fz13 mb-0 bdrrn-sm fw300 underline-text color-black-grey-2">
-                    {data.beds} Beds
-                  </p>
+                  {data.infocus == null ? (
+                    <>
+                      <p className="text fz13 mb-0 bdrrn-sm fw300 underline-text color-black-grey-2">
+                        {data.beds} Beds
+                      </p>
+                      <li className="dot-after"></li>
+                      <p className="text fz13 mb-0 bdrrn-sm fw300 color-black-grey-2">
+                        {data.baths} Baths
+                      </p>
+                    </>
+                  ) : (
+                    <>
+                      <p className="text fz13 mb-0 bdrrn-sm fw300 color-black-grey-2">
+                        1-3 Beds
+                      </p>
+                    </>
+                  )}
                   <li className="dot-after"></li>
                   <p className="text fz13 mb-0 bdrrn-sm fw300 color-black-grey-2">
-                    {data.baths} Baths
-                  </p>
-                  <li className="dot-after"></li>
-                  <p className="text fz13 mb-0 bdrrn-sm fw300 color-black-grey-2">
-                    {new Intl.NumberFormat("en-IN", {
-                      maximumSignificantDigits: 3,
-                    }).format(data.area)}{" "}
-                    sq. ft.
+                    {data.infocus == null
+                      ? new Intl.NumberFormat("en-IN", {
+                          maximumSignificantDigits: 3,
+                        }).format(data.area) +
+                        " " +
+                        "sq. ft."
+                      : data.infocus.area_range}
                   </p>
                 </div>
-                <ProperytyDescriptions desc={data.description} />
+                <ProperytyDescriptions
+                  desc={data.description}
+                  infocus={data.infocus != null ? data.infocus : "no"}
+                />
               </div>
               <div className="col-lg-12 w-100 row">
                 <div className="col-sm-8">
@@ -165,6 +254,7 @@ const PropertyDetailsPage = () => {
                             : "opacity-100 w-100 cover position-relative"
                         }}`}
                         onLoadingComplete={() => setFirstImageLoading(false)}
+                        onClick={handleClickOpenShowAllPhotosDialog}
                       />
                     </div>
                   </div>
@@ -199,6 +289,7 @@ const PropertyDetailsPage = () => {
                             onLoadingComplete={() =>
                               setSecondImageLoading(false)
                             }
+                            onClick={handleClickOpenShowAllPhotosDialog}
                           />
                         </div>
                       </div>
@@ -230,6 +321,7 @@ const PropertyDetailsPage = () => {
                             onLoadingComplete={() =>
                               setThirdImageLoading(false)
                             }
+                            onClick={handleClickOpenShowAllPhotosDialog}
                           />
                         </div>
                       </div>
@@ -263,7 +355,9 @@ const PropertyDetailsPage = () => {
                       {data.completion_status}
                     </h6>
                     <h2 className="title fz22 mb10 fw500 color-black-grey">
-                      {currencyFormatter.format(data.price)}
+                      {data.price != "0"
+                        ? currencyFormatter.format(data.price)
+                        : "Price On Application"}
                     </h2>
                     <h6 className="title fz15 mb10 fw300 color-black-grey lh-1 underline-text color-black-grey-2">
                       {data.cat_name}

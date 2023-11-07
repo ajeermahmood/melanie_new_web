@@ -7,7 +7,7 @@ import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";
 
-const FeatureProperties = ({data}) => {
+const FeatureProperties = ({ data }) => {
   const currencyFormatter = new Intl.NumberFormat("en-IN", {
     style: "currency",
     currency: "AED",
@@ -37,7 +37,10 @@ const FeatureProperties = ({data}) => {
                   <div className="row align-items-center">
                     <div className="list-content mb30-md col-md-8 col-lg-6 col-xl-5 p-xl-0">
                       <h4 className="list-title">
-                        <Link className="color-gold fz24 fw400" href="#">
+                        <Link
+                          className="color-gold fz24 fw400"
+                          href={`/property-details?id=${property.prop_id}`}
+                        >
                           {property.address}
                         </Link>
                       </h4>

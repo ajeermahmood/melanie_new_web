@@ -92,7 +92,9 @@ const FeaturedListings = ({ data, loading }) => {
               <h6 className="list-title lh-lg">
                 <Link
                   className="text-light hover-gold"
-                  href={`/property-details?id=${listing.prop_id}`}
+                  href={`/property-details?id=${listing.prop_id}&prj=${
+                    listing.completion_status == "Off Plan" ? "1" : "0"
+                  }`}
                   style={{
                     overflow: "hidden",
                     whiteSpace: "nowrap",
