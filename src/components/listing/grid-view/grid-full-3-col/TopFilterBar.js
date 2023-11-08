@@ -39,12 +39,13 @@ const TopFilterBar = ({
                 </button>
                 <div className="dropdown-menu">
                   <div className="widget-wrapper pb5 mb0 pl20">
-                    <h6 className="list-title color-black-grey-2 fw300">Listing Status</h6>
+                    <h6 className="list-title color-black-grey-2 fw300">
+                      Listing Status
+                    </h6>
                     <div className="radio-element">
                       <ListingStatus filterFunctions={filterFunctions} />
                     </div>
                   </div>
-                  
                 </div>
               </li>
             ) : (
@@ -170,23 +171,45 @@ const TopFilterBar = ({
             </li>
 
             {/* End bed and bathroom check */}
-
-            {/* <li className="list-inline-item">
-              <button
-                type="button"
-                className="open-btn mb15 color-black-grey-2 fw300"
-                data-bs-toggle="modal"
-                data-bs-target="#advanceSeachModal"
-              >
-                <i className="flaticon-settings me-2" /> More Filter
-              </button>
-            </li> */}
           </ul>
         </div>
       </div>
       {/* End .col-9 */}
 
-      <div className="col-xl-2">
+      <div className="col-12 p0 row m-0 w-100 pc-hide justify-content-between mb20-mbl">
+        <div className="col-6 pl0">
+          <button
+            type="button"
+            className="custom-btn-3 open-btn mb15 color-black-grey-2 fw300"
+            data-bs-toggle="modal"
+            data-bs-target="#advanceSeachModal"
+          >
+            <i className="flaticon-settings me-2" /> More Filter
+          </button>
+        </div>
+        <div className="col-6 p0">
+          {/* <div className="page_control_shorting d-flex align-items-center justify-content-end"> */}
+            <div className="pcs_dropdown d-flex align-items-center justify-content-end">
+              <span style={{ minWidth: "60px" }}>Sort by</span>
+              <select
+                className="form-select"
+                onChange={(e) =>
+                  setCurrentSortingOption &&
+                  setCurrentSortingOption(e.target.value)
+                }
+              >
+                <option>Newest</option>
+                <option>Best Seller</option>
+                <option>Best Match</option>
+                <option>Price Low</option>
+                <option>Price High</option>
+              </select>
+            </div>
+          {/* </div> */}
+        </div>
+      </div>
+
+      <div className="col-xl-2 mobile-hide">
         <div className="page_control_shorting d-flex align-items-center justify-content-center justify-content-sm-end">
           <div className="pcs_dropdown pr10 d-flex align-items-center">
             <span style={{ minWidth: "60px" }}>Sort by</span>

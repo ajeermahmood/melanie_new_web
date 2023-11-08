@@ -108,6 +108,10 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
   width: 43px !important;
 }
 
+.pl15-mbl {
+  padding-left: 15px !important;
+}
+
 .appbar-all-photos {
   box-shadow: none !important;
   border-bottom: 1px solid #dddddc !important;
@@ -126,6 +130,22 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
 }
 
 @media (max-width: 500px) {
+  .mb20-mbl {
+    margin-bottom: 20px !important;
+  }
+  .bdrs0-mbl {
+    border-radius: 0 !important;
+  }
+  .p0-mbl {
+    padding: 0 !important;
+  }
+  .custom-btn-3{
+    padding: 3px 13px !important;
+  }
+  .search-bar-form .search-icon {
+    top: 21px !important;
+    left: 25px !important;
+  }
   .pt25-mbl {
     padding-top: 25px !important;
   }

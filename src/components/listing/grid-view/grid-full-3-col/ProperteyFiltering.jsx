@@ -7,7 +7,8 @@ import { useEffect, useState } from "react";
 import ListingSidebar from "../../sidebar";
 import FeaturedListings from "./FeatuerdListings";
 import TopFilterBar from "./TopFilterBar";
-import { useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
+import MobileNavTop from "@/app/all-properties/mobile-top-nav";
 
 export default function ProperteyFiltering({ status, deals, all }) {
   // params
@@ -16,6 +17,31 @@ export default function ProperteyFiltering({ status, deals, all }) {
   const search_txt_param = searchParams.get("s");
   const beds_param = searchParams.get("bd");
   // params end
+
+  const path = usePathname();
+
+  const getPathNames = (path) => {
+    switch (path) {
+      case "/all-properties":
+        return "All Properties";
+      case "/premium-sales":
+        return "Premium Sales";
+      case "/premium-rentals":
+        return "Premium Rentals";
+      case "/studios":
+        return "Studios";
+      case "/1-beds":
+        return "1 Beds";
+      case "/2plus-beds":
+        return "2 Plus Beds";
+      case "/see-all":
+        return "See All Deals";
+      case "/projects":
+        return "Projects";
+      default:
+        break;
+    }
+  };
 
   const [search, setSearch] = useState(
     search_txt_param != "" && search_txt_param != null ? search_txt_param : ""
@@ -33,7 +59,9 @@ export default function ProperteyFiltering({ status, deals, all }) {
   );
   const [priceRange, setPriceRange] = useState([20, 100000000]);
   const [priceRangeSetted, setPriceRangeSetted] = useState(1);
-  const [bedrooms, setBedrooms] = useState(beds_param != null ? Number(beds_param) : 0);
+  const [bedrooms, setBedrooms] = useState(
+    beds_param != null ? Number(beds_param) : 0
+  );
   const [bathroms, setBathroms] = useState(0);
 
   const [propStatus, setPropStatus] = useState(status != null ? status : "all");
@@ -180,11 +208,15 @@ export default function ProperteyFiltering({ status, deals, all }) {
     search,
     setPropStatus,
     propStatus,
-    all
+    all,
   };
 
   return (
     <section className="pt0 pb90 bgc-f7">
+      <div className="pc-hide d-flex justify-content-center p15">
+        <MobileNavTop filterFunctions={filterFunctions} />
+      </div>
+      <p className="text-center fz20 pc-hide mb20 mt10">{getPathNames(path)}</p>
       <div className="container">
         {/* start mobile filter sidebar */}
         <div
@@ -224,7 +256,7 @@ export default function ProperteyFiltering({ status, deals, all }) {
         </div>
         {/* <!-- Advance Feature Modal End --> */}
 
-        <div className="row m-0">
+        <div className="row m-0 w-100">
           <TopFilterBar
             colstyle={colstyle}
             setColstyle={setColstyle}

@@ -19,8 +19,8 @@ const FeaturedListings = ({ data, colstyle, loading }) => {
           }  `}
           key={index}
         >
-          <div className="listing-style8 bg-light-hover">
-            <div className="p15">
+          <div className="listing-style8 bg-light-hover bdrs0-mbl">
+            <div className="p15 p0-mbl">
               <div className="list-thumb">
                 <Skeleton
                   // className="w-100 h-100"
@@ -64,8 +64,8 @@ const FeaturedListings = ({ data, colstyle, loading }) => {
           }  `}
           key={listing.id}
         >
-          <div className="listing-style8 bg-light-hover">
-            <div className="p15">
+          <div className="listing-style8 bg-light-hover bdrs0-mbl">
+            <div className="p15 p0-mbl">
               <div className="list-thumb">
                 <Image
                   width={382}

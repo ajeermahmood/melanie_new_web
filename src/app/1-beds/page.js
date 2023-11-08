@@ -6,6 +6,7 @@ import MobileMenu from "@/components/common/mobile-menu";
 import ProperteyFiltering from "@/components/listing/grid-view/grid-full-3-col/ProperteyFiltering";
 
 import React from "react";
+import BottomNavigationMobile2 from "../home/bottom_nav_mobile_2";
 
 export const metadata = {
   title: "Indus Premium | 1 Beds",
@@ -19,11 +20,11 @@ const PremiumSales = () => {
       {/* End Main Header Nav */}
 
       {/* Mobile Nav  */}
-      <MobileMenu />
+      {/* <MobileMenu /> */}
       {/* End Mobile Nav  */}
 
       {/* Breadcumb Sections */}
-      <section className="breadcumb-section bgc-f7 bg-white01 pt20 pb50">
+      <section className="breadcumb-section bgc-f7 bg-white01 pt20 pb50 mobile-hide">
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
@@ -48,6 +49,9 @@ const PremiumSales = () => {
       <section className="footer-style1 pt60 pb-0">
         <Footer />
       </section>
+      <div className="pc-hide bottom-navigation-bar-mobile">
+        <BottomNavigationMobile2 />
+      </div>
       {/* End Our Footer */}
     </>
   );

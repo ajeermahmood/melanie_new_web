@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 
 const useStyles = makeStyles({
   root: {
+    backgroundColor: "black",
     height: "65px",
     width: "100%",
     position: "fixed",
@@ -24,8 +25,11 @@ const useStyles = makeStyles({
         padding: "6px 0",
       },
     },
+    "& .MuiButtonBase-root": {
+      color: "white",
+    },
     "& .Mui-selected": {
-      color: "rgba(0, 0, 0, 0.6)",
+      color: "white",
     },
     "& .MuiBottomNavigationAction-label": {
       fontSize: "12px",
@@ -39,7 +43,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function BottomNavigationMobile() {
+export default function BottomNavigationMobile2() {
   const [value, setValue] = useState(0);
   const [showNav, setShowNav] = useState(false);
   const classes = useStyles();
