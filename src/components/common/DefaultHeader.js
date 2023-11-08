@@ -158,7 +158,10 @@ const DefaultHeader = () => {
 
               <div className="col-auto">
                 <div className="d-flex align-items-center">
-                  <p className="text-dark m0 custom-link-2" onClick={handleClickOpenListProperty}>
+                  <p
+                    className="text-dark m0 custom-link-2"
+                    onClick={handleClickOpenListProperty}
+                  >
                     List Your Property
                   </p>
                   <Dialog
@@ -269,6 +272,11 @@ const DefaultHeader = () => {
                   >
                     <div className="row m-0">
                       <div className="col-6 p0 border-right">
+                        <Link href={"/all-properties"}>
+                          <MenuItem onClick={handleClose} disableRipple>
+                            <p className="fz15 fw500 m0">All Properties</p>
+                          </MenuItem>
+                        </Link>
                         <Link href={"/premium-sales"}>
                           <MenuItem onClick={handleClose} disableRipple>
                             <p className="fz15 fw500 m0">Premium Sales</p>

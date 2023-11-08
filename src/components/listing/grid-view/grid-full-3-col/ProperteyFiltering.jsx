@@ -9,7 +9,7 @@ import FeaturedListings from "./FeatuerdListings";
 import TopFilterBar from "./TopFilterBar";
 import { useSearchParams } from "next/navigation";
 
-export default function ProperteyFiltering({ status, deals }) {
+export default function ProperteyFiltering({ status, deals, all }) {
   // params
   const searchParams = useSearchParams();
   const property_type_param = searchParams.get("t");
@@ -35,6 +35,8 @@ export default function ProperteyFiltering({ status, deals }) {
   const [bedrooms, setBedrooms] = useState(-1);
   const [bathroms, setBathroms] = useState(0);
 
+  const [propStatus, setPropStatus] = useState(status != null ? status : "all");
+
   const [currentSortingOption, setCurrentSortingOption] = useState("Newest");
 
   const [colstyle, setColstyle] = useState(false);
@@ -49,7 +51,7 @@ export default function ProperteyFiltering({ status, deals }) {
     if (deals == "no") {
       getAllListings(9, currentPage, {
         search: search,
-        status: status,
+        status: propStatus,
         prop_types: propertyTypes,
         price_range: priceRange,
         beds: bedrooms,
@@ -90,6 +92,7 @@ export default function ProperteyFiltering({ status, deals }) {
     squirefeet,
     categories,
     currentSortingOption,
+    propStatus,
   ]);
 
   const resetFilter = () => {
@@ -173,7 +176,10 @@ export default function ProperteyFiltering({ status, deals }) {
     setCurrentSortingOption,
     priceRangeSetted,
     setSearch,
-    search
+    search,
+    setPropStatus,
+    propStatus,
+    all
   };
 
   return (

@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 const PropertyHeader = ({ details }) => {
   return (
     <>
@@ -10,7 +12,7 @@ const PropertyHeader = ({ details }) => {
         <div className="single-property-content mb30-md">
           <div className="pd-meta mb15 d-md-flex align-items-center">
             <p className="fz15 mb-0 fw300 underline-text color-black-grey">
-              {details.status}
+              <Link href={`${details.status == 'Sale' ? '/premium-sales' : '/premium-rentals'}`}>{details.status}</Link>
             </p>
             <li className="arrow-after"></li>
             <p className="text fz15 mb-0 bdrrn-sm fw300 underline-text color-black-grey">
@@ -43,9 +45,9 @@ const PropertyHeader = ({ details }) => {
         <div className="single-property-content">
           <div className="property-action text-lg-end">
             <div className="d-flex align-items-center justify-content-lg-end">
-              <a className=" mr20" href="#">
+              {/* <a className=" mr20" href="#">
                 <span className="flaticon-like" />
-              </a>
+              </a> */}
               <a className=" mr20" href="#">
                 <span className="flaticon-new-tab" />
               </a>

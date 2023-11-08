@@ -2,6 +2,7 @@
 
 import Bathroom from "../../sidebar/Bathroom";
 import Bedroom from "../../sidebar/Bedroom";
+import ListingStatus from "../../sidebar/ListingStatus";
 import PriceRange from "../../sidebar/PriceRange";
 import PropertyType from "../../sidebar/PropertyType";
 
@@ -15,12 +16,40 @@ const TopFilterBar = ({
 }) => {
   return (
     <>
-      <div className="col-xl-9 d-none d-lg-block">
+      <div className="col-xl-10 d-none d-lg-block">
         <div className="dropdown-lists">
           <ul className="p-0 text-center text-xl-start">
             <li className="list-inline-item position-relative">
               <p className="mr10 fw500">{totalLength} Properties</p>
             </li>
+            {filterFunctions.all == true ? (
+              <li className="list-inline-item position-relative">
+                <button
+                  type="button"
+                  className="open-btn mb15 dropdown-toggle color-black-grey-2 fw300"
+                  data-bs-toggle="dropdown"
+                  data-bs-auto-close="outside"
+                >
+                  {filterFunctions.propStatus == "all"
+                    ? "For All"
+                    : filterFunctions.propStatus == "sale"
+                    ? "For Sale"
+                    : "For Rent"}{" "}
+                  <i className="fa fa-angle-down ms-2" />
+                </button>
+                <div className="dropdown-menu">
+                  <div className="widget-wrapper pb5 mb0 pl20">
+                    <h6 className="list-title color-black-grey-2 fw300">Listing Status</h6>
+                    <div className="radio-element">
+                      <ListingStatus filterFunctions={filterFunctions} />
+                    </div>
+                  </div>
+                  
+                </div>
+              </li>
+            ) : (
+              <></>
+            )}
             {/* End li Listing Status */}
             {deals == "no" ? (
               <li className="list-inline-item position-relative">
@@ -157,7 +186,7 @@ const TopFilterBar = ({
       </div>
       {/* End .col-9 */}
 
-      <div className="col-xl-3">
+      <div className="col-xl-2">
         <div className="page_control_shorting d-flex align-items-center justify-content-center justify-content-sm-end">
           <div className="pcs_dropdown pr10 d-flex align-items-center">
             <span style={{ minWidth: "60px" }}>Sort by</span>
