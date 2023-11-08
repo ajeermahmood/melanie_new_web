@@ -7,15 +7,48 @@ import { useEffect, useState } from "react";
 import { Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
+function useWindowSize() {
+  // Initialize state with undefined width/height so server and client renders match
+  // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
+  const [windowSize, setWindowSize] = useState({
+    width: undefined,
+    height: undefined,
+  });
+
+  useEffect(() => {
+    // only execute all the code below in client side
+    // Handler to call on window resize
+    function handleResize() {
+      // Set window width/height to state
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }
+
+    // Add event listener
+    window.addEventListener("resize", handleResize);
+
+    // Call handler right away so state gets updated with initial window size
+    handleResize();
+
+    // Remove event listener on cleanup
+    return () => window.removeEventListener("resize", handleResize);
+  }, []); // Empty array ensures that effect is only run on mount
+  return windowSize;
+}
+
 const AllBannersHome = () => {
   const [data, setData] = useState([]);
+  const size = useWindowSize();
+  console.log(size);
 
   useEffect(() => {
     getAllBannersHome().then((res) => {
       setData(res);
-      // console.log(res);
     });
   }, []);
+
   return (
     <>
       <div className="home2-hero-banner">
@@ -31,7 +64,7 @@ const AllBannersHome = () => {
             prevEl: ".hero9-prev__active",
           }}
           className="hero_9"
-          style={{ height: "40rem" }}
+          style={{ height: `${size.width > 500 ? '40rem' : '25rem'}` }}
         >
           {data.map((item, index) => (
             <SwiperSlide key={index}>
@@ -45,8 +78,8 @@ const AllBannersHome = () => {
                   src={`https://premium.indusre.com/Admin/pages/forms/uploads/property/${item.image1}`}
                   alt="img"
                   className="w-100 h-100 cover"
-                  width={1652}
-                  height={640}
+                  width={size.width > 500 ? 1652 : 390}
+                  height={size.width > 500 ? 640 : 432}
                 />
                 <div
                   className="home-banner-slider w-100 h-100 position-absolute"
@@ -61,7 +94,7 @@ const AllBannersHome = () => {
                       <p className="banner-title text-light fw400 mb10">
                         Featured Property
                       </p>
-                      <h2 className="banner-title text-light fz40 fw400 mb0">
+                      <h2 className="banner-title text-light fz40 fw400 mb0 fz35-mbl">
                         {item.address}
                       </h2>
                       <p className="text-light">
@@ -70,9 +103,9 @@ const AllBannersHome = () => {
                       </p>
                       <Link
                         href={`/property-details?id=${item.prop_id}`}
-                        className="ud-btn banner-btn fw500 btn-thm mt10 mt0-xs"
+                        className="ud-btn banner-btn fw400 btn-thm mt10 mt0-xs btn-text-mbl"
                       >
-                        VIEW PROPERTY
+                        View Property
                       </Link>
                     </div>
 

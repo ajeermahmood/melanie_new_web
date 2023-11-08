@@ -1,8 +1,6 @@
 "use client";
-import { getFeaturedPremiumRentals } from "@/api/listings";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";

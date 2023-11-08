@@ -4,6 +4,7 @@ import Link from "next/link";
 import ProjectsListings from "./projects_listings";
 import { getInvestorDealsData } from "@/api/listings";
 import { useEffect, useState } from "react";
+import InvestorDealsMobile from "@/app/home/investor_deals_mobile";
 
 export default function ProjectsListing() {
   const [data, setData] = useState([]);
@@ -27,8 +28,8 @@ export default function ProjectsListing() {
   return (
     <section className="bg-dark pt30 pb50">
       <div className="container pt30 top-border-grey">
-        <div className="nav justify-content-between">
-          <p className="text-light text-start fz20 mb10">Investor Deals</p>
+        <div className="nav justify-content-between align-items-center pt20-mbl">
+          <p className="text-light text-start fz20 mb0">Investor Deals</p>
           <li
             className="nav-item d-flex align-items-center "
             role="presentation"
@@ -38,12 +39,15 @@ export default function ProjectsListing() {
             </Link>
           </li>
         </div>
-        <p className="text-light text-start mb30 mt0">
+        <p className="text-light text-start mb30 mt10">
           {headerText}{" · "}{bodyText}
         </p>
 
-        <div className="row">
+        <div className="row mobile-hide">
           <ProjectsListings />
+        </div>
+        <div className="row m-0 pc-hide">
+          <InvestorDealsMobile />
         </div>
       </div>
     </section>

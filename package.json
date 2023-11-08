@@ -11,6 +11,7 @@
   "dependencies": {
     "@babel/core": "7.0.0",
     "@mui/material": "^5.14.16",
+    "@mui/styles": "^5.14.17",
     "@popperjs/core": "^2.11.8",
     "@react-google-maps/api": "^2.19.2",
     "aos": "^2.3.4",

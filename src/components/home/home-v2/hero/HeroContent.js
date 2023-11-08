@@ -50,7 +50,7 @@ const HeroContent = () => {
                     className="form-control "
                     type="text"
                     name="search"
-                    placeholder={`Enter Keyword for`}
+                    placeholder={`Search Properties`}
                     onChange={(e) => setSearch(e.target.value)}
                   />
                 </div>
@@ -85,7 +85,7 @@ const HeroContent = () => {
                           className="form-control "
                           type="text"
                           name="search"
-                          placeholder={`Enter Keyword for ${tab.label}`}
+                          placeholder={`Search Properties for ${tab.label}`}
                           onChange={(e) => setSearch(e.target.value)}
                         />
                       </div>

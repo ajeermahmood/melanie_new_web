@@ -25,6 +25,7 @@ import { useEffect, useState } from "react";
 import FeaturesPropDetails from "./features";
 import * as React from "react";
 import Head from "next/head";
+import Link from "next/link";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -220,14 +221,24 @@ const PropertyDetailsPage = () => {
               <div className="ps-widget bdrs12 mb30 overflow-hidden position-relative">
                 <h4 className="title fz20 fw400 mb5">{data.address}</h4>
                 <div className="pd-meta mb0 d-md-flex align-items-center">
-                  <p className="fz13 mb-0 fw300 underline-text color-black-grey-2">
-                    {data.cat_name}
+                  <p className="fz13 mb-0 fw300">
+                    <Link
+                      className="color-black-grey-2 underline-text"
+                      href={`/all-properties?t=${data.cat_id}`}
+                    >
+                      {data.cat_name}
+                    </Link>
                   </p>
                   <li className="dot-after"></li>
                   {data.infocus == null ? (
                     <>
-                      <p className="text fz13 mb-0 bdrrn-sm fw300 underline-text color-black-grey-2">
-                        {data.beds} Beds
+                      <p className="text fz13 mb-0 bdrrn-sm fw300">
+                        <Link
+                          className="color-black-grey-2 underline-text"
+                          href={`/all-properties?bd=${data.beds}`}
+                        >
+                          {data.beds} Beds
+                        </Link>
                       </p>
                       <li className="dot-after"></li>
                       <p className="text fz13 mb-0 bdrrn-sm fw300 color-black-grey-2">
@@ -375,7 +386,7 @@ const PropertyDetailsPage = () => {
             </div>
 
             <div className="col-lg-4">
-              <div className="position-sticky top-15"> 
+              <div className="position-sticky top-15">
                 <div className="column">
                   <div className="agen-personal-info position-relative bgc-white default-box-shadow1 bdrs8 p20 mt30">
                     <div className="widget-wrapper mb-0">
@@ -388,8 +399,13 @@ const PropertyDetailsPage = () => {
                           ? currencyFormatter.format(data.price)
                           : "Price On Application"}
                       </h2>
-                      <h6 className="title fz15 mb10 fw300 color-black-grey lh-1 underline-text color-black-grey-2">
-                        {data.cat_name}
+                      <h6 className="title fz15 mb10 fw300 color-black-grey lh-1">
+                        <Link
+                          className="underline-text color-black-grey-2"
+                          href={`/all-properties?t=${data.cat_id}`}
+                        >
+                          {data.cat_name}
+                        </Link>
                       </h6>
                       <h6 className="title fz15 mb10 fw300 color-black-grey lh-1 underline-text color-black-grey-2">
                         {data.unit_type}

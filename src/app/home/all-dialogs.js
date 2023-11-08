@@ -53,14 +53,14 @@ const AllDialogs = () => {
   `;
   return (
     <>
-      <div className="nav-item d-flex justify-content-center mt30">
-        <button className="custom-btn" onClick={handleClickOpenBuyingGuide}>
+      <div className="nav-item d-flex justify-content-center mt30 d-grid-mbl">
+        <button className="custom-btn mb15" onClick={handleClickOpenBuyingGuide}>
           Buying Guide
         </button>
-        <button className="custom-btn" onClick={handleClickOpenTalkToUs}>
+        <button className="custom-btn mb15" onClick={handleClickOpenTalkToUs}>
           Talk To Us
         </button>
-        <button className="custom-btn" onClick={handleClickOpenListProperty}>
+        <button className="custom-btn mb15" onClick={handleClickOpenListProperty}>
           List Your Property
         </button>
       </div>

@@ -14,6 +14,7 @@ export default function ProperteyFiltering({ status, deals, all }) {
   const searchParams = useSearchParams();
   const property_type_param = searchParams.get("t");
   const search_txt_param = searchParams.get("s");
+  const beds_param = searchParams.get("bd");
   // params end
 
   const [search, setSearch] = useState(
@@ -32,7 +33,7 @@ export default function ProperteyFiltering({ status, deals, all }) {
   );
   const [priceRange, setPriceRange] = useState([20, 100000000]);
   const [priceRangeSetted, setPriceRangeSetted] = useState(1);
-  const [bedrooms, setBedrooms] = useState(-1);
+  const [bedrooms, setBedrooms] = useState(beds_param != null ? Number(beds_param) : 0);
   const [bathroms, setBathroms] = useState(0);
 
   const [propStatus, setPropStatus] = useState(status != null ? status : "all");
