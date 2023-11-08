@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const FeaturedListings = ({ data, colstyle, loading }) => {
   const skeletonLoader = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-  const currencyFormatter = new Intl.NumberFormat("en-IN", {
+  const currencyFormatter = new Intl.NumberFormat("en-AE", {
     style: "currency",
     currency: "AED",
     minimumFractionDigits: 0,
@@ -110,8 +110,8 @@ const FeaturedListings = ({ data, colstyle, loading }) => {
                 </h6>
                 <p className="list-text lh-base color-black-grey-2">
                   For {listing.status}
-                  {" · "}
-                  {listing.completion_status}
+                  {/* {" · "}
+                  {listing.completion_status} */}
                 </p>
                 <p className="list-text text-dark lh-base">
                   {listing.price != "0"
@@ -122,7 +122,7 @@ const FeaturedListings = ({ data, colstyle, loading }) => {
                   {listing.cat_name} {" · "}{" "}
                   {listing.beds != "0" ? listing.beds + " " + "Beds" : "Studio"}{" "}
                   {" · "}{" "}
-                  {new Intl.NumberFormat("en-IN", {
+                  {new Intl.NumberFormat("en-AE", {
                     maximumSignificantDigits: 3,
                   }).format(listing.area)}{" "}
                   sq. ft.

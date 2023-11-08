@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";
 
 const NearbySimilarProperty = ({ data }) => {
-  const currencyFormatter = new Intl.NumberFormat("en-IN", {
+  const currencyFormatter = new Intl.NumberFormat("en-AE", {
     style: "currency",
     currency: "AED",
     minimumFractionDigits: 0,
@@ -85,8 +85,8 @@ const NearbySimilarProperty = ({ data }) => {
                   </h6>
                   <p className="list-text lh-base color-black-grey-2">
                     For {listing.status}
-                    {" · "}
-                    {listing.completion_status}
+                    {/* {" · "}
+                    {listing.completion_status} */}
                   </p>
                   <p className="list-text text-dark lh-base">
                     {listing.price != "0"
@@ -99,7 +99,7 @@ const NearbySimilarProperty = ({ data }) => {
                       ? listing.beds + " " + "Beds"
                       : "Studio"}{" "}
                     {" · "}{" "}
-                    {new Intl.NumberFormat("en-IN", {
+                    {new Intl.NumberFormat("en-AE", {
                       maximumSignificantDigits: 3,
                     }).format(listing.area)}{" "}
                     sq. ft.

@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const FeaturedListings = ({ data, loading }) => {
   const skeleton = [1, 2, 3, 4, 5, 6];
-  const currencyFormatter = new Intl.NumberFormat("en-IN", {
+  const currencyFormatter = new Intl.NumberFormat("en-AE", {
     style: "currency",
     currency: "AED",
     minimumFractionDigits: 0,
@@ -107,15 +107,15 @@ const FeaturedListings = ({ data, loading }) => {
               </h6>
               <p className="list-text text-light lh-base">
                 For {listing.status}
-                {" · "}
-                {listing.completion_status}
+                {/* {" · "} */}
+                {/* {listing.completion_status} */}
               </p>
               <p className="list-text text-light lh-base">
                 {currencyFormatter.format(listing.price)}
               </p>
               <p className="list-text text-light lh-base">
                 {listing.cat_name} {" · "} {listing.beds} Beds {" · "}{" "}
-                {new Intl.NumberFormat("en-IN", {
+                {new Intl.NumberFormat("en-AE", {
                   maximumSignificantDigits: 3,
                 }).format(listing.area)}{" "}
                 sq. ft.

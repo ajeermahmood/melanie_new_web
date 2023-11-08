@@ -5,7 +5,7 @@ import "react-input-range/lib/css/index.css";
 
 const PriceRange = ({filterFunctions}) => {
   const [price, setPrice] = useState({ value: { min: 20, max: 100000000 } });
-  const currencyFormatter = new Intl.NumberFormat("en-IN", {
+  const currencyFormatter = new Intl.NumberFormat("en-AE", {
     style: "currency",
     currency: "AED",
     minimumFractionDigits: 0,

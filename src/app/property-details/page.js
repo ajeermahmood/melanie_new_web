@@ -31,7 +31,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 const PropertyDetailsPage = () => {
-  const currencyFormatter = new Intl.NumberFormat("en-IN", {
+  const currencyFormatter = new Intl.NumberFormat("en-AE", {
     style: "currency",
     currency: "AED",
     minimumFractionDigits: 0,
@@ -244,7 +244,7 @@ const PropertyDetailsPage = () => {
                   <li className="dot-after"></li>
                   <p className="text fz13 mb-0 bdrrn-sm fw300 color-black-grey-2">
                     {data.infocus == null
-                      ? new Intl.NumberFormat("en-IN", {
+                      ? new Intl.NumberFormat("en-AE", {
                           maximumSignificantDigits: 3,
                         }).format(data.area) +
                         " " +

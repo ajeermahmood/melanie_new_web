@@ -31,7 +31,7 @@ const AllBannersHome = () => {
             prevEl: ".hero9-prev__active",
           }}
           className="hero_9"
-          style={{ height: "70vh" }}
+          style={{ height: "40rem" }}
         >
           {data.map((item, index) => (
             <SwiperSlide key={index}>

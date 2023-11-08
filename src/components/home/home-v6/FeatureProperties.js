@@ -8,7 +8,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";
 
 const FeatureProperties = ({ data }) => {
-  const currencyFormatter = new Intl.NumberFormat("en-IN", {
+  const currencyFormatter = new Intl.NumberFormat("en-AE", {
     style: "currency",
     currency: "AED",
     minimumFractionDigits: 0,
@@ -46,8 +46,8 @@ const FeatureProperties = ({ data }) => {
                       </h4>
                       <p className="list-text fz13 text-light fw300">
                         {property.cat_name}
-                        {" · "}
-                        {property.completion_status}
+                        {/* {" · "}
+                        {property.completion_status} */}
                       </p>
                       <div className="list-meta d-block d-sm-flex align-items-center mt10 mb0">
                         <a
@@ -69,7 +69,7 @@ const FeatureProperties = ({ data }) => {
                           href="#"
                         >
                           <span className="flaticon-expand" />
-                          {new Intl.NumberFormat("en-IN", {
+                          {new Intl.NumberFormat("en-AE", {
                             maximumSignificantDigits: 3,
                           }).format(property.area)}
                         </a>
