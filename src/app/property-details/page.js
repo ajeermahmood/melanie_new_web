@@ -375,36 +375,38 @@ const PropertyDetailsPage = () => {
             </div>
 
             <div className="col-lg-4">
-              <div className="column">
-                <div className="agen-personal-info position-relative bgc-white default-box-shadow1 bdrs8 p20 mt30">
-                  <div className="widget-wrapper mb-0">
-                    <h6 className="title fz15 mb10 fw300 color-black-grey">
-                      For {data.status} {" · "}
-                      {data.completion_status}
-                    </h6>
-                    <h2 className="title fz22 mb10 fw500 color-black-grey">
-                      {data.price != "0"
-                        ? currencyFormatter.format(data.price)
-                        : "Price On Application"}
-                    </h2>
-                    <h6 className="title fz15 mb10 fw300 color-black-grey lh-1 underline-text color-black-grey-2">
-                      {data.cat_name}
-                    </h6>
-                    <h6 className="title fz15 mb10 fw300 color-black-grey lh-1 underline-text color-black-grey-2">
-                      {data.unit_type}
-                    </h6>
-                    <h6 className="title fz15 mb10 fw300 color-black-grey lh-1 underline-text color-black-grey-2">
-                      {data.developer}
-                    </h6>
+              <div className="position-sticky top-15"> 
+                <div className="column">
+                  <div className="agen-personal-info position-relative bgc-white default-box-shadow1 bdrs8 p20 mt30">
+                    <div className="widget-wrapper mb-0">
+                      <h6 className="title fz15 mb10 fw300 color-black-grey">
+                        For {data.status} {" · "}
+                        {data.completion_status}
+                      </h6>
+                      <h2 className="title fz22 mb10 fw500 color-black-grey">
+                        {data.price != "0"
+                          ? currencyFormatter.format(data.price)
+                          : "Price On Application"}
+                      </h2>
+                      <h6 className="title fz15 mb10 fw300 color-black-grey lh-1 underline-text color-black-grey-2">
+                        {data.cat_name}
+                      </h6>
+                      <h6 className="title fz15 mb10 fw300 color-black-grey lh-1 underline-text color-black-grey-2">
+                        {data.unit_type}
+                      </h6>
+                      <h6 className="title fz15 mb10 fw300 color-black-grey lh-1 underline-text color-black-grey-2">
+                        {data.developer}
+                      </h6>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="column mt25">
-                <div className="agen-personal-info position-relative bgc-white default-box-shadow1 bdrs8 p20 mt30">
-                  <h6 className="title fz17 mb10 fw300 color-black-grey">
-                    Book A Viewing
-                  </h6>
-                  <ScheduleForm address={data.address} />
+                <div className="column mt20">
+                  <div className="agen-personal-info position-relative bgc-white default-box-shadow1 bdrs8 p20 mt0">
+                    <h6 className="title fz17 mb10 fw300 color-black-grey">
+                      Book A Viewing
+                    </h6>
+                    <ScheduleForm address={data.address} />
+                  </div>
                 </div>
               </div>
             </div>

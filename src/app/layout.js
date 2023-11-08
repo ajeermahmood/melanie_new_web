@@ -5,6 +5,7 @@ import "aos/dist/aos.css";
 import { DM_Sans, Roboto } from "next/font/google";
 import { useEffect } from "react";
 import "../../public/scss/main.scss";
+import { usePathname } from "next/navigation";
 
 if (typeof window !== "undefined") {
   import("bootstrap");
@@ -20,11 +21,12 @@ const dmSans = DM_Sans({
 // Poppins font
 const roboto = Roboto({
   subsets: ["latin"],
-  weight: ["100","300", "400", "500", "700", "900"],
+  weight: ["100", "300", "400", "500", "700", "900"],
   variable: "--title-font-family",
 });
 
 export default function RootLayout({ children }) {
+  const path = usePathname();
   useEffect(() => {
     Aos.init({
       duration: 1200,
@@ -38,7 +40,9 @@ export default function RootLayout({ children }) {
         className={`body  ${roboto.className} ${dmSans.className}`}
         cz-shortcut-listen="false"
       >
-        <div className="wrapper ovh">{children}</div>
+        <div className={`wrapper ${path == "/property-details" ? "" : "ovh"}`}>
+          {children}
+        </div>
 
         <ScrollToTop />
       </body>
