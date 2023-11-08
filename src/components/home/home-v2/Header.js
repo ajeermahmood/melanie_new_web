@@ -3,13 +3,21 @@
 import LoginSignupModal from "@/components/common/login-signup-modal";
 import SidebarPanel from "@/components/common/sidebar-panel";
 import { Divider } from "@mui/material";
-import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { alpha, styled } from "@mui/material/styles";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  TextField,
+} from "@mui/material";
 
 const StyledMenu = styled((props) => (
   <Menu
@@ -91,12 +99,26 @@ const Header = () => {
     setAnchorEl(null);
   };
 
-  // useEffect(() => {
-  //   window.addEventListener("scroll", changeBackground);
-  //   return () => {
-  //     window.removeEventListener("scroll", changeBackground);
-  //   };
-  // }, []);
+  const [openListProperty, setOpenListProperty] = useState(false);
+
+  const handleClickOpenListProperty = () => {
+    setOpenListProperty(true);
+  };
+
+  const handleCloseListProperty = () => {
+    setOpenListProperty(false);
+  };
+
+  const StyledBorderTextField = styled(TextField)`
+    & label.Mui-focused {
+      color: #c49f5a;
+    }
+    & .MuiOutlinedInput-root {
+      &.Mui-focused fieldset {
+        border-color: #c49f5a;
+      }
+    }
+  `;
 
   return (
     <>
@@ -134,9 +156,95 @@ const Header = () => {
 
               <div className="col-auto">
                 <div className="d-flex align-items-center">
-                  <p className="text-light m0 custom-link">
+                  <p
+                    className="text-light m0 custom-link"
+                    onClick={handleClickOpenListProperty}
+                  >
                     List Your Property
                   </p>
+                  <Dialog
+                    open={openListProperty}
+                    onClose={handleCloseListProperty}
+                  >
+                    <DialogTitle className="mt10" align="center">
+                      List Your Property
+                    </DialogTitle>
+                    <DialogContent>
+                      <DialogContentText
+                        className="font-style-2"
+                        fontSize={20}
+                        align="center"
+                      >
+                        Contact us for listing your property.
+                      </DialogContentText>
+                      <StyledBorderTextField
+                        className="mt20"
+                        autoFocus
+                        margin="dense"
+                        id="name"
+                        label="First Name"
+                        type="text"
+                        fullWidth
+                        // variant="standard"
+                      />
+                      <StyledBorderTextField
+                        // className="mt20"
+                        autoFocus
+                        margin="dense"
+                        id="name"
+                        label="Last Name"
+                        type="text"
+                        fullWidth
+                        // variant="standard"
+                      />
+                      <StyledBorderTextField
+                        // className="mt20"
+                        autoFocus
+                        margin="dense"
+                        id="name"
+                        label="Email"
+                        type="email"
+                        fullWidth
+                        // variant="standard"
+                      />
+                      <StyledBorderTextField
+                        // className="mt20"
+                        autoFocus
+                        margin="dense"
+                        id="name"
+                        label="Contact Number"
+                        type="number"
+                        fullWidth
+                        // variant="standard"
+                      />
+                      <StyledBorderTextField
+                        // className="mt20"
+                        autoFocus
+                        margin="dense"
+                        id="name"
+                        label="Tell Us.."
+                        type="text"
+                        fullWidth
+                        multiline
+                        rows={4}
+                        // variant="standard"
+                      />
+                    </DialogContent>
+                    <DialogActions>
+                      <Button
+                        className="color-gold"
+                        onClick={handleCloseListProperty}
+                      >
+                        Cancel
+                      </Button>
+                      <Button
+                        className="color-gold"
+                        onClick={handleCloseListProperty}
+                      >
+                        Send
+                      </Button>
+                    </DialogActions>
+                  </Dialog>
                   <Button
                     id="demo-customized-button"
                     aria-controls={open ? "demo-customized-menu" : undefined}

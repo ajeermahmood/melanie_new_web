@@ -24,6 +24,7 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import FeaturesPropDetails from "./features";
 import * as React from "react";
+import Head from "next/head";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -40,6 +41,7 @@ const PropertyDetailsPage = () => {
 
   const [data, setData] = useState("");
   const [allPhotos, setAllPhotos] = useState([]);
+  const [allPhotosLoaded, setAllPhotosLoaded] = useState(false);
 
   const [mainImageLoading, setMainImageLoading] = useState(true);
   const [firstImageLoading, setFirstImageLoading] = useState(true);
@@ -49,6 +51,7 @@ const PropertyDetailsPage = () => {
   useEffect(() => {
     getPropertyDetails(id).then((res) => {
       setData(res);
+      setAllPhotos(JSON.parse(res.gallary.imgs)["imgs"]);
       console.log(res);
     });
   }, []);
@@ -57,7 +60,6 @@ const PropertyDetailsPage = () => {
 
   const handleClickOpenShowAllPhotosDialog = () => {
     setOpenShowAllPhotosDialog(true);
-    setAllPhotos(JSON.parse(data.gallary.imgs)["imgs"]);
   };
 
   const handleCloseShowAllPhotosDialog = () => {
@@ -78,6 +80,16 @@ const PropertyDetailsPage = () => {
     </Box>
   ) : (
     <>
+      <Head>
+        {allPhotos.map((ph, index) => (
+          <link
+            key={index}
+            rel="preload"
+            href={`https://premium.indusre.com/Admin/pages/forms/uploads/galary/${ph}`}
+            as="image"
+          />
+        ))}
+      </Head>
       {/* Main Header Nav */}
       <DefaultHeader />
       {/* End Main Header Nav */}
@@ -171,12 +183,28 @@ const PropertyDetailsPage = () => {
             </div>
             <div className="col-lg-7">
               {allPhotos.map((ph, index) => (
-                <img
-                  key={index}
-                  src={`https://premium.indusre.com/Admin/pages/forms/uploads/galary/${ph}`}
-                  alt="image"
-                  className={`w-100 cover mb25`}
-                />
+                <div key={index}>
+                  {!allPhotosLoaded && (
+                    <Skeleton
+                      variant="rectangular"
+                      className="w-100 cover mb25"
+                      width={1000}
+                      height={540}
+                    />
+                  )}
+                  <img
+                    src={`https://premium.indusre.com/Admin/pages/forms/uploads/galary/${ph}`}
+                    alt="image"
+                    // width={900}
+                    // height={600}
+                    className={`${
+                      !allPhotosLoaded
+                        ? "opacity-0 position-absolute w-100 cover mb25"
+                        : "opacity-100 w-100 cover mb25 position-relative"
+                    }}`}
+                    onLoad={() => setAllPhotosLoaded(true)}
+                  />
+                </div>
               ))}
             </div>
           </div>
@@ -229,8 +257,8 @@ const PropertyDetailsPage = () => {
                   infocus={data.infocus != null ? data.infocus : "no"}
                 />
               </div>
-              <div className="col-lg-12 w-100 row">
-                <div className="col-sm-8">
+              <div className="col-lg-12 w-100 row ">
+                <div className="col-sm-8 cursor-pointer">
                   <div className="sp-img-content mb15-md">
                     <div className="">
                       {firstImageLoading ? (
@@ -261,9 +289,9 @@ const PropertyDetailsPage = () => {
                 </div>
                 {/* End .col-6 */}
 
-                <div className="col-sm-4">
+                <div className="col-sm-4 ">
                   <div className="row">
-                    <div className="col-sm-12 ps-lg-0">
+                    <div className="col-sm-12 ps-lg-0 cursor-pointer">
                       <div className="sp-img-content">
                         <div className="mb10 h195">
                           {secondImageLoading ? (
@@ -294,7 +322,7 @@ const PropertyDetailsPage = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="col-sm-12 ps-lg-0">
+                    <div className="col-sm-12 ps-lg-0 cursor-pointer">
                       <div className="sp-img-content">
                         <div className="mb10 h195">
                           {thirdImageLoading ? (

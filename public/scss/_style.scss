@@ -421,6 +421,15 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
   }
 }
 
+.custom-link-2 {
+  cursor: pointer;
+  color: var(--theme-black) !important;
+  transition: 200ms all ease-in-out;
+  &:hover {
+    color: var(--theme-gold) !important;
+  }
+}
+
 .custom-btn {
   border: 1px solid white;
   background-color: var(--theme-black);
@@ -475,6 +484,10 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
   margin-left: 15px;
   list-style-type: circle;
   display: list-item;
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
 }
 
 /// new styles end----------------------------------------------------------------------------------------------------------------------------------------------

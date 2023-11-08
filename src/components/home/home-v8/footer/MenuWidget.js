@@ -5,31 +5,25 @@ const MenuWidget = () => {
     {
       title: "Popular Search",
       links: [
-        { label: "Apartment for Rent", href: "#" },
-        { label: "Apartment Low to Hide", href: "#" },
-        { label: "Offices for Buy", href: "#" },
-        { label: "Offices for Rent", href: "#" },
+        { label: "Apartment for Sale", href: "/premium-sales?t=2" },
+        { label: "Villa for Sale", href: "/premium-sales?t=1" },
+        { label: "Apartment for Rent", href: "/premium-rentals?t=2" },
+        { label: "Villa for Rent", href: "/premium-rentals?t=1" },
       ],
     },
     {
       title: "Quick Links",
       links: [
-        { label: "Terms of Use", href: "#" },
-        { label: "Privacy Policy", href: "#" },
-        { label: "Pricing Plans", href: "#" },
-        { label: "Our Services", href: "#" },
-        { label: "Contact Support", href: "#" },
-        { label: "Careers", href: "#" },
-        { label: "FAQs", href: "#" },
+        { label: "investor Deals", href: "/see-all" },
+        { label: "SO/UPTOWN DUBAI", href: "/property-details?id=32&prj=1" },
       ],
     },
     {
       title: "Discover",
       links: [
-        { label: "Miami", href: "#" },
-        { label: "Los Angeles", href: "#" },
-        { label: "Chicago", href: "#" },
-        { label: "New York", href: "#" },
+        { label: "Dubai Marina", href: "/premium-sales?s=marina" },
+        { label: "Downtown Dubai", href: "/premium-sales?s=downtown" },
+        { label: "Palm Jumeirah", href: "/premium-sales?s=palm jumeirah" },
       ],
     },
   ];
