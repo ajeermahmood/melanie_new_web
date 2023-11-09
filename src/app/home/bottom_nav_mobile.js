@@ -2,20 +2,19 @@
 import { IconButton } from "@mui/material";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import Box from "@mui/material/Box";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import { makeStyles } from "@mui/styles";
-import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const useStyles = makeStyles({
   root: {
     height: "65px",
-    width: "100%",
+    width : '100%',
     position: "fixed",
     bottom: 0,
     "& .MuiBottomNavigationAction-root": {
@@ -41,16 +40,8 @@ const useStyles = makeStyles({
 
 export default function BottomNavigationMobile() {
   const [value, setValue] = useState(0);
-  const [showNav, setShowNav] = useState(false);
   const classes = useStyles();
   const router = useRouter();
-
-  useEffect(() => {
-    setTimeout(function () {
-      setShowNav(true);
-    }, 0);
-  }, []);
-
   const [openBottomSheet, setOpenBottomSheet] = useState(false);
 
   const handleClickOpenBottomSheet = () => {
@@ -92,7 +83,7 @@ export default function BottomNavigationMobile() {
     },
   ];
 
-  return showNav ? (
+  return (
     <BottomNavigation
       showLabels
       value={value}
@@ -163,7 +154,5 @@ export default function BottomNavigationMobile() {
         </List>
       </SwipeableDrawer>
     </BottomNavigation>
-  ) : (
-    <></>
   );
 }

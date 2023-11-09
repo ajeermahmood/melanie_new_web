@@ -178,7 +178,7 @@ const HomePage = () => {
       <section className="footer-style1 at-home2 pb-0 pt40">
         <Footer />
       </section>
-      <div className="pc-hide bottom-navigation-bar-mobile">
+      <div className="pc-hide bottom-navigation-bar-mobile w-100">
         <BottomNavigationMobile />
       </div>
       {/* End Our Footer */}

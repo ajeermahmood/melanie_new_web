@@ -94,6 +94,103 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
   left: 13rem;
 }
 
+.share-btns {
+  width: 60px;
+  border: 1px solid var(--theme-white-grey);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+  justify-content: center;
+  font-size: 25px;
+  margin-right: 10px;
+}
+
+.share-link-text {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: block;
+  // max-width: 15rem;
+  border: 1px solid var(--theme-white-grey);
+  padding: 5px 10px !important;
+  border-radius: 3px;
+  background: #efefed;
+}
+
+.share-custom-btn {
+  border: 1px solid #c6c6c5;
+  background-color: white;
+  color: var(--theme-black-grey-2);
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 0;
+
+  &:hover {
+    border: 1px solid var(--theme-gold);
+    color: var(--theme-gold);
+  }
+}
+
+.mb6 {
+  margin-bottom: 6px !important;
+}
+
+.h70 {
+  height: 70px !important;
+}
+
+.mt80 {
+  margin-top: 80px !important;
+}
+
+.px15 {
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+}
+
+.pr3 {
+  padding-right: 3px !important;
+}
+
+.pl3 {
+  padding-left: 3px !important;
+}
+
+.details-page-top-bar {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  padding: 10px 0px;
+}
+
+.details-page-top-button {
+  border: none;
+  background: white;
+  border-radius: 50%;
+  font-size: 14px;
+  width: 40px;
+  height: 38px;
+}
+
+.details-page-show-all-img-btn {
+  position: absolute;
+  top: 28rem;
+  left: 1rem;
+  border: none;
+  background-color: white;
+  color: var(--theme-black-grey-2);
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 6px 20px;
+}
+
 .infocus-inner-content {
   z-index: 2;
   top: 15rem;
@@ -139,7 +236,13 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
   .p0-mbl {
     padding: 0 !important;
   }
-  .custom-btn-3{
+  .m0-mbl {
+    margin: 0 !important;
+  }
+  .mt0-mbl {
+    margin-top: 0 !important;
+  }
+  .custom-btn-3 {
     padding: 3px 13px !important;
   }
   .search-bar-form .search-icon {
@@ -182,6 +285,14 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
 
   .mt10-mbl {
     margin-top: 10px !important;
+  }
+
+  .mt15-mbl {
+    margin-top: 15px !important;
+  }
+
+  .pr0 {
+    padding-right: 0 !important;
   }
 
   .scrollToHome {

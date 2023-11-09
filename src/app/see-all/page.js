@@ -49,7 +49,7 @@ const PremiumSales = () => {
       <section className="footer-style1 pt60 pb-0">
         <Footer />
       </section>
-      <div className="pc-hide bottom-navigation-bar-mobile">
+      <div className="pc-hide bottom-navigation-bar-mobile w-100">
         <BottomNavigationMobile2 />
       </div>
       {/* End Our Footer */}

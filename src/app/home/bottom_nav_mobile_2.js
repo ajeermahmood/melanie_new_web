@@ -14,7 +14,6 @@ import { useEffect, useState } from "react";
 
 const useStyles = makeStyles({
   root: {
-    backgroundColor: "black",
     height: "65px",
     width: "100%",
     position: "fixed",
@@ -23,6 +22,7 @@ const useStyles = makeStyles({
       "@media (max-width: 768px)": {
         minWidth: "auto",
         padding: "6px 0",
+        backgroundColor: "black",
       },
     },
     "& .MuiButtonBase-root": {
@@ -45,15 +45,15 @@ const useStyles = makeStyles({
 
 export default function BottomNavigationMobile2() {
   const [value, setValue] = useState(0);
-  const [showNav, setShowNav] = useState(false);
+  // const [showNav, setShowNav] = useState(false);
   const classes = useStyles();
   const router = useRouter();
 
-  useEffect(() => {
-    setTimeout(function () {
-      setShowNav(true);
-    }, 0);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(function () {
+  //     setShowNav(true);
+  //   }, 0);
+  // }, []);
 
   const [openBottomSheet, setOpenBottomSheet] = useState(false);
 
@@ -96,7 +96,7 @@ export default function BottomNavigationMobile2() {
     },
   ];
 
-  return showNav ? (
+  return (
     <BottomNavigation
       showLabels
       value={value}
@@ -167,7 +167,5 @@ export default function BottomNavigationMobile2() {
         </List>
       </SwipeableDrawer>
     </BottomNavigation>
-  ) : (
-    <></>
   );
 }

@@ -1,7 +1,6 @@
 "use client";
 import { getPropertyDetails } from "@/api/listings";
 import DefaultHeader from "@/components/common/DefaultHeader";
-import MobileMenu from "@/components/common/mobile-menu";
 import Footer from "@/components/home/home-v8/footer";
 import NearbySimilarProperty from "@/components/property/property-single-style/common/NearbySimilarProperty";
 import PropertyHeader from "@/components/property/property-single-style/common/PropertyHeader";
@@ -10,7 +9,6 @@ import ScheduleForm from "@/components/property/property-single-style/single-v2/
 import {
   AppBar,
   Box,
-  Button,
   CircularProgress,
   Dialog,
   IconButton,
@@ -19,17 +17,50 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
+import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import * as React from "react";
 import { useEffect, useState } from "react";
 import FeaturesPropDetails from "./features";
-import * as React from "react";
-import Head from "next/head";
-import Link from "next/link";
+import MobileHeaderDetailsPage from "./mobile_header_details_page";
+import BottomNavDetailsPage from "./bottom_componenet_details_page";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
+
+function useWindowSize() {
+  // Initialize state with undefined width/height so server and client renders match
+  // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
+  const [windowSize, setWindowSize] = useState({
+    width: undefined,
+    height: undefined,
+  });
+
+  useEffect(() => {
+    // only execute all the code below in client side
+    // Handler to call on window resize
+    function handleResize() {
+      // Set window width/height to state
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }
+
+    // Add event listener
+    window.addEventListener("resize", handleResize);
+
+    // Call handler right away so state gets updated with initial window size
+    handleResize();
+
+    // Remove event listener on cleanup
+    return () => window.removeEventListener("resize", handleResize);
+  }, []); // Empty array ensures that effect is only run on mount
+  return windowSize;
+}
 
 const PropertyDetailsPage = () => {
   const currencyFormatter = new Intl.NumberFormat("en-AE", {
@@ -48,6 +79,8 @@ const PropertyDetailsPage = () => {
   const [firstImageLoading, setFirstImageLoading] = useState(true);
   const [secondImageLoading, setSecondImageLoading] = useState(true);
   const [thirdImageLoading, setThirdImageLoading] = useState(true);
+
+  const size = useWindowSize();
 
   useEffect(() => {
     getPropertyDetails(id).then((res) => {
@@ -96,20 +129,23 @@ const PropertyDetailsPage = () => {
       {/* End Main Header Nav */}
 
       {/* Mobile Nav  */}
-      <MobileMenu />
+      <div className="pc-hide w-100">
+        <MobileHeaderDetailsPage data={data}/>
+      </div>
       {/* End Mobile Nav  */}
 
       {/* Property All Single V1 */}
-      <section className="pt30 pb0 bgc-f7">
-        <div className="container">
+      <section className="pt30 pb0 bgc-f7 p0-mbl">
+        <div className="container mobile-hide">
           <div className="row">
             <PropertyHeader details={data} />
           </div>
         </div>
         {/* End .row */}
 
-        <div className="row mb30 mt5">
+        <div className="row m0-mbl mb30 mt5 mt0-mbl">
           <div
+            className="p0-mbl"
             style={{
               maxHeight: "40rem",
             }}
@@ -118,20 +154,47 @@ const PropertyDetailsPage = () => {
               <Skeleton
                 variant="rectangular"
                 className="w-100 cover"
-                width={1652}
-                height={640}
+                width={
+                  size.width != undefined && size.width > 500
+                    ? 1652
+                    : size.width
+                }
+                height={size.width != undefined && size.width > 500 ? 640 : 500}
               />
             ) : (
               <></>
             )}
 
+            <button
+              className="details-page-show-all-img-btn pc-hide"
+              onClick={handleClickOpenShowAllPhotosDialog}
+            >
+              Show All Photos
+            </button>
+
+            <Image
+              width={
+                size.width == undefined && size.width > 500 ? 425 : size.width
+              }
+              height={500}
+              className={`pc-hide ${
+                mainImageLoading
+                  ? "opacity-0 position-absolute w-100 cover"
+                  : "opacity-100 w-100 cover position-relative"
+              }}`}
+              role="button"
+              src={`https://premium.indusre.com/Admin/pages/forms/uploads/property/${data.image1}`}
+              alt={"img"}
+              onLoadingComplete={() => setMainImageLoading(false)}
+              onClick={handleClickOpenShowAllPhotosDialog}
+            />
             <Image
               width={1652}
               height={640}
-              className={`${
+              className={`mobile-hide ${
                 mainImageLoading
-                  ? "opacity-0 position-absolute w-100 h-100 cover"
-                  : "opacity-100 w-100 h-100 cover position-relative"
+                  ? "opacity-0 position-absolute w-100 cover"
+                  : "opacity-100 w-100 cover position-relative"
               }}`}
               role="button"
               src={`https://premium.indusre.com/Admin/pages/forms/uploads/property/${data.image1}`}
@@ -176,7 +239,7 @@ const PropertyDetailsPage = () => {
             </Toolbar>
           </AppBar>
 
-          <div className="col-lg-12 row mt100">
+          <div className="col-lg-12 row m0-mbl mt100 mobile-hide">
             <div className="col-lg-5">
               <h2 className="sp-lg-title text-center mb20 fz35 fw400 position-fixed all-photos-address">
                 {data.address}
@@ -209,6 +272,38 @@ const PropertyDetailsPage = () => {
               ))}
             </div>
           </div>
+
+          <div className="col-lg-12 row m-0 mt80 pc-hide">
+            <h2 className="sp-lg-title text-center px25 mb20 fz20 fw400 all-photos-address">
+              {data.address}
+            </h2>
+            <div className="px15">
+              {allPhotos.map((ph, index) => (
+                <div key={index}>
+                  {!allPhotosLoaded && (
+                    <Skeleton
+                      variant="rectangular"
+                      className="w-100 cover mb25"
+                      width={400}
+                      height={250}
+                    />
+                  )}
+                  <img
+                    src={`https://premium.indusre.com/Admin/pages/forms/uploads/galary/${ph}`}
+                    alt="image"
+                    // width={900}
+                    // height={600}
+                    className={`${
+                      !allPhotosLoaded
+                        ? "opacity-0 position-absolute w-100 cover mb25"
+                        : "opacity-100 w-100 cover mb25 position-relative"
+                    }}`}
+                    onLoad={() => setAllPhotosLoaded(true)}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
         </Dialog>
         {/* -------------------------------------------------------Show All Photos Dialog Ends---------------------------------- */}
         {/* -------------------------------------------------------Show All Photos Dialog Ends---------------------------------- */}
@@ -216,11 +311,90 @@ const PropertyDetailsPage = () => {
         <div className="container">
           {/* End .row */}
 
-          <div className="row wrap">
-            <div className="col-lg-8">
+          <div className="row m-0 wrap">
+            <div className="col-lg-8 p0-mbl">
               <div className="ps-widget bdrs12 mb30 overflow-hidden position-relative">
-                <h4 className="title fz20 fw400 mb5">{data.address}</h4>
-                <div className="pd-meta mb0 d-md-flex align-items-center">
+                <h4 className="title fz20 fw400 mb5 mt15-mbl">
+                  {data.address}
+                </h4>
+
+                {/* -------------------------------Mobile screen data-------------------------------------- */}
+                {/* -------------------------------Mobile screen data-------------------------------------- */}
+                {/* -------------------------------Mobile screen data-------------------------------------- */}
+                <p className="pc-hide">
+                  Featured {" · "} {data.completion_status}
+                </p>
+                <div className="mb15 d-block pc-hide">
+                  <span className="fz15 mb-0 fw300 underline-text color-black-grey pc-hide">
+                    <Link
+                      href={`${
+                        data.status == "Sale"
+                          ? "/premium-sales"
+                          : "/premium-rentals"
+                      }`}
+                    >
+                      {data.status}
+                    </Link>
+                  </span>
+                  <span className="arrow-after pc-hide"></span>
+                  <span className="text fz15 mb-0 bdrrn-sm fw300 underline-text color-black-grey pc-hide">
+                    <Link href={`/all-properties?s=dubai`}>Dubai</Link>
+                  </span>
+                  <span className="arrow-after pc-hide"></span>
+                  <span className="text fz15 mb-0 bdrrn-sm fw300 underline-text color-black-grey pc-hide">
+                    <Link href={`/all-properties?t=${data.cat_id}`}>
+                      {data.cat_name}
+                    </Link>
+                  </span>
+                </div>
+                <div className="mt20 top-border-grey-2 pc-hide"></div>
+                <div className="mb0 mt15 d-block pc-hide">
+                  <span className="fz13 mb-0 fw300 pc-hide">
+                    <Link
+                      className="color-black-grey-2 underline-text"
+                      href={`/all-properties?t=${data.cat_id}`}
+                    >
+                      {data.cat_name}
+                    </Link>
+                  </span>
+                  <span className="dot-after pc-hide"></span>
+                  {data.infocus == null ? (
+                    <>
+                      <span className="text fz13 mb-0 bdrrn-sm fw300 pc-hide">
+                        <Link
+                          className="color-black-grey-2 underline-text"
+                          href={`/all-properties?bd=${data.beds}`}
+                        >
+                          {data.beds} Beds
+                        </Link>
+                      </span>
+                      <span className="dot-after pc-hide"></span>
+                      <span className="text fz13 mb-0 bdrrn-sm fw300 color-black-grey-2 pc-hide">
+                        {data.baths} Baths
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      <span className="text fz13 mb-0 bdrrn-sm fw300 color-black-grey-2 pc-hide">
+                        1-3 Beds
+                      </span>
+                    </>
+                  )}
+                  <span className="dot-after pc-hide"></span>
+                  <span className="text fz13 mb-0 bdrrn-sm fw300 color-black-grey-2 pc-hide">
+                    {data.infocus == null
+                      ? new Intl.NumberFormat("en-AE", {
+                          maximumSignificantDigits: 3,
+                        }).format(data.area) +
+                        " " +
+                        "sq. ft."
+                      : data.infocus.area_range}
+                  </span>
+                </div>
+                {/* -------------------------------PC screen data-------------------------------------- */}
+                {/* -------------------------------PC screen data-------------------------------------- */}
+                {/* -------------------------------PC screen data-------------------------------------- */}
+                <div className="pd-meta mb0 d-md-flex align-items-center mobile-hide">
                   <p className="fz13 mb-0 fw300">
                     <Link
                       className="color-black-grey-2 underline-text"
@@ -268,7 +442,10 @@ const PropertyDetailsPage = () => {
                   infocus={data.infocus != null ? data.infocus : "no"}
                 />
               </div>
-              <div className="col-lg-12 w-100 row ">
+              {/* -------------------------------PC screen Gallery-------------------------------------- */}
+              {/* -------------------------------PC screen Gallery-------------------------------------- */}
+              {/* -------------------------------PC screen Gallery-------------------------------------- */}
+              <div className="col-lg-12 w-100 row mobile-hide">
                 <div className="col-sm-8 cursor-pointer">
                   <div className="sp-img-content mb15-md">
                     <div className="">
@@ -301,7 +478,7 @@ const PropertyDetailsPage = () => {
                 {/* End .col-6 */}
 
                 <div className="col-sm-4 ">
-                  <div className="row">
+                  <div className="row ">
                     <div className="col-sm-12 ps-lg-0 cursor-pointer">
                       <div className="sp-img-content">
                         <div className="mb10 h195">
@@ -367,10 +544,162 @@ const PropertyDetailsPage = () => {
                     </div>
                   </div>
                 </div>
-                <button className="custom-btn-3 w-25 mt20 ml10">
+                <button
+                  className="custom-btn-3 w-25 mt20 ml10"
+                  onClick={handleClickOpenShowAllPhotosDialog}
+                >
                   Show All Photos
                 </button>
               </div>
+              {/* -------------------------------Mobile screen data-------------------------------------- */}
+              {/* -------------------------------Mobile screen data-------------------------------------- */}
+              {/* -------------------------------Mobile screen data-------------------------------------- */}
+              <div className="col-12 p0 cursor-pointer pc-hide">
+                <div className="sp-img-content mb6">
+                  <div className="">
+                    {firstImageLoading ? (
+                      <Skeleton
+                        variant="rectangular"
+                        className="w-100 cover"
+                        width={
+                          size.width != undefined && size.width > 500
+                            ? 500
+                            : size.width
+                        }
+                        height={
+                          size.width != undefined && size.width > 500
+                            ? 400
+                            : 300
+                        }
+                      />
+                    ) : (
+                      <></>
+                    )}
+                    <Image
+                      src={`https://premium.indusre.com/Admin/pages/forms/uploads/galary/${data.gallary.g_image1}`}
+                      width={
+                        size.width != undefined && size.width > 500
+                          ? 500
+                          : size.width
+                      }
+                      height={
+                        size.width != undefined && size.width > 500 ? 400 : 300
+                      }
+                      alt="image"
+                      className={`${
+                        firstImageLoading
+                          ? "opacity-0 position-absolute w-100 cover"
+                          : "opacity-100 w-100 cover position-relative"
+                      }}`}
+                      onLoadingComplete={() => setFirstImageLoading(false)}
+                      onClick={handleClickOpenShowAllPhotosDialog}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="col-lg-12 p0 w-100 row m-0 pc-hide">
+                <div className="col-6 p0 pr3">
+                  <div className="col-sm-12 ps-lg-0 cursor-pointer">
+                    <div className="sp-img-content">
+                      <div className="mb10">
+                        {secondImageLoading ? (
+                          <Skeleton
+                            variant="rectangular"
+                            className="w-100 cover"
+                            width={
+                              size.width != undefined && size.width > 500
+                                ? 270
+                                : size.width / 2 - 20
+                            }
+                            height={
+                              size.width != undefined && size.width > 500
+                                ? 195
+                                : 160
+                            }
+                          />
+                        ) : (
+                          <></>
+                        )}
+                        <Image
+                          width={
+                            size.width != undefined && size.width > 500
+                              ? 270
+                              : size.width / 2 - 20
+                          }
+                          height={
+                            size.width != undefined && size.width > 500
+                              ? 195
+                              : 160
+                          }
+                          className={`${
+                            secondImageLoading
+                              ? "opacity-0 position-absolute w-100 cover"
+                              : "opacity-100 w-100 cover position-relative"
+                          }}`}
+                          src={`https://premium.indusre.com/Admin/pages/forms/uploads/galary/${data.gallary.g_image2}`}
+                          alt={"img"}
+                          onLoadingComplete={() => setSecondImageLoading(false)}
+                          onClick={handleClickOpenShowAllPhotosDialog}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-6 p0 pl3">
+                  <div className="col-sm-12 ps-lg-0 cursor-pointer">
+                    <div className="sp-img-content">
+                      <div className="mb10">
+                        {thirdImageLoading ? (
+                          <Skeleton
+                            variant="rectangular"
+                            className="w-100 cover"
+                            width={
+                              size.width != undefined && size.width > 500
+                                ? 270
+                                : size.width / 2 - 20
+                            }
+                            height={
+                              size.width != undefined && size.width > 500
+                                ? 195
+                                : 160
+                            }
+                          />
+                        ) : (
+                          <></>
+                        )}
+                        <Image
+                          width={
+                            size.width != undefined && size.width > 500
+                              ? 270
+                              : size.width / 2 - 20
+                          }
+                          height={
+                            size.width != undefined && size.width > 500
+                              ? 195
+                              : 160
+                          }
+                          className={`${
+                            thirdImageLoading
+                              ? "opacity-0 position-absolute w-100 cover"
+                              : "opacity-100 w-100 cover position-relative"
+                          }}`}
+                          role="button"
+                          src={`https://premium.indusre.com/Admin/pages/forms/uploads/galary/${data.gallary.g_image3}`}
+                          alt={"img"}
+                          onLoadingComplete={() => setThirdImageLoading(false)}
+                          onClick={handleClickOpenShowAllPhotosDialog}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button
+                className="custom-btn-3 mt10 pc-hide"
+                onClick={handleClickOpenShowAllPhotosDialog}
+              >
+                Show All Photos
+              </button>
               <div className="w-100 mt20 top-border-grey-2">
                 <p className="title fz20 fw400 mb5 pt10">Features</p>
                 <FeaturesPropDetails features={data.features} />
@@ -385,9 +714,9 @@ const PropertyDetailsPage = () => {
               </div>
             </div>
 
-            <div className="col-lg-4">
+            <div className="col-lg-4 p0-mbl">
               <div className="position-sticky top-15">
-                <div className="column">
+                <div className="column mobile-hide">
                   <div className="agen-personal-info position-relative bgc-white default-box-shadow1 bdrs8 p20 mt30">
                     <div className="widget-wrapper mb-0">
                       <h6 className="title fz15 mb10 fw300 color-black-grey">
@@ -416,6 +745,7 @@ const PropertyDetailsPage = () => {
                     </div>
                   </div>
                 </div>
+                <div className="mt20 top-border-grey-2 pc-hide"></div>
                 <div className="column mt20">
                   <div className="agen-personal-info position-relative bgc-white default-box-shadow1 bdrs8 p20 mt0">
                     <h6 className="title fz17 mb10 fw300 color-black-grey">
@@ -469,7 +799,7 @@ const PropertyDetailsPage = () => {
             {/* End .row */}
 
             <div className="row pb30">
-              <div className="col-lg-12">
+              <div className="col-lg-12 p0-mbl">
                 <div className="property-city-slider">
                   <NearbySimilarProperty data={data.similar} />
                 </div>
@@ -486,6 +816,9 @@ const PropertyDetailsPage = () => {
       <section className="footer-style1 pt60 pb-0">
         <Footer />
       </section>
+      <div className="pc-hide bottom-navigation-bar-mobile w-100">
+        <BottomNavDetailsPage data={data} />
+      </div>
       {/* End Our Footer */}
     </>
   );
