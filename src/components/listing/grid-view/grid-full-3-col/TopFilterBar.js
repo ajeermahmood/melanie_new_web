@@ -199,8 +199,6 @@ const TopFilterBar = ({
                 }
               >
                 <option>Newest</option>
-                <option>Best Seller</option>
-                <option>Best Match</option>
                 <option>Price Low</option>
                 <option>Price High</option>
               </select>
@@ -221,8 +219,6 @@ const TopFilterBar = ({
               }
             >
               <option>Newest</option>
-              <option>Best Seller</option>
-              <option>Best Match</option>
               <option>Price Low</option>
               <option>Price High</option>
             </select>

@@ -126,7 +126,7 @@ export default function ProperteyFiltering({ status, deals, all }) {
 
   const resetFilter = () => {
     setPropertyTypes([]);
-    setPriceRange([0, 40000000]);
+    setPriceRange([0, 100000000]);
     setBedrooms(0);
     setBathroms(0);
     setLocation("0");
