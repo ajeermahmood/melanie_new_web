@@ -162,14 +162,14 @@ const DefaultHeader = () => {
                     className="text-dark m0 custom-link-2"
                     onClick={handleClickOpenListProperty}
                   >
-                    List Your Property
+                    Talk To Us
                   </p>
                   <Dialog
                     open={openListProperty}
                     onClose={handleCloseListProperty}
                   >
                     <DialogTitle className="mt10" align="center">
-                      List Your Property
+                      Talk To Us
                     </DialogTitle>
                     <DialogContent>
                       <DialogContentText
@@ -177,7 +177,7 @@ const DefaultHeader = () => {
                         fontSize={20}
                         align="center"
                       >
-                        Contact us for listing your property.
+                        Tell us specifications about your future property.
                       </DialogContentText>
                       <StyledBorderTextField
                         className="mt20"
@@ -457,9 +457,11 @@ const DefaultHeader = () => {
                             <p className="fz15 fw500 m0">Why Dubai</p>
                           </MenuItem>
                         </Link>
-                        <MenuItem onClick={handleClose} disableRipple>
-                          <p className="fz15 fw500 m0">About Us</p>
-                        </MenuItem>
+                        <Link href={"/#about-us"}>
+                          <MenuItem onClick={handleClose} disableRipple>
+                            <p className="fz15 fw500 m0">About Us</p>
+                          </MenuItem>
+                        </Link>
                       </div>
                     </div>
                   </StyledMenu>

@@ -124,7 +124,7 @@ const PremiumSalesMobile = ({ data, loading }) => {
                       <h6 className="list-title lh-lg">
                         <a
                           className="text-light hover-gold fw500"
-                          href={`/property-details?id=${listing.prop_id}`}
+                          href={`/property/${listing.prop_id}`}
                           style={{
                             overflow: "hidden",
                             whiteSpace: "nowrap",

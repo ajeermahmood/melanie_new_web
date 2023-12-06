@@ -1,14 +1,17 @@
 import { Skeleton } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const FeaturedListings = ({ data, loading }) => {
-  const skeleton = [1, 2, 3, 4, 5, 6];
+  const skeleton = [1, 2, 3];
   const currencyFormatter = new Intl.NumberFormat("en-AE", {
     style: "currency",
     currency: "AED",
     minimumFractionDigits: 0,
   });
+
+  const router = useRouter();
   return loading
     ? skeleton.map((listing, index) => (
         <div className="col-sm-6 col-lg-4" key={index}>
@@ -59,7 +62,16 @@ const FeaturedListings = ({ data, loading }) => {
       ))
     : data.map((listing) => (
         <div className="col-sm-6 col-lg-4" key={listing.prop_id}>
-          <div className="listing-style8">
+          <div
+            className="listing-style8"
+            onClick={() =>
+              router.push(
+                `/property/${listing.prop_id}&prj=${
+                  listing.completion_status == "Off Plan" ? "1" : "0"
+                }`
+              )
+            }
+          >
             <div className="list-thumb">
               <Image
                 width={382}
@@ -78,9 +90,6 @@ const FeaturedListings = ({ data, loading }) => {
               </div>
               <div className="list-meta">
                 <a className="rounded-0 mr5" href="#">
-                  <span className="flaticon-like"></span>
-                </a>
-                <a className="rounded-0 mr5" href="#">
                   <span className="flaticon-new-tab"></span>
                 </a>
                 <a className="rounded-0" href="#">
@@ -92,7 +101,7 @@ const FeaturedListings = ({ data, loading }) => {
               <h6 className="list-title lh-lg">
                 <Link
                   className="text-light hover-gold"
-                  href={`/property-details?id=${listing.prop_id}&prj=${
+                  href={`/property/${listing.prop_id}&prj=${
                     listing.completion_status == "Off Plan" ? "1" : "0"
                   }`}
                   style={{
@@ -105,11 +114,9 @@ const FeaturedListings = ({ data, loading }) => {
                   {listing.address}
                 </Link>
               </h6>
-              <p className="list-text text-light lh-base">
+              {/* <p className="list-text text-light lh-base">
                 For {listing.status}
-                {/* {" · "} */}
-                {/* {listing.completion_status} */}
-              </p>
+              </p> */}
               <p className="list-text text-light lh-base">
                 {currencyFormatter.format(listing.price)}
               </p>

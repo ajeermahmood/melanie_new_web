@@ -1,5 +1,4 @@
 "use client";
-import { getPropertyDetails } from "@/api/listings";
 import DefaultHeader from "@/components/common/DefaultHeader";
 import Footer from "@/components/home/home-v8/footer";
 import NearbySimilarProperty from "@/components/property/property-single-style/common/NearbySimilarProperty";
@@ -8,8 +7,6 @@ import ProperytyDescriptions from "@/components/property/property-single-style/c
 import ScheduleForm from "@/components/property/property-single-style/single-v2/ScheduleForm";
 import {
   AppBar,
-  Box,
-  CircularProgress,
   Dialog,
   IconButton,
   Skeleton,
@@ -17,15 +14,14 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
-import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import * as React from "react";
 import { useEffect, useState } from "react";
+import BottomNavDetailsPage from "./bottom_componenet_details_page";
 import FeaturesPropDetails from "./features";
 import MobileHeaderDetailsPage from "./mobile_header_details_page";
-import BottomNavDetailsPage from "./bottom_componenet_details_page";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -35,8 +31,8 @@ function useWindowSize() {
   // Initialize state with undefined width/height so server and client renders match
   // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
   const [windowSize, setWindowSize] = useState({
-    width: undefined,
-    height: undefined,
+    width: 1024,
+    height: 900,
   });
 
   useEffect(() => {
@@ -62,7 +58,7 @@ function useWindowSize() {
   return windowSize;
 }
 
-const PropertyDetailsPage = () => {
+const PropertyDetailsPage = ({ data }) => {
   const currencyFormatter = new Intl.NumberFormat("en-AE", {
     style: "currency",
     currency: "AED",
@@ -71,7 +67,6 @@ const PropertyDetailsPage = () => {
   const param = useSearchParams();
   const id = param.get("id");
 
-  const [data, setData] = useState("");
   const [allPhotos, setAllPhotos] = useState([]);
   const [allPhotosLoaded, setAllPhotosLoaded] = useState(false);
 
@@ -81,14 +76,6 @@ const PropertyDetailsPage = () => {
   const [thirdImageLoading, setThirdImageLoading] = useState(true);
 
   const size = useWindowSize();
-
-  useEffect(() => {
-    getPropertyDetails(id).then((res) => {
-      setData(res);
-      setAllPhotos(JSON.parse(res.gallary.imgs)["imgs"]);
-      console.log(res);
-    });
-  }, []);
 
   const [openShowAllPhotosDialog, setOpenShowAllPhotosDialog] = useState(false);
 
@@ -100,21 +87,9 @@ const PropertyDetailsPage = () => {
     setOpenShowAllPhotosDialog(false);
   };
 
-  return data == "" ? (
-    <Box
-      sx={{
-        display: "flex",
-        height: "60rem",
-        width: "100%",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <CircularProgress size={60} />
-    </Box>
-  ) : (
+  return (
     <>
-      <Head>
+      {/* <Head>
         {allPhotos.map((ph, index) => (
           <link
             key={index}
@@ -123,14 +98,14 @@ const PropertyDetailsPage = () => {
             as="image"
           />
         ))}
-      </Head>
+      </Head> */}
       {/* Main Header Nav */}
       <DefaultHeader />
       {/* End Main Header Nav */}
 
       {/* Mobile Nav  */}
       <div className="pc-hide w-100">
-        <MobileHeaderDetailsPage data={data}/>
+        <MobileHeaderDetailsPage data={data} />
       </div>
       {/* End Mobile Nav  */}
 
@@ -155,7 +130,7 @@ const PropertyDetailsPage = () => {
                 variant="rectangular"
                 className="w-100 cover"
                 width={
-                  size.width != undefined && size.width > 500
+                  size != undefined && size.width > 500
                     ? 1652
                     : size.width
                 }
@@ -174,7 +149,7 @@ const PropertyDetailsPage = () => {
 
             <Image
               width={
-                size.width == undefined && size.width > 500 ? 425 : size.width
+                size.width != undefined && size.width > 500 ? 425 : size.width
               }
               height={500}
               className={`pc-hide ${
@@ -711,6 +686,13 @@ const PropertyDetailsPage = () => {
               <div className="w-100 mt20 top-border-grey-2">
                 <p className="title fz20 fw400 mb15 pt10">Video Tour</p>
                 <button className="custom-btn-3">Request For Video Tour</button>
+              </div>
+
+              <div className="w-100 mt20 top-border-grey-2">
+                <p className="title fz20 fw400 mb15 pt10">3D walkthrough</p>
+                <button className="custom-btn-3">
+                  Request For 3D walkthrough
+                </button>
               </div>
             </div>
 

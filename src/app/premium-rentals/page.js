@@ -24,7 +24,7 @@ const PremiumSales = () => {
       {/* End Mobile Nav  */}
 
       {/* Breadcumb Sections */}
-      <section className="breadcumb-section bgc-f7 bg-white01 pt20 pb50 mobile-hide">
+      <section className="breadcumb-section bgc-f7 bg-white01 pt20 pb0 mobile-hide">
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
@@ -43,7 +43,7 @@ const PremiumSales = () => {
       {/* Property Filtering */}
 
       {/* Start Our Footer */}
-      <section className="footer-style1 pt60 pb-0">
+      <section className="footer-style1 pt25 pb-0">
         <Footer />
       </section>
       <div className="pc-hide bottom-navigation-bar-mobile w-100">

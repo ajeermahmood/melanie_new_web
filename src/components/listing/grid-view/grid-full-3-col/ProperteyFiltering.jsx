@@ -14,6 +14,7 @@ export default function ProperteyFiltering({ status, deals, all }) {
   // params
   const searchParams = useSearchParams();
   const property_type_param = searchParams.get("t");
+  const property_location_param = searchParams.get("l");
   const search_txt_param = searchParams.get("s");
   const beds_param = searchParams.get("bd");
   // params end
@@ -212,7 +213,7 @@ export default function ProperteyFiltering({ status, deals, all }) {
   };
 
   return (
-    <section className="pt0 pb90 bgc-f7">
+    <section className="pt0 pb50 bgc-f7">
       <div className="pc-hide d-flex justify-content-center p15">
         <MobileNavTop filterFunctions={filterFunctions} />
       </div>

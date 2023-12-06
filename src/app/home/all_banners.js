@@ -6,6 +6,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Autoplay } from "swiper";
+SwiperCore.use([Autoplay]);
 
 function useWindowSize() {
   // Initialize state with undefined width/height so server and client renders match
@@ -56,7 +58,7 @@ const AllBannersHome = () => {
           direction="vertical" // Set the direction to vertical
           spaceBetween={0}
           slidesPerView={1}
-          speed={1400} // Set the slide transition speed in milliseconds
+          speed={1400}
           autoplay={{ delay: 3000 }}
           modules={[Navigation]}
           navigation={{
@@ -64,7 +66,7 @@ const AllBannersHome = () => {
             prevEl: ".hero9-prev__active",
           }}
           className="hero_9"
-          style={{ height: `${size.width > 500 ? '40rem' : '25rem'}` }}
+          style={{ height: `${size.width > 500 ? "40rem" : "25rem"}` }}
         >
           {data.map((item, index) => (
             <SwiperSlide key={index}>
@@ -99,10 +101,12 @@ const AllBannersHome = () => {
                       </h2>
                       <p className="text-light">
                         {item.cat_name} <span className="color-gold">|</span>{" "}
-                        {item.completion_status}
+                        {item.prop_id == "2"
+                          ? "Impeccably Upgraded"
+                          : item.completion_status}
                       </p>
                       <Link
-                        href={`/property-details?id=${item.prop_id}`}
+                        href={`/property/${item.prop_id}`}
                         className="ud-btn banner-btn fw400 btn-thm mt10 mt0-xs btn-text-mbl"
                       >
                         View Property

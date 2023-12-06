@@ -102,7 +102,7 @@ const MobileHeaderDetailsPage = ({ data }) => {
             <div className="row m-0 d-flex px20">
               <div className="col-9 pl0">
                 <span className="mt15 mb15 share-link-text">
-                  http://localhost:3000/property-details?id=23
+                  http://indus-premium.vercel.app/property/23
                 </span>
               </div>
               <div className="col-3 p0 d-flex align-items-center">

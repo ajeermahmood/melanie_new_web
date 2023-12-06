@@ -62,7 +62,7 @@ const InFocus = () => {
   return data != "" ? (
     <>
       <section className="p0 bg-dark" id="in-focus">
-        <div className="container top-border-grey pt30">
+        {/* <div className="container top-border-grey pt30">
           <div className="nav justify-content-between pt20-mbl">
             <p className="text-light text-start fz20 mb0">In Focus</p>
             <li
@@ -75,7 +75,7 @@ const InFocus = () => {
             </li>
           </div>
           <p className="text-light text-start mb20 mt10">{bodyText}</p>
-        </div>
+        </div> */}
         <Image
           style={{
             width: "100%",
@@ -94,9 +94,11 @@ const InFocus = () => {
             height: "79.2%",
           }}
         ></div> */}
-        <div
-          className="container position-absolute infocus-inner-content"
-        >
+        <div className="container position-absolute infocus-inner-content top_2rem">
+          <p className="text-light text-start fz20 mb0">In Focus</p>
+        </div>
+
+        <div className="container position-absolute infocus-inner-content">
           <div className="row">
             <div className="col-xl-7">
               <h2 className="banner-title text-light fz40 fw400 mb0 fz35-mbl">
@@ -104,7 +106,7 @@ const InFocus = () => {
               </h2>
               <p className="text-light">{subHeaderText}</p>
               <Link
-                href={`/property-details?id=${data.prop.prop_id}&prj=1`}
+                href={`/property/${data.prop.prop_id}&prj=1`}
                 className="ud-btn banner-btn fw500 btn-thm mt10 mt0-xs btn-text-mbl"
               >
                 View Property

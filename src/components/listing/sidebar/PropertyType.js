@@ -1,16 +1,23 @@
 "use client";
 
-import React from "react";
+import { getAllPropertyCategories } from "@/api/listings";
+import React, { useEffect, useState } from "react";
 
 const PropertyType = ({ filterFunctions }) => {
-  const options = [
-    { label: "Villa", value: 1 },
-    { label: "Apartment", value: 2 },
-    { label: "Duplex", value: 4 },
-    { label: "Townhouse", value: 14 },
-    { label: "Project", value: 18 },
-    { label: "Office", value: 15 },
-  ];
+  const [options, setOptions] = useState([]);
+
+  useEffect(() => {
+    getAllPropertyCategories().then((res) => {
+      setOptions(
+        res.map((c) => {
+          return {
+            value: c.cat_id,
+            label: c.cat_name,
+          };
+        })
+      );
+    });
+  }, []);
 
   return (
     <>
@@ -25,7 +32,9 @@ const PropertyType = ({ filterFunctions }) => {
         />
         <span
           className={`checkmark  ${
-            !filterFunctions?.propertyTypes.length ? "bg-gold border-gold" : "border-grey-2"
+            !filterFunctions?.propertyTypes.length
+              ? "bg-gold border-gold"
+              : "border-grey-2"
           }`}
         />
       </label>

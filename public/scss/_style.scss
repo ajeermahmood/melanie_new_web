@@ -162,6 +162,22 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
   padding-left: 3px !important;
 }
 
+.maxw35rem {
+  max-width: 35rem !important;
+}
+
+.maxh25rem {
+  max-height: 25rem !important;
+}
+
+.top_2rem {
+  top: 2rem !important;
+}
+
+.h_56rem {
+  height: 56rem !important;
+}
+
 .details-page-top-bar {
   position: absolute;
   z-index: 1;
@@ -468,7 +484,7 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
     left: 0;
     background-image: linear-gradient(
       to top,
-      var(--theme-black-grey),
+      #2a2a2a94,
       rgba(255, 255, 255, 0)
     );
     opacity: 0.8;
@@ -7941,7 +7957,7 @@ header.menu-home10.sticky
 header.nav-homepage-style {
   background-color: var(--theme-black);
   border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-  padding: 30px 0;
+  padding: 25px 0;
   // position: fixed;
   width: 100%;
   z-index: 3;
@@ -8609,7 +8625,7 @@ li.mm-listitem:focus {
 }
 
 .advance-style2 {
-  max-width: 50rem;
+  max-width: 60rem;
   position: relative;
   z-index: 1;
 }

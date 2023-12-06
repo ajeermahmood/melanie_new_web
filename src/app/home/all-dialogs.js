@@ -16,6 +16,7 @@ const AllDialogs = () => {
   const [openBuyingGuide, setOpenBuyingGuide] = useState(false);
   const [openTalkToUs, setOpenTalkToUs] = useState(false);
   const [openListProperty, setOpenListProperty] = useState(false);
+  const [openTeam, setOpenTeam] = useState(false);
 
   const handleClickOpenBuyingGuide = () => {
     setOpenBuyingGuide(true);
@@ -41,6 +42,14 @@ const AllDialogs = () => {
     setOpenListProperty(false);
   };
 
+  const handleClickOpenTeam = () => {
+    setOpenTeam(true);
+  };
+
+  const handleCloseTeam = () => {
+    setOpenTeam(false);
+  };
+
   const StyledBorderTextField = styled(TextField)`
     & label.Mui-focused {
       color: #c49f5a;
@@ -54,14 +63,23 @@ const AllDialogs = () => {
   return (
     <>
       <div className="nav-item d-flex justify-content-center mt30 d-grid-mbl">
-        <button className="custom-btn mb15" onClick={handleClickOpenBuyingGuide}>
+        <button
+          className="custom-btn mb15"
+          onClick={handleClickOpenBuyingGuide}
+        >
           Buying Guide
         </button>
         <button className="custom-btn mb15" onClick={handleClickOpenTalkToUs}>
           Talk To Us
         </button>
-        <button className="custom-btn mb15" onClick={handleClickOpenListProperty}>
-          List Your Property
+        <button
+          className="custom-btn mb15"
+          onClick={handleClickOpenListProperty}
+        >
+          Sell Your Property
+        </button>
+        <button className="custom-btn mb15" onClick={handleClickOpenTeam}>
+          Team
         </button>
       </div>
 
@@ -181,7 +199,7 @@ const AllDialogs = () => {
       {/* ---------------------------------List Your Property Dialog-------------------------------- */}
       <Dialog open={openListProperty} onClose={handleCloseListProperty}>
         <DialogTitle className="mt10" align="center">
-          List Your Property
+          Sell Your Property
         </DialogTitle>
         <DialogContent>
           <DialogContentText
@@ -189,7 +207,7 @@ const AllDialogs = () => {
             fontSize={20}
             align="center"
           >
-            Contact us for listing your property.
+            Contact us for selling your property.
           </DialogContentText>
           <StyledBorderTextField
             className="mt20"
@@ -250,6 +268,32 @@ const AllDialogs = () => {
           </Button>
           <Button className="color-gold" onClick={handleCloseListProperty}>
             Send
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+      <Dialog open={openTeam} onClose={handleCloseTeam}>
+        <DialogTitle className="mt10" align="center">
+          Our Team
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText
+            className="font-style-2"
+            fontSize={20}
+            align="center"
+          >
+            Our team of Luxury Specialists are dedicated to providing you with
+            exceptional services and expertise, focusing on a specialist areas
+            with in-depth knowledge at a hyperlocal level. Leveraging their
+            extensive networking and negotiating skills, they will work
+            diligently to help you achieve the desired results, whether
+            it&apos;s making a sound property investment, finding the perfect
+            property, or obtaining the accurate price for your property.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button className="color-gold" onClick={handleCloseTeam}>
+            Close
           </Button>
         </DialogActions>
       </Dialog>

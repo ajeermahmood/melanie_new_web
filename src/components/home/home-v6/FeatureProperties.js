@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";
@@ -11,6 +12,8 @@ const FeatureProperties = ({ data }) => {
     currency: "AED",
     minimumFractionDigits: 0,
   });
+
+  const router = useRouter();
   return (
     <>
       <Swiper
@@ -30,14 +33,19 @@ const FeatureProperties = ({ data }) => {
         {data.map((property, index) => (
           <SwiperSlide key={index}>
             <div className="item">
-              <div className="listing-style11">
+              <div
+                className="listing-style11 cursor-pointer"
+                onClick={() =>
+                  router.push(`/property/${property.prop_id}`)
+                }
+              >
                 <div className="col-lg-12">
                   <div className="row align-items-center">
                     <div className="list-content mb30-md col-md-8 col-lg-6 col-xl-5 p-xl-0">
                       <h4 className="list-title">
                         <Link
                           className="color-gold fz24 fw400"
-                          href={`/property-details?id=${property.prop_id}`}
+                          href={`/property/${property.prop_id}`}
                         >
                           {property.address}
                         </Link>

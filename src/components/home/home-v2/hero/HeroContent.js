@@ -2,11 +2,13 @@
 import React, { useState } from "react";
 import SelectDropdown from "./SelectDropdown";
 import { useRouter } from "next/navigation";
+import LocationsDropdown from "./locations";
 
 const HeroContent = () => {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState("buy");
   const [selectedPropType, setSelectedPropType] = useState("all");
+  const [selectedLocations, setSelectedLocations] = useState("all");
   const [search, setSearch] = useState("");
 
   const handleTabClick = (tab) => {
@@ -22,19 +24,19 @@ const HeroContent = () => {
   return (
     <div className="advance-style2 mt20 mt0-md mb60 mx-auto">
       <h2 className="text-light fw400">
-        The address for luxury property. <br />
-        Exceptional homes, unrivalled expertise.
+        The Address for Luxury property. <br />
+        Exceptional Homes, Unrivalled expertise.
       </h2>
-      <ul className="nav mt40 nav-tabs p-0">
+      <ul className="nav mt20 nav-tabs p-0">
         {tabs.map((tab) => (
-          <li className="nav-item" key={tab.id}>
+          <li className="nav-item lh-1" key={tab.id}>
             <button
               className={`nav-link fz20 ${
                 activeTab === tab.id ? "active color-white02" : "color-white01"
               }`}
               onClick={() => handleTabClick(tab.id)}
             >
-              <span className="fw400">{tab.label}</span>
+              <span className="fw400 fz18">{tab.label}</span>
             </button>
           </li>
         ))}
@@ -76,7 +78,7 @@ const HeroContent = () => {
           >
             <div className="advance-content-style2">
               <div className="row align-items-center justify-content-start justify-content-md-center">
-                <div className="col-md-5 col-lg-7">
+                <div className="col-md-5 col-lg-5">
                   <div className="advance-search-field position-relative text-start bdrr1 bdrrn-sm bb1-sm">
                     <form className="form-search position-relative">
                       <div className="box-search">
@@ -85,7 +87,7 @@ const HeroContent = () => {
                           className="form-control "
                           type="text"
                           name="search"
-                          placeholder={`Search Properties for ${tab.label}`}
+                          placeholder={tab.id == 'projects' ? 'Search for Projects' : `Search Properties for ${tab.label == 'Buy' ? 'Sale' : tab.label}`}
                           onChange={(e) => setSearch(e.target.value)}
                         />
                       </div>
@@ -103,9 +105,18 @@ const HeroContent = () => {
                     </div>
                   </div>
                 </div>
+                <div className="col-md-3 col-lg-3 ps-md-0">
+                  <div className="bdrr1 bdrrn-sm pe-0 pe-lg-3 bb1-sm">
+                    <div className="bootselect-multiselect">
+                      <LocationsDropdown
+                        setSelectedPropType={setSelectedLocations}
+                      />
+                    </div>
+                  </div>
+                </div>
                 {/* End .col-md-3 */}
 
-                <div className="col-md-4 col-lg-2 d-flex justify-content-end">
+                <div className="col-md-4 col-lg-1 d-flex justify-content-end">
                   <div className="d-flex align-items-center justify-content-start justify-content-md-center mt-3 mt-md-0">
                     <button
                       className="advance-search-icon ud-btn btn-thm"
@@ -113,11 +124,11 @@ const HeroContent = () => {
                       onClick={() => {
                         if (activeTab == "buy") {
                           router.push(
-                            `/premium-sales?s=${search}&t=${selectedPropType}`
+                            `/premium-sales?s=${search}&t=${selectedPropType}&l=${selectedLocations}`
                           );
                         } else if (activeTab == "rent") {
                           router.push(
-                            `/premium-rentals?s=${search}&t=${selectedPropType}`
+                            `/premium-rentals?s=${search}&t=${selectedPropType}&l=${selectedLocations}`
                           );
                         } else {
                           router.push(

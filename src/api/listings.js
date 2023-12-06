@@ -7,6 +7,13 @@ export async function getAllBannersHome() {
   return response.data;
 }
 
+export async function getAllPropertyCategories() {
+  const response = await axios.get(
+    "https://indusspeciality.com/api/melanie/home/get_all_property_types.php"
+  );
+  return response.data;
+}
+
 export async function getInFocusData() {
   const response = await axios.get(
     "https://indusspeciality.com/api/melanie/home/get_in_focus.php"

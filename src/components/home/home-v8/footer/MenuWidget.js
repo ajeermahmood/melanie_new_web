@@ -15,7 +15,7 @@ const MenuWidget = () => {
       title: "Quick Links",
       links: [
         { label: "investor Deals", href: "/see-all" },
-        { label: "SO/UPTOWN DUBAI", href: "/property-details?id=32&prj=1" },
+        { label: "SO/UPTOWN DUBAI", href: "/property/32&prj=1" },
       ],
     },
     {

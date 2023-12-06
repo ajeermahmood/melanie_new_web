@@ -26,7 +26,7 @@ export default function ProjectsListing() {
     });
   }, []);
   return (
-    <section className="bg-dark pt30 pb50">
+    <section className="bg-dark pt30 pb0">
       <div className="container pt30 top-border-grey">
         <div className="nav justify-content-between align-items-center pt20-mbl">
           <p className="text-light text-start fz20 mb0">Investor Deals</p>
@@ -40,7 +40,7 @@ export default function ProjectsListing() {
           </li>
         </div>
         <p className="text-light text-start mb30 mt10">
-          {headerText}{" · "}{bodyText}
+          {headerText}{bodyText}
         </p>
 
         <div className="row mobile-hide">

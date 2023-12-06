@@ -1,10 +1,13 @@
 "use client";
-import { getAllPropertyCategories } from "@/api/listings";
-import { useEffect, useState } from "react";
 import Select from "react-select";
 
-const SelectDropdown = ({ setSelectedPropType }) => {
-  const [catOptions, setCatOptions] = useState([]);
+const LocationsDropdown = ({ setSelectedPropType }) => {
+  const catOptions = [
+    { label: "All Loacations", value: "all" },
+    { label: "Dubai Marina", value: "marina" },
+    { label: "Downtown Dubai", value: "downtown" },
+    { label: "Palm Jumeirah", value: "palm jumeirah" },
+  ];
 
   const customStyles = {
     option: (styles, { isFocused, isSelected, isHovered }) => {
@@ -21,19 +24,6 @@ const SelectDropdown = ({ setSelectedPropType }) => {
     },
   };
 
-  useEffect(() => {
-    getAllPropertyCategories().then((res) => {
-      setCatOptions(
-        res.map((c) => {
-          return {
-            value: c.cat_id,
-            label: c.cat_name,
-          };
-        })
-      );
-    });
-  }, []);
-
   return (
     <>
       <Select
@@ -45,11 +35,10 @@ const SelectDropdown = ({ setSelectedPropType }) => {
         classNamePrefix="select"
         required
         isSearchable={false}
-        placeholder="Property Type"
         onChange={(e) => setSelectedPropType(e.value)}
       />
     </>
   );
 };
 
-export default SelectDropdown;
+export default LocationsDropdown;

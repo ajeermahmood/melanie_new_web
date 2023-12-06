@@ -1,5 +1,7 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";
@@ -10,6 +12,8 @@ const NearbySimilarProperty = ({ data }) => {
     currency: "AED",
     minimumFractionDigits: 0,
   });
+
+  const router = useRouter();
   return (
     <>
       <Swiper
@@ -41,7 +45,10 @@ const NearbySimilarProperty = ({ data }) => {
       >
         {data.slice(0, 5).map((listing) => (
           <SwiperSlide key={listing.id}>
-            <div className="listing-style8">
+            <div
+              className="listing-style8"
+              onClick={() => router.push(`/property/${listing.prop_id}`)}
+            >
               <div className="p10">
                 <div className="list-thumb">
                   <Image
@@ -70,9 +77,9 @@ const NearbySimilarProperty = ({ data }) => {
                 </div>
                 <div className="list-content bg-light-grey pl0">
                   <h6 className="list-title lh-lg">
-                    <a
+                    <Link
                       className="text-dark hover-gold fw500"
-                      href={`/property-details?id=${listing.prop_id}`}
+                      href={`/property/${listing.prop_id}`}
                       style={{
                         overflow: "hidden",
                         whiteSpace: "nowrap",
@@ -81,7 +88,7 @@ const NearbySimilarProperty = ({ data }) => {
                       }}
                     >
                       {listing.address}
-                    </a>
+                    </Link>
                   </h6>
                   <p className="list-text lh-base color-black-grey-2">
                     For {listing.status}

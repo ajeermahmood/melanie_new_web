@@ -29,7 +29,7 @@ const HomePage = () => {
       {/* End Mobile Nav  */}
 
       {/* Home Banner Style V2 */}
-      <section className="home-banner-style2 p0">
+      <section className="home-banner-style2 p0 h_56rem">
         <div className="home-style2">
           <div className="container maxw1600">
             <div className="row">
@@ -42,24 +42,19 @@ const HomePage = () => {
         </div>
       </section>
 
-      <section className="bg-dark pb60 pb30-md pt0 pt25-mbl">
+      <section id="about-us" className="bg-dark pb30 pb30-md pt0 pt25-mbl">
         <div className="container">
           <p className="text-light text-center fz20 mb0">WELCOME</p>
           <p className="text-light text-center fz30 color-gold">
             INDUS PREMIUM
           </p>
-          <p className="text-light text-center">
-            Indus Premium specializes in luxury properties in Dubai. We provide
-            top-notch services to high net worth clients looking to buy, sell,
-            or rent luxury homes. Our team of Luxury Sales Specialists are
-            dedicated to providing you with exceptional services and expertise,
-            focusing on a specific areas of Dubai, with in-depth knowledge at a
-            hyperlocal level. Leveraging their extensive networking and
-            negotiating skills, they will work diligently to help you achieve
-            the desired results, whether it&apos;s making a sound property
-            investment, finding the perfect property, or obtaining the accurate
-            price for your property.
-          </p>
+          <div className="w-100 d-flex justify-content-center">
+            <p className="text-light text-center maxw35rem">
+              Indus Premium specializes in luxury real estate across the UAE. We
+              provide expert services to clients looking to buy, sell, or rent
+              luxury homes or profitably manage their investment portfolios.
+            </p>
+          </div>
           <AllDialogs />
         </div>
       </section>
@@ -175,7 +170,7 @@ const HomePage = () => {
       </section>
 
       {/* Start Our Footer */}
-      <section className="footer-style1 at-home2 pb-0 pt40">
+      <section className="footer-style1 at-home2 pb-0 pt25">
         <Footer />
       </section>
       <div className="pc-hide bottom-navigation-bar-mobile w-100">

@@ -1,6 +1,7 @@
 import listings from "@/data/listings";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const ProjectsListings = () => {
@@ -30,15 +31,15 @@ const ProjectsListings = () => {
       link: "/projects",
     },
   ];
+
+  const router = useRouter();
   return (
     <>
       {investor_deals.map((listing, index) => (
         <div className="col-sm-6 col-lg-3" key={index}>
           <div
-            className="listing-style9 bdrs0"
-            style={{
-              maxHeight: "25rem !important",
-            }}
+            className="listing-style9 bdrs0 maxh25rem"
+            onClick={() => router.push(listing.link)}
           >
             <div className="list-thumb overlay-from-bottom">
               <Image

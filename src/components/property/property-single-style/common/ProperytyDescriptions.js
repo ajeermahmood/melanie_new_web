@@ -18,10 +18,10 @@ const ProperytyDescriptions = ({ desc, infocus }) => {
         <></>
       )}
 
-      <p
+      <div
         className="text mt15 mb10 font-style-2"
         dangerouslySetInnerHTML={{ __html: desc }}
-      ></p>
+      ></div>
       {/* <div className="agent-single-accordion">
         <div className="accordion accordion-flush" id="accordionFlushExample">
           <div className="accordion-item">

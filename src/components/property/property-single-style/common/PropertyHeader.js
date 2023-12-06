@@ -11,34 +11,28 @@ const PropertyHeader = ({ details }) => {
       <div className="col-lg-8">
         <div className="single-property-content mb30-md">
           <div className="pd-meta mb15 d-md-flex align-items-center">
-            <p className="fz15 mb-0 fw300 underline-text color-black-grey">
-              <Link
-                href={`${
-                  details.status == "Sale"
-                    ? "/premium-sales"
-                    : "/premium-rentals"
-                }`}
-              >
-                {details.status}
-              </Link>
-            </p>
-            <li className="arrow-after"></li>
-            <p className="text fz15 mb-0 bdrrn-sm fw300 underline-text color-black-grey">
-              <Link
-                href={`/all-properties?s=dubai`}
-              >
-                Dubai
-              </Link>
-            </p>
-            <li className="arrow-after"></li>
-            <p className="text fz15 mb-0 bdrrn-sm fw300 underline-text color-black-grey">
             <Link
-                href={`/all-properties?t=${details.cat_id}`}
-              >
+              href={`${
+                details.status == "Sale" ? "/premium-sales" : "/premium-rentals"
+              }`}
+            >
+              <p className="fz15 mb-0 fw300 underline-text color-black-grey">
+                {details.status}
+              </p>
+            </Link>
+            <li className="arrow-after"></li>
+            <Link href={`/all-properties?s=dubai`}>
+              <p className="text fz15 mb-0 bdrrn-sm fw300 underline-text color-black-grey">
+                Dubai
+              </p>
+            </Link>
+            <li className="arrow-after"></li>
+
+            <Link href={`/all-properties?t=${details.cat_id}`}>
+              <p className="text fz15 mb-0 bdrrn-sm fw300 underline-text color-black-grey">
                 {details.cat_name}
-              </Link>
-              
-            </p>
+              </p>
+            </Link>
           </div>
           {/* <div className="property-meta d-flex align-items-center">
             <a className="text fz15" href="#">
@@ -65,13 +59,11 @@ const PropertyHeader = ({ details }) => {
               {/* <a className=" mr20" href="#">
                 <span className="flaticon-like" />
               </a> */}
-              <a className=" mr20" href="#">
-                <span className="flaticon-new-tab" />
-              </a>
+
               <a className=" mr20" href="#">
                 <span className="flaticon-share-1" />
               </a>
-              <a className="" href="#">
+              <a className="" href="#" onClick={() => window.print()}>
                 <span className="flaticon-printer" />
               </a>
             </div>

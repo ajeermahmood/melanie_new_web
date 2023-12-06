@@ -3,6 +3,7 @@
 import { Skeleton } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const FeaturedListings = ({ data, colstyle, loading }) => {
   const skeletonLoader = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -11,6 +12,8 @@ const FeaturedListings = ({ data, colstyle, loading }) => {
     currency: "AED",
     minimumFractionDigits: 0,
   });
+
+  const router = useRouter();
   return loading
     ? skeletonLoader.map((listing, index) => (
         <div
@@ -64,7 +67,16 @@ const FeaturedListings = ({ data, colstyle, loading }) => {
           }  `}
           key={listing.id}
         >
-          <div className="listing-style8 bg-light-hover bdrs0-mbl">
+          <div
+            className="listing-style8 bg-light-hover bdrs0-mbl"
+            onClick={() =>
+              router.push(
+                `/property/${listing.prop_id}&prj=${
+                  listing.completion_status == "Off Plan" ? "1" : "0"
+                }`
+              )
+            }
+          >
             <div className="p15 p0-mbl">
               <div className="list-thumb">
                 <Image
@@ -81,9 +93,6 @@ const FeaturedListings = ({ data, colstyle, loading }) => {
                 </div>
                 <div className="list-meta">
                   <a className="rounded-0 mr5" href="#">
-                    <span className="flaticon-like"></span>
-                  </a>
-                  <a className="rounded-0 mr5" href="#">
                     <span className="flaticon-new-tab"></span>
                   </a>
                   <a className="rounded-0" href="#">
@@ -95,7 +104,7 @@ const FeaturedListings = ({ data, colstyle, loading }) => {
                 <h6 className="list-title lh-lg">
                   <Link
                     className="text-dark hover-gold fw500"
-                    href={`/property-details?id=${listing.prop_id}&prj=${
+                    href={`/property/${listing.prop_id}&prj=${
                       listing.completion_status == "Off Plan" ? "1" : "0"
                     }`}
                     style={{
@@ -108,11 +117,9 @@ const FeaturedListings = ({ data, colstyle, loading }) => {
                     {listing.address}
                   </Link>
                 </h6>
-                <p className="list-text lh-base color-black-grey-2">
+                {/* <p className="list-text lh-base color-black-grey-2">
                   For {listing.status}
-                  {/* {" · "}
-                  {listing.completion_status} */}
-                </p>
+                </p> */}
                 <p className="list-text text-dark lh-base">
                   {listing.price != "0"
                     ? currencyFormatter.format(listing.price)
