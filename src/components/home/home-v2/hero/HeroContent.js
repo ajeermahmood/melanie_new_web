@@ -24,8 +24,8 @@ const HeroContent = () => {
   return (
     <div className="advance-style2 mt20 mt0-md mb60 mx-auto">
       <h2 className="text-light fw400">
-        The Address for Luxury property. <br />
-        Exceptional Homes, Unrivalled expertise.
+        The Address for Luxury Property, <br />
+        Exceptional Homes, Unrivalled Expertise.
       </h2>
       <ul className="nav mt20 nav-tabs p-0">
         {tabs.map((tab) => (

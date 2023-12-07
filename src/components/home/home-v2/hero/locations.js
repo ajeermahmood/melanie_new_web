@@ -3,10 +3,11 @@ import Select from "react-select";
 
 const LocationsDropdown = ({ setSelectedPropType }) => {
   const catOptions = [
-    { label: "All Loacations", value: "all" },
+    { label: "All Locations", value: "all" },
     { label: "Dubai Marina", value: "marina" },
     { label: "Downtown Dubai", value: "downtown" },
     { label: "Palm Jumeirah", value: "palm jumeirah" },
+    { label: "Uptown Dubai", value: "uptown Dubai" },
   ];
 
   const customStyles = {

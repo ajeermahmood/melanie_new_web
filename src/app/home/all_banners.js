@@ -100,9 +100,16 @@ const AllBannersHome = () => {
                         {item.address}
                       </h2>
                       <p className="text-light">
-                        {item.cat_name} <span className="color-gold">|</span>{" "}
+                        {item.prop_id == "2"
+                          ? "Waterfront Villa"
+                          : item.prop_id == "39"
+                          ? "Premium Penthouse"
+                          : item.cat_name}{" "}
+                        <span className="color-gold">|</span>{" "}
                         {item.prop_id == "2"
                           ? "Impeccably Upgraded"
+                          : item.prop_id == "39"
+                          ? "Indoor Pool"
                           : item.completion_status}
                       </p>
                       <Link
