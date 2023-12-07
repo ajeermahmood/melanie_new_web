@@ -75,3 +75,18 @@ export async function getAllDeals(limit, pageNumber, filter) {
   );
   return response.data;
 }
+
+
+export async function getPremiumRentalsTopText() {
+  const response = await axios.get(
+    "https://indusspeciality.com/api/melanie/home/get_premium_rentals_top_text.php"
+  );
+  return response.data;
+}
+
+export async function getInvestorDealsTopText() {
+  const response = await axios.get(
+    "https://indusspeciality.com/api/melanie/home/get_investor_deals_top_text.php"
+  );
+  return response.data;
+}

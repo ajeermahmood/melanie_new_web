@@ -7,6 +7,7 @@ import ProperteyFiltering from "@/components/listing/grid-view/grid-full-3-col/P
 
 import React from "react";
 import BottomNavigationMobile2 from "../home/bottom_nav_mobile_2";
+import PremiumRentalsTopText from "./top_text";
 
 export const metadata = {
   title: "Indus Premium | Premium Rentals",
@@ -30,7 +31,7 @@ const PremiumSales = () => {
             <div className="col-lg-12">
               <div className="breadcumb-style1">
                 <h2 className="title fw400 text-center">Premium Rentals</h2>
-                <p className="text-center fz20 maxw1000 mx-auto color-black-grey-2 font-style-2">Discover Dubai&apos;s finest: Explore our collection of premium rental properties, where luxury meets lifestyle.</p>
+                <PremiumRentalsTopText />
               </div>
             </div>
           </div>
@@ -39,7 +40,7 @@ const PremiumSales = () => {
       {/* End Breadcumb Sections */}
 
       {/* Property Filtering */}
-      <ProperteyFiltering status={'rent'} deals={"no"}/>
+      <ProperteyFiltering status={"rent"} deals={"no"} />
       {/* Property Filtering */}
 
       {/* Start Our Footer */}

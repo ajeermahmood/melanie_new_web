@@ -7,6 +7,7 @@ import ProperteyFiltering from "@/components/listing/grid-view/grid-full-3-col/P
 
 import React from "react";
 import BottomNavigationMobile2 from "../home/bottom_nav_mobile_2";
+import InvestorDealsTopText from "@/components/common/investor_deals_top_text";
 
 export const metadata = {
   title: "Indus Premium | Projects",
@@ -30,10 +31,7 @@ const PremiumSales = () => {
             <div className="col-lg-12">
               <div className="breadcumb-style1">
                 <h2 className="title fw400 text-center">Projects</h2>
-                <p className="text-center fz20 maxw1000 mx-auto color-black-grey-2 font-style-2">
-                  Prime Dubai Investments{" · "}Explore Lucrative Real Estate
-                  Deals
-                </p>
+                <InvestorDealsTopText />
               </div>
             </div>
           </div>
