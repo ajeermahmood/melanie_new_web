@@ -1,13 +1,10 @@
 import DefaultHeader from "@/components/common/DefaultHeader";
 
 import Footer from "@/components/home/home-v8/footer";
-import MobileMenu from "@/components/common/mobile-menu";
 
 import ProperteyFiltering from "@/components/listing/grid-view/grid-full-3-col/ProperteyFiltering";
 
-import React from "react";
 import BottomNavigationMobile2 from "../home/bottom_nav_mobile_2";
-import InvestorDealsTopText from "@/components/common/investor_deals_top_text";
 
 export const metadata = {
   title: "Indus Premium | 1 Beds",
@@ -25,13 +22,13 @@ const PremiumSales = () => {
       {/* End Mobile Nav  */}
 
       {/* Breadcumb Sections */}
-      <section className="breadcumb-section bgc-f7 bg-white01 pt20 pb0 mobile-hide">
+      <section className="breadcumb-section bgc-f7 bg-white01 pt0 pb0 mobile-hide">
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
               <div className="breadcumb-style1">
                 <h2 className="title fw400 text-center">1 Beds</h2>
-                <InvestorDealsTopText />
+                {/* <InvestorDealsTopText /> */}
               </div>
             </div>
           </div>

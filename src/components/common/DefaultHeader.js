@@ -133,9 +133,9 @@ const DefaultHeader = () => {
                   <div className="logos mr40">
                     <Link className="header-logo logo1" href="/">
                       <Image
-                        width={230}
-                        height={44}
-                        src="/images/logo/logo-1.svg"
+                        width={130}
+                        height={40}
+                        src="/images/logo/INDUS_NEW_LOGO_SMALL-2.webp"
                         alt="Header Logo"
                       />
                     </Link>

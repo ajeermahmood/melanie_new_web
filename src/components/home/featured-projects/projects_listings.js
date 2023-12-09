@@ -41,7 +41,7 @@ const ProjectsListings = () => {
             className="listing-style9 bdrs0 maxh25rem"
             onClick={() => router.push(listing.link)}
           >
-            <div className="list-thumb overlay-from-bottom">
+            <div className="list-thumb">
               <Image
                 width={382}
                 height={465}
@@ -51,12 +51,15 @@ const ProjectsListings = () => {
               />
             </div>
 
-            <div className="list-content">
+            {/* <div className="list-content">
               <h6 className="list-title my-1 text-light">
                 <Link href={listing.link}>{listing.title}</Link>
               </h6>
-            </div>
+            </div> */}
           </div>
+          <h6 className="list-title my-1">
+            <Link className="custom-link" href={listing.link}>{listing.title}</Link>
+          </h6>
         </div>
       ))}
     </>

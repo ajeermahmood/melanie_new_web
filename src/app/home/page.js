@@ -29,7 +29,7 @@ const HomePage = () => {
       {/* End Mobile Nav  */}
 
       {/* Home Banner Style V2 */}
-      <section className="home-banner-style2 p0 h_56rem">
+      <section className="home-banner-style2 p0 h_48rem h_33rem-mbl">
         <div className="home-style2">
           <div className="container maxw1600">
             <div className="row">
@@ -42,12 +42,19 @@ const HomePage = () => {
         </div>
       </section>
 
-      <section id="about-us" className="bg-dark pb30 pb30-md pt0 pt25-mbl">
+      <section id="about-us" className="bg-dark pb30 pb30-md pt0">
         <div className="container">
-          <p className="text-light text-center fz20 mb0">WELCOME</p>
-          <p className="text-light text-center fz30 color-gold">
+          {/* <p className="text-light text-center fz30 color-gold">
             INDUS PREMIUM
-          </p>
+          </p> */}
+          <div className="w-100 d-flex justify-content-center mb20 pt5">
+            <Image
+              width={130}
+              height={40}
+              src="/images/logo/INDUS_NEW_LOGO_SMALL-2.webp"
+              alt="Header Logo"
+            />
+          </div>
           <div className="w-100 d-flex justify-content-center">
             <p className="text-light text-center maxw35rem">
               Indus Premium specializes in luxury real estate across the UAE. We

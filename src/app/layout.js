@@ -40,7 +40,7 @@ export default function RootLayout({ children }) {
         className={`body  ${roboto.className} ${dmSans.className}`}
         cz-shortcut-listen="false"
       >
-        <div className={`wrapper ${path == "/property" ? "" : "ovh"}`}>
+        <div className={`wrapper ${path.startsWith("/property") ? "" : "ovh"}`}>
           {children}
         </div>
 

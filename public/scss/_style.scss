@@ -90,8 +90,20 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
 /// new styles----------------------------------------------------------------------------------------------------------------------------------------------
 .home-banner-inner-content {
   z-index: 2;
-  top: 10rem;
-  left: 13rem;
+  bottom: 5rem;
+  left: 3rem;
+}
+
+.home-inner-banner-box {
+  background-color: #00000082;
+  border-radius: 5px;
+  color: white;
+  padding: 15px 20px;
+}
+
+.inner-banner-btn {
+  font-size: 13px !important;
+  padding: 3px 10px !important;
 }
 
 .share-btns {
@@ -174,8 +186,8 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
   top: 2rem !important;
 }
 
-.h_56rem {
-  height: 56rem !important;
+.h_48rem {
+  height: 48rem !important;
 }
 
 .details-page-top-bar {
@@ -243,6 +255,9 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
 }
 
 @media (max-width: 500px) {
+  .h_33rem-mbl {
+    height: 33rem !important;
+  }
   .mb20-mbl {
     margin-bottom: 20px !important;
   }
@@ -348,7 +363,7 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
 
   .infocus-inner-content {
     z-index: 2;
-    top: 20rem;
+    top: 10rem;
     left: 0rem;
     text-align: center;
     padding: 0 25px !important;
@@ -356,11 +371,12 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
 
   .home-banner-inner-content {
     z-index: 2;
-    top: 5rem;
+    top: 13rem;
     left: 0rem;
-    text-align: center;
+    text-align: start;
     padding: 0 25px !important;
   }
+
 }
 
 @media (min-width: 700px) {
@@ -458,20 +474,20 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
 }
 
 .home-banner-slider {
-  &:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-image: linear-gradient(
-      to right,
-      var(--theme-black-grey),
-      rgba(255, 255, 255, 0)
-    );
-    opacity: 0.8;
-  }
+  // &:before {
+  //   content: "";
+  //   position: absolute;
+  //   top: 0;
+  //   right: 0;
+  //   bottom: 0;
+  //   left: 0;
+  //   background-image: linear-gradient(
+  //     to right,
+  //     var(--theme-black-grey),
+  //     rgba(255, 255, 255, 0)
+  //   );
+  //   opacity: 0.8;
+  // }
 }
 
 .overlay-from-bottom {
@@ -7957,7 +7973,7 @@ header.menu-home10.sticky
 header.nav-homepage-style {
   background-color: var(--theme-black);
   border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-  padding: 25px 0;
+  padding: 15px 0;
   // position: fixed;
   width: 100%;
   z-index: 3;

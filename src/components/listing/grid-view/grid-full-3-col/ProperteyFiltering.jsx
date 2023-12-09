@@ -1,6 +1,11 @@
 "use client";
 
-import { getAllDeals, getAllListings } from "@/api/listings";
+import {
+  getAllDeals,
+  getAllListings,
+  getAllListingsRent,
+  getAllListingsSale,
+} from "@/api/listings";
 import AdvanceFilterModal from "@/components/common/advance-filter-two";
 import { Pagination, Stack } from "@mui/material";
 import { useEffect, useState } from "react";
@@ -58,7 +63,7 @@ export default function ProperteyFiltering({ status, deals, all }) {
       ? [Number(property_type_param)]
       : []
   );
-  const [priceRange, setPriceRange] = useState([20, 100000000]);
+  const [priceRange, setPriceRange] = useState([20, 200000000]);
   const [priceRangeSetted, setPriceRangeSetted] = useState(1);
   const [bedrooms, setBedrooms] = useState(
     beds_param != null ? Number(beds_param) : 0
@@ -79,24 +84,62 @@ export default function ProperteyFiltering({ status, deals, all }) {
   useEffect(() => {
     setLoading(true);
     if (deals == "no") {
-      getAllListings(9, currentPage, {
-        search: search,
-        status: propStatus,
-        prop_types: propertyTypes,
-        price_range: priceRange,
-        beds: bedrooms,
-        baths: bathroms,
-        location: location,
-        sqft_range: squirefeet,
-        features: categories,
-        sort: currentSortingOption,
-      })
-        .then((res) => {
-          setListings(res.listings);
-          setListingsCount(res.count);
-          console.log(res);
+      if (propStatus == "sale") {
+        getAllListingsSale(9, currentPage, {
+          search: search,
+          prop_types: propertyTypes,
+          price_range: priceRange,
+          beds: bedrooms,
+          baths: bathroms,
+          location: location,
+          sqft_range: squirefeet,
+          features: categories,
+          sort: currentSortingOption,
         })
-        .finally(() => setLoading(false));
+          .then((res) => {
+            setListings(res.listings);
+            setListingsCount(res.count);
+            console.log(res);
+          })
+          .finally(() => setLoading(false));
+      } else if (propStatus == "rent") {
+        getAllListingsRent(9, currentPage, {
+          search: search,
+          prop_types: propertyTypes,
+          price_range: priceRange,
+          beds: bedrooms,
+          baths: bathroms,
+          location: location,
+          sqft_range: squirefeet,
+          features: categories,
+          sort: currentSortingOption,
+        })
+          .then((res) => {
+            setListings(res.listings);
+            setListingsCount(res.count);
+            console.log(res);
+          })
+          .finally(() => setLoading(false));
+      } else {
+        getAllListings(9, currentPage, {
+          search: search,
+          prop_types: propertyTypes,
+          status: propStatus,
+          price_range: priceRange,
+          beds: bedrooms,
+          baths: bathroms,
+          location: location,
+          sqft_range: squirefeet,
+          features: categories,
+          sort: currentSortingOption,
+        })
+          .then((res) => {
+            setListings(res.listings);
+            setListingsCount(res.count);
+            console.log(res);
+          })
+          .finally(() => setLoading(false));
+      }
     } else {
       getAllDeals(9, currentPage, {
         search: search,

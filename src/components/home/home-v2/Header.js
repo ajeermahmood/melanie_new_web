@@ -122,7 +122,7 @@ const Header = () => {
 
   return (
     <>
-      <header className={`header-nav nav-homepage-style at-home2  main-menu`}>
+      <header className={`header-nav nav-homepage-style at-home2 main-menu pb0`}>
         <nav className="posr">
           <div className="container posr">
             <div className="row align-items-center justify-content-between">
@@ -131,9 +131,9 @@ const Header = () => {
                   <div className="logos mr40">
                     <Link className="header-logo logo1" href="/">
                       <Image
-                        width={230}
-                        height={44}
-                        src="/images/logo/logo-1.svg"
+                        width={130}
+                        height={40}
+                        src="/images/logo/INDUS_NEW_LOGO_SMALL-2.webp"
                         alt="Header Logo"
                       />
                     </Link>
@@ -141,7 +141,7 @@ const Header = () => {
                       <Image
                         width={138}
                         height={44}
-                        src="/images/logo/logo-1.svg"
+                        src="/images/logo/INDUS_NEW_LOGO_SMALL-2.webp"
                         alt="Header Logo"
                       />
                     </Link>

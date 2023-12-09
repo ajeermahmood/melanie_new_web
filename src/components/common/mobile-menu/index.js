@@ -28,9 +28,9 @@ const MobileMenu = () => {
               </a> */}
               <Link className="mobile_logo" href="/">
                 <Image
-                  width={138}
-                  height={44}
-                  src="/images/logo/logo-1.svg"
+                  width={110}
+                  height={35}
+                  src="/images/logo/INDUS_NEW_LOGO_SMALL-2.webp"
                   alt="logo"
                 />
               </Link>

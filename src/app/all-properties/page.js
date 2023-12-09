@@ -22,7 +22,7 @@ const PremiumSales = () => {
       {/* End Mobile Nav  */}
 
       {/* Breadcumb Sections */}
-      <section className="breadcumb-section bgc-f7 bg-white01 pt20 pb0 mobile-hide">
+      <section className="breadcumb-section bgc-f7 bg-white01 pt0 pb0 mobile-hide">
         <div className="container">
           <div className="row">
             <div className="col-lg-12">

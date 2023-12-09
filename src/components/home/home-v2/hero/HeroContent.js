@@ -22,12 +22,12 @@ const HeroContent = () => {
   ];
 
   return (
-    <div className="advance-style2 mt20 mt0-md mb60 mx-auto">
-      <h2 className="text-light fw400">
+    <div className="advance-style2 mt0-md mb60 mx-auto">
+      {/* <h2 className="text-light fw400">
         The Address for Luxury Property, <br />
         Exceptional Homes, Unrivalled Expertise.
-      </h2>
-      <ul className="nav mt20 nav-tabs p-0">
+      </h2> */}
+      <ul className="nav nav-tabs p-0">
         {tabs.map((tab) => (
           <li className="nav-item lh-1" key={tab.id}>
             <button
@@ -63,7 +63,11 @@ const HeroContent = () => {
             <button
               className="advance-search-icon ud-btn btn-thm"
               type="button"
-              onClick={() => {}}
+              onClick={() => {
+                router.push(
+                  `/all-properties?s=${search}`
+                );
+              }}
             >
               <span className="flaticon-search" />
             </button>

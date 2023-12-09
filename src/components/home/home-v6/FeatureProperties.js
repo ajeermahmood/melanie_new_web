@@ -82,7 +82,7 @@ const FeatureProperties = ({ data }) => {
                       </div>
                       {/* End list-meta */}
 
-                      <div className="row mb20">
+                      {/* <div className="row mb20">
                         <div className="col-auto">
                           <div className="contact-info">
                             <p className="info-title ff-heading mb-0 text-light lh-sm fz13">
@@ -98,7 +98,6 @@ const FeatureProperties = ({ data }) => {
                             </h6>
                           </div>
                         </div>
-                        {/* End .col-auto */}
 
                         <div className="col-auto">
                           <div className="contact-info">
@@ -115,8 +114,7 @@ const FeatureProperties = ({ data }) => {
                             </h6>
                           </div>
                         </div>
-                        {/* End .col-auto */}
-                      </div>
+                      </div> */}
                       {/* End .row */}
 
                       <div className="row align-items-center justify-content-between">

@@ -4,8 +4,8 @@ const ContactMeta = () => {
   const contactInfoList = [
     {
       title: "Total Free Customer Care",
-      phone: "+(0) 123 050 945 02",
-      phoneLink: "tel:+012305094502", // Change this to use "tel" URI scheme
+      phone: "+(971) 54 320 2849",
+      phoneLink: "tel:+971543202849", // Change this to use "tel" URI scheme
     },
     {
       title: "Need Live Support?",

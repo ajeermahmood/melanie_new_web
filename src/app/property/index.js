@@ -87,6 +87,10 @@ const PropertyDetailsPage = ({ data }) => {
     setOpenShowAllPhotosDialog(false);
   };
 
+  useEffect(() => {
+    setAllPhotos(JSON.parse(data.gallary.imgs).imgs);
+  }, []);
+
   return (
     <>
       {/* <Head>
@@ -110,7 +114,7 @@ const PropertyDetailsPage = ({ data }) => {
       {/* End Mobile Nav  */}
 
       {/* Property All Single V1 */}
-      <section className="pt30 pb0 bgc-f7 p0-mbl">
+      <section className="pt0 pb0 bgc-f7 p0-mbl">
         <div className="container mobile-hide">
           <div className="row">
             <PropertyHeader details={data} />
@@ -130,9 +134,7 @@ const PropertyDetailsPage = ({ data }) => {
                 variant="rectangular"
                 className="w-100 cover"
                 width={
-                  size != undefined && size.width > 500
-                    ? 1652
-                    : size.width
+                  size != undefined && size.width > 500 ? 1652 : size.width
                 }
                 height={size.width != undefined && size.width > 500 ? 640 : 500}
               />

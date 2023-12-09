@@ -64,6 +64,30 @@ export async function getAllListings(limit, pageNumber, filter) {
   return response.data;
 }
 
+export async function getAllListingsSale(limit, pageNumber, filter) {
+  const response = await axios.post(
+    "https://indusspeciality.com/api/melanie/home/get_all_listings_sale.php",
+    {
+      limit: limit,
+      pageNumber: pageNumber,
+      filter: filter,
+    }
+  );
+  return response.data;
+}
+
+export async function getAllListingsRent(limit, pageNumber, filter) {
+  const response = await axios.post(
+    "https://indusspeciality.com/api/melanie/home/get_all_listings_rent.php",
+    {
+      limit: limit,
+      pageNumber: pageNumber,
+      filter: filter,
+    }
+  );
+  return response.data;
+}
+
 export async function getAllDeals(limit, pageNumber, filter) {
   const response = await axios.post(
     "https://indusspeciality.com/api/melanie/home/get_all_deals.php",
