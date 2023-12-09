@@ -111,4 +111,6 @@ const CommonFormDialog = forwardRef((props, ref) => {
   );
 });
 
+CommonFormDialog.displayName = "CommonFormDialog";
+
 export default CommonFormDialog;
