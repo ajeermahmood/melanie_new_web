@@ -22,6 +22,8 @@ import { useEffect, useState } from "react";
 import BottomNavDetailsPage from "./bottom_componenet_details_page";
 import FeaturesPropDetails from "./features";
 import MobileHeaderDetailsPage from "./mobile_header_details_page";
+import CommonFormDialog from "@/components/common/common-form-dialog";
+import { useRef } from "react";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -91,8 +93,15 @@ const PropertyDetailsPage = ({ data }) => {
     setAllPhotos(JSON.parse(data.gallary.imgs).imgs);
   }, []);
 
+  const commonDialog = useRef();
+
+  const openCommonDialog = (text) => {
+    commonDialog.current?.handleOpen(text);
+  };
+
   return (
     <>
+      <CommonFormDialog ref={commonDialog} />
       {/* <Head>
         {allPhotos.map((ph, index) => (
           <link
@@ -683,17 +692,39 @@ const PropertyDetailsPage = ({ data }) => {
               </div>
               <div className="w-100 mt20 top-border-grey-2">
                 <p className="title fz20 fw400 mb15 pt10">Floor Plan</p>
-                <button className="custom-btn-3">Request For Floorplan</button>
+                <button
+                  className="custom-btn-3"
+                  onClick={() => openCommonDialog("Request For Floorplan")}
+                >
+                  Request For Floorplan
+                </button>
               </div>
               <div className="w-100 mt20 top-border-grey-2">
                 <p className="title fz20 fw400 mb15 pt10">Video Tour</p>
-                <button className="custom-btn-3">Request For Video Tour</button>
+                <button
+                  className="custom-btn-3"
+                  onClick={() => openCommonDialog("Request For Video Tour")}
+                >
+                  Request For Video Tour
+                </button>
               </div>
 
               <div className="w-100 mt20 top-border-grey-2">
                 <p className="title fz20 fw400 mb15 pt10">3D walkthrough</p>
-                <button className="custom-btn-3">
+                <button
+                  className="custom-btn-3"
+                  onClick={() => openCommonDialog("Request For 3D walkthrough")}
+                >
                   Request For 3D walkthrough
+                </button>
+              </div>
+              <div className="w-100 mt20 top-border-grey-2">
+                <p className="title fz20 fw400 mb15 pt10">Brochure</p>
+                <button
+                  className="custom-btn-3"
+                  onClick={() => openCommonDialog("Request For Brochure")}
+                >
+                  Request For Brochure
                 </button>
               </div>
             </div>

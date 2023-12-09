@@ -16,10 +16,10 @@ const Footer = () => {
             <div className="footer-widget text-center text-sm-start">
               <Link className="footer-logo" href="/">
                 <Image
-                  width={200}
-                  height={44}
+                  width={130}
+                  height={40}
                   className="mb10"
-                  src="/images/logo/logo-1.svg"
+                  src="/images/logo/INDUS_NEW_LOGO_SMALL-2.webp"
                   alt=""
                 />
               </Link>

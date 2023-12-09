@@ -63,8 +63,8 @@ const AllBannersHome = () => {
           direction="vertical" // Set the direction to vertical
           spaceBetween={0}
           slidesPerView={1}
-          speed={1400}
-          autoplay={{ delay: 3000 }}
+          speed={2500}
+          autoplay={{ delay: 6000 }}
           modules={[Navigation]}
           navigation={{
             nextEl: ".hero9-next__active",
@@ -76,7 +76,7 @@ const AllBannersHome = () => {
           {data.map((item, index) => (
             <SwiperSlide key={index}>
               <div
-                className="item"
+                className="item overflow-hidden"
                 style={{
                   height: "100%",
                 }}
@@ -84,7 +84,7 @@ const AllBannersHome = () => {
                 <Image
                   src={`https://premium.indusre.com/Admin/pages/forms/uploads/property/${item.image1}`}
                   alt="img"
-                  className="w-100 h-100 cover"
+                  className="w-100 h-100 cover zoom-efct"
                   width={size.width > 500 ? 1652 : 390}
                   height={size.width > 500 ? 640 : 432}
                 />

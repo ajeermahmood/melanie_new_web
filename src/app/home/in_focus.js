@@ -61,7 +61,7 @@ const InFocus = () => {
   }, []);
   return data != "" ? (
     <>
-      <section className="p0 bg-dark" id="in-focus">
+      <section className="p0 bg-dark overflow-hidden" id="in-focus">
         {/* <div className="container top-border-grey pt30">
           <div className="nav justify-content-between pt20-mbl">
             <p className="text-light text-start fz20 mb0">In Focus</p>
@@ -81,8 +81,8 @@ const InFocus = () => {
             width: "100%",
           }}
           src={`https://premium.indusre.com/Admin/pages/forms/uploads/property/${data.prop.image1}`}
-          className="w-100 h-70 cover"
-          height={size.width > 500 ? 600 : 400}
+          className="w-100 h-70 cover zoom-efct"
+          height={size.width > 500 ? 600 : 500}
           width={size.width > 500 ? 1652 : 390}
           alt="in focus"
         />
@@ -94,14 +94,14 @@ const InFocus = () => {
             height: "79.2%",
           }}
         ></div> */}
-        <div className="container position-absolute infocus-inner-content top_2rem">
-          <p className="text-light text-start fz20 mb0">In Focus</p>
-        </div>
 
-        <div className="container position-absolute infocus-inner-content">
+        <div className="position-absolute infocus-inner-content mobile-hide">
           <div className="row">
-            <div className="col-xl-7">
-              <h2 className="banner-title text-light fz40 fw400 mb0 fz35-mbl">
+            <div className="col-xl-12">
+              <h2 className="banner-title text-light fz35 fw400 mb40 mt40">
+                IN FOCUS
+              </h2>
+              <h2 className="banner-title text-light fz25 fw400 mb0">
                 {headerText}
               </h2>
               <p className="text-light">{subHeaderText}</p>
@@ -109,11 +109,31 @@ const InFocus = () => {
                 href={`/property/${data.prop.prop_id}&prj=1`}
                 className="ud-btn banner-btn fw500 btn-thm mt10 mt0-xs btn-text-mbl"
               >
-                View Property
+                Learn More
               </Link>
+              <p className="text-light mt20">{bodyText}</p>
             </div>
+          </div>
+        </div>
 
-            <div className="col-sm-6 col-xl-4 offset-xl-3"></div>
+        <div className="position-absolute infocus-inner-content-mbl pc-hide">
+          <div className="row mt80">
+            <div className="col-xl-12">
+              <h2 className="banner-title text-light fz20 fw400 ">
+                IN FOCUS
+              </h2>
+              <h2 className="banner-title text-light fz20 fw400 mb0">
+                {headerText}
+              </h2>
+              <p className="text-light">{subHeaderText}</p>
+              <Link
+                href={`/property/${data.prop.prop_id}&prj=1`}
+                className="ud-btn banner-btn fw500 btn-thm mt10 mt0-xs btn-text-mbl"
+              >
+                Learn More
+              </Link>
+              <p className="text-light mt20">{bodyText}</p>
+            </div>
           </div>
         </div>
       </section>

@@ -21,7 +21,9 @@ export default function BottomNavDetailsPage({ data }) {
           </p>
         </div>
         <div className="col-4 d-flex align-items-center justify-content-end">
-          <button className="custom-btn-3">Contact Us</button>
+          <a className="custom-btn-3" href="tel:+971543202849">
+            Contact Us
+          </a>
         </div>
       </div>
     </>
