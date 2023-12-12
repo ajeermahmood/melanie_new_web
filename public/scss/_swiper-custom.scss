@@ -32,13 +32,14 @@
 // arrow y center
 .arrowY-center-position {
   position: absolute;
-  width: 100%;
+  width: 94%;
   top: 50%;
   transform: translateY(-50%);
   display: flex;
   align-items: center;
   justify-content: space-between;
   z-index: 9;
+  left: 3%;
 
   .swiper_button {
     background-color: #ffffff;

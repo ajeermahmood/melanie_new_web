@@ -8,26 +8,22 @@ const ProjectsListings = () => {
   const investor_deals = [
     {
       title: "Studios",
-      image:
-        "https://premium.indusre.com/Admin/pages/forms/uploads/property/29_1771030087152406_main.webp",
+      image: "/images/investor-deals/investor deal - studios.png",
       link: "/studios",
     },
     {
       title: "1 Beds",
-      image:
-        "https://premium.indusre.com/Admin/pages/forms/uploads/property/12_1770842749813807_main.webp",
+      image: "/images/investor-deals/investor deal - 1 beds.png",
       link: "/1-beds",
     },
     {
       title: "2+ Beds",
-      image:
-        "https://premium.indusre.com/Admin/pages/forms/uploads/property/34_1771215218439336_main_.webp",
+      image: "/images/investor-deals/investor deal - 2 beds+.png",
       link: "/2plus-beds",
     },
     {
       title: "Projects",
-      image:
-        "https://premium.indusre.com/Admin/pages/forms/uploads/property/32_1771128471555195_main_.webp",
+      image: "/images/investor-deals/schindler-uptown-tower-1.jpg",
       link: "/projects",
     },
   ];
@@ -58,7 +54,9 @@ const ProjectsListings = () => {
             </div> */}
           </div>
           <h6 className="list-title my-1">
-            <Link className="custom-link" href={listing.link}>{listing.title}</Link>
+            <Link className="custom-link" href={listing.link}>
+              {listing.title}
+            </Link>
           </h6>
         </div>
       ))}

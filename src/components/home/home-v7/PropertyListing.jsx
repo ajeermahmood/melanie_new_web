@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { getFeaturedProperties } from "@/api/listings";
 import FeaturedListings from "./FeatuerdListings";
 import PremiumSalesMobile from "@/app/home/premium_sales_mobile";
+import Image from "next/image";
 
 export default function PropertyListing() {
   const [pageData, setPageData] = useState([]);
@@ -22,7 +23,7 @@ export default function PropertyListing() {
   }, []);
   return (
     <section className="bg-dark pt0 pb30">
-      <div className="container pt30 top-border-grey">
+      <div className="container">
         <div className="col-sm-12 row pt20-mbl pc-hide">
           <div className="col-8">
             <div className="main-title2 mb30">
@@ -50,15 +51,27 @@ export default function PropertyListing() {
             </div>
           </div>
         </div>
-        <div className="col-lg-12 row pt20-mbl mobile-hide">
-          <div className="col-lg-8">
+        <div className="col-lg-12 row mobile-hide">
+          <div className="premium-properties-pc p-0">
+            <Image
+              className="cover w-100 p-0"
+              src="/images/premium-properties/banner-02.jpg"
+              alt="img"
+              width={1200}
+              height={400}
+            />
+          </div>
+
+          <div className="col-lg-8 mt30">
             <div className="main-title2 mb30">
-              <h2 className="title fw400 text-light fz20">Premium Sales</h2>
+              <h2 className="title fw500 text-light fz40">
+                Premium Properties
+              </h2>
             </div>
           </div>
           {/* End .col-lg-9 */}
 
-          <div className="col-lg-4">
+          <div className="col-lg-4 mt35">
             <div className="dark-light-navtab style2 text-start text-lg-end mb20">
               <ul
                 className="nav nav-pills justify-content-start justify-content-lg-end"
@@ -79,7 +92,7 @@ export default function PropertyListing() {
         </div>
         {/* End .row */}
 
-        <div className="row mobile-hide">
+        <div className="row mobile-hide mt10">
           <FeaturedListings data={pageData} loading={loading} />
         </div>
         <div className="row pc-hide">

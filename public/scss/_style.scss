@@ -119,6 +119,31 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
   animation: zoom 50s !important;
 }
 
+.premium-properties-pc {
+  position: absolute;
+  left: 0;
+  object-position: center;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(
+      to bottom,
+      rgb(42 42 42 / 73%),
+      rgb(0 0 0 / 3%)
+    );
+    opacity: 0.8;
+  }
+}
+
+.w-330 {
+  width: 330px !important;
+}
+
 .home-banner-inner-content {
   z-index: 2;
   bottom: 5rem;
@@ -130,7 +155,7 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
 }
 
 .home-inner-banner-box {
-  background-color: #00000082;
+  background-color: rgb(0 0 0 / 65%);
   border-radius: 5px;
   color: white;
   padding: 15px 20px;
@@ -2738,7 +2763,7 @@ li {
 }
 .listing-style8:hover .list-thumb img {
   cursor: pointer;
-  opacity: 0.8;
+  opacity: 1;
 }
 
 .listing-style8:hover .list-content {
@@ -10432,7 +10457,7 @@ input:focus-visible {
   font-size: 13px;
   outline: 1px solid #dddddd;
   margin-right: 1px;
-  padding: 4px 10px;
+  padding: 4px 15px;
 }
 
 .selection input[type="radio"] {

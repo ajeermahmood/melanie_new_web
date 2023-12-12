@@ -170,9 +170,9 @@ const PremiumSalesMobile = ({ data, loading }) => {
         </div> */}
         {/* End prev */}
 
-        <div className="col-auto">
+        {/* <div className="col-auto">
           <div className="pagination swiper--pagination featured-pagination__active" />
-        </div>
+        </div> */}
         {/* End pagination */}
 
         {/* <div className="col-auto">

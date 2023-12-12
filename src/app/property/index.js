@@ -1,5 +1,6 @@
 "use client";
 import DefaultHeader from "@/components/common/DefaultHeader";
+import CommonFormDialog from "@/components/common/common-form-dialog";
 import Footer from "@/components/home/home-v8/footer";
 import NearbySimilarProperty from "@/components/property/property-single-style/common/NearbySimilarProperty";
 import PropertyHeader from "@/components/property/property-single-style/common/PropertyHeader";
@@ -16,14 +17,11 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 import * as React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import BottomNavDetailsPage from "./bottom_componenet_details_page";
 import FeaturesPropDetails from "./features";
 import MobileHeaderDetailsPage from "./mobile_header_details_page";
-import CommonFormDialog from "@/components/common/common-form-dialog";
-import { useRef } from "react";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -66,8 +64,6 @@ const PropertyDetailsPage = ({ data }) => {
     currency: "AED",
     minimumFractionDigits: 0,
   });
-  const param = useSearchParams();
-  const id = param.get("id");
 
   const [allPhotos, setAllPhotos] = useState([]);
   const [allPhotosLoaded, setAllPhotosLoaded] = useState(false);
@@ -98,6 +94,8 @@ const PropertyDetailsPage = ({ data }) => {
   const openCommonDialog = (text) => {
     commonDialog.current?.handleOpen(text);
   };
+
+  console.log(data);
 
   return (
     <>
@@ -748,7 +746,7 @@ const PropertyDetailsPage = ({ data }) => {
                           className="underline-text color-black-grey-2"
                           href={`/all-properties?t=${data.cat_id}`}
                         >
-                          {data.cat_name}
+                         Completion : {data.completion_date}
                         </Link>
                       </h6>
                       <h6 className="title fz15 mb10 fw300 color-black-grey lh-1 underline-text color-black-grey-2">
