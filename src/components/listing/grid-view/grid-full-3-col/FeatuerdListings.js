@@ -88,7 +88,12 @@ const FeaturedListings = ({ data, colstyle, loading }) => {
                 />
                 <div className="sale-sticker-wrap">
                   <div className="list-tag2 rounded-0 fz12 bg-light color-dark fw400">
-                    {listing.status == "Sale" ? "FOR SALE" : "FOR RENT"}
+                    {listing.prop_id == "9"
+                      ? "SOLD"
+                      : listing.status == "Sale"
+                      ? "FOR SALE"
+                      : "FOR RENT"}
+                    {/* {listing.status == "Sale" ? "FOR SALE" : "FOR RENT"} */}
                   </div>
                 </div>
                 <div className="list-meta">

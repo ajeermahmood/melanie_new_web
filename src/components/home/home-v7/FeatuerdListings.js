@@ -26,8 +26,8 @@ const FeaturedListings = ({ data, loading }) => {
           nextEl: ".single-pro-slide-premium-sales-next__active",
           prevEl: ".single-pro-slide-premium-sales-prev__active",
         }}
-        speed={1300}
-        autoplay={{ delay: 4000 }}
+        speed={2000}
+        autoplay={{ delay: 10000 }}
         slidesPerView={1}
         breakpoints={{
           300: {

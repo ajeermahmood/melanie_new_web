@@ -21,9 +21,9 @@ const MenuWidget = () => {
     {
       title: "Discover",
       links: [
-        { label: "Dubai Marina", href: "/premium-sales?s=marina" },
-        { label: "Downtown Dubai", href: "/premium-sales?s=downtown" },
-        { label: "Palm Jumeirah", href: "/premium-sales?s=palm jumeirah" },
+        { label: "Dubai Marina", href: "/all-properties?s=marina" },
+        { label: "Palm Jumeirah", href: "/all-properties?s=palm jumeirah" },
+        { label: "Uptown Dubai", href: "/projects" },
       ],
     },
   ];

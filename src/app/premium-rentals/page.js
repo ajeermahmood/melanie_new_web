@@ -27,7 +27,7 @@ const PremiumSales = () => {
           <div className="row">
             <div className="col-lg-12">
               <div className="breadcumb-style1">
-                <h2 className="title fw400 text-center">Premium Rentals</h2>
+                <h2 className="title fw400 text-center">Premium Properties for Rent</h2>
                 {/* <PremiumRentalsTopText /> */}
               </div>
             </div>
