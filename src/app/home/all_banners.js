@@ -60,16 +60,14 @@ const AllBannersHome = () => {
     <>
       <div className="home2-hero-banner">
         <Swiper
+          allowTouchMove={false}
           direction="vertical" // Set the direction to vertical
           spaceBetween={0}
           slidesPerView={1}
           speed={2500}
           autoplay={{ delay: 6000 }}
-          modules={[Navigation]}
-          navigation={{
-            nextEl: ".hero9-next__active",
-            prevEl: ".hero9-prev__active",
-          }}
+          // modules={[Navigation]}
+          // navigation={{ enabled: false }}
           className="hero_9"
           style={{ height: `${size.width > 500 ? "40rem" : "25rem"}` }}
         >

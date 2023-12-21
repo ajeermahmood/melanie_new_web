@@ -91,7 +91,7 @@ const PremiumSalesMobile = ({ data, loading }) => {
                 </div>
               </SwiperSlide>
             ))
-          : data.map((listing) => (
+          : data.slice(0, 9).map((listing) => (
               <SwiperSlide key={listing.id}>
                 <div className="listing-style8">
                   <div className="p10">
@@ -170,9 +170,9 @@ const PremiumSalesMobile = ({ data, loading }) => {
         </div> */}
         {/* End prev */}
 
-        {/* <div className="col-auto">
+        <div className="col-auto">
           <div className="pagination swiper--pagination featured-pagination__active" />
-        </div> */}
+        </div>
         {/* End pagination */}
 
         {/* <div className="col-auto">
