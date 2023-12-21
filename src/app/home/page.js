@@ -12,6 +12,7 @@ import InFocus from "./in_focus";
 import PremiumRentals from "./premium_rentals";
 import AllDialogs from "./all-dialogs";
 import BottomNavigationMobile from "./bottom_nav_mobile";
+import WhyDubaiImg from "./why-dubai";
 
 export const metadata = {
   title: "Indus Premium | Luxury Properties",
@@ -165,13 +166,7 @@ const HomePage = () => {
             </div>
           </div>
           <div className="col-lg-6 p0">
-            <Image
-              src={"/images/why-dubai/dubai.avif"}
-              className="w-100 h-100 cover"
-              height={600}
-              width={1000}
-              alt="in focus"
-            />
+            <WhyDubaiImg />
           </div>
         </div>
       </section>

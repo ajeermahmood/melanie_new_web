@@ -97,8 +97,8 @@ const PremiumSalesMobile = ({ data, loading }) => {
                   <div className="p10">
                     <div className="list-thumb">
                       <Image
-                        width={382}
-                        height={248}
+                        width={190}
+                        height={240}
                         className="w-100 cover"
                         src={`https://premium.indusre.com/Admin/pages/forms/uploads/property/${listing.image1}`}
                         alt="listings"

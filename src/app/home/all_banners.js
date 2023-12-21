@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Autoplay } from "swiper";
+import SwiperCore, { Autoplay, EffectFade } from "swiper";
 SwiperCore.use([Autoplay]);
 
 function useWindowSize() {
@@ -61,12 +61,12 @@ const AllBannersHome = () => {
       <div className="home2-hero-banner">
         <Swiper
           allowTouchMove={false}
-          direction="vertical" // Set the direction to vertical
+          effect={"fade"}
           spaceBetween={0}
           slidesPerView={1}
           speed={2500}
           autoplay={{ delay: 6000 }}
-          // modules={[Navigation]}
+          modules={[Autoplay, EffectFade]}
           // navigation={{ enabled: false }}
           className="hero_9"
           style={{ height: `${size.width > 500 ? "40rem" : "25rem"}` }}
