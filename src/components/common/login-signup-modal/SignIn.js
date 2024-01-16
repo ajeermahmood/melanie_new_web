@@ -31,17 +31,24 @@ const SignIn = () => {
   };
 
   const login = () => {
-    setLoading(true);
-    SignInApp(pass).then((res) => {
-      console.log(res);
-      if (res == "success") {
-        Cookies.set("auth", true);
-        router.replace("/");
-      } else {
-        handleClick();
-      }
-      setLoading(false);
-    });
+    if (pass == "") {
+    } else {
+      setLoading(true);
+      SignInApp(pass).then((res) => {
+        console.log(res);
+        if (res == "success") {
+          Cookies.set("auth", true);
+
+          setTimeout(() => {
+            setLoading(false);
+            router.push("/");
+          }, 500);
+        } else {
+          setLoading(false);
+          handleClick();
+        }
+      });
+    }
   };
   return (
     <div className="form-style1">
@@ -70,7 +77,7 @@ const SignIn = () => {
 
       <Snackbar
         // className="login-error-snackbar"
-        anchorOrigin={{ vertical : 'bottom', horizontal : 'center' }}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
         open={openSnackbar}
         autoHideDuration={3000}
         onClose={handleClose}
