@@ -1,7 +1,4 @@
 import SignIn from "@/components/common/login-signup-modal/SignIn";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
 
 export const metadata = {
   title: "Login | Indus Premium",
@@ -26,7 +23,7 @@ const Login = () => {
             <div className="col-lg-6">
               <div className="log-reg-form signup-modal form-style1 bgc-white p50 p30-sm default-box-shadow2 bdrs12">
                 <div className="text-center mb40">
-                  <Link href="/">
+                  {/* <Link href="/">
                     <Image
                       width={138}
                       height={44}
@@ -34,7 +31,7 @@ const Login = () => {
                       src="/images/logo/INDUS_NEW_LOGO_SMALL-2.webp"
                       alt="logo"
                     />
-                  </Link>
+                  </Link> */}
                   <h2>Sign in</h2>
                   {/* <p className="text">
                     Sign in with this account across the following sites.

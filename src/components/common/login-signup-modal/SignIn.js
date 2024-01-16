@@ -41,7 +41,7 @@ const SignIn = () => {
 
           setTimeout(() => {
             setLoading(false);
-            router.push("/");
+            location.reload();
           }, 500);
         } else {
           setLoading(false);
