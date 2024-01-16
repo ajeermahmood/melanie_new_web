@@ -64,9 +64,13 @@ const HeroContent = () => {
               className="advance-search-icon ud-btn btn-thm"
               type="button"
               onClick={() => {
-                router.push(
-                  `/all-properties?s=${search}`
-                );
+                if (activeTab == "buy") {
+                  router.push(`/premium-sales?s=${search}`);
+                } else if (activeTab == "rent") {
+                  router.push(`/premium-rentals?s=${search}`);
+                } else {
+                  router.push(`/projects?s=${search}`);
+                }
               }}
             >
               <span className="flaticon-search" />
@@ -91,7 +95,13 @@ const HeroContent = () => {
                           className="form-control "
                           type="text"
                           name="search"
-                          placeholder={tab.id == 'projects' ? 'Search for Projects' : `Search Properties for ${tab.label == 'Buy' ? 'Sale' : tab.label}`}
+                          placeholder={
+                            tab.id == "projects"
+                              ? "Search for Projects"
+                              : `Search Properties for ${
+                                  tab.label == "Buy" ? "Sale" : tab.label
+                                }`
+                          }
                           onChange={(e) => setSearch(e.target.value)}
                         />
                       </div>
@@ -135,9 +145,7 @@ const HeroContent = () => {
                             `/premium-rentals?s=${search}&t=${selectedPropType}&l=${selectedLocations}`
                           );
                         } else {
-                          router.push(
-                            `/projects?s=${search}`
-                          );
+                          router.push(`/projects?s=${search}`);
                         }
                       }}
                     >

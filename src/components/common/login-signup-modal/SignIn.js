@@ -1,18 +1,16 @@
 "use client";
 import { SignInApp } from "@/api/auth";
-import Cookies from "js-cookie";
-import { useRouter } from "next/navigation";
-import { forwardRef, useState } from "react";
+import MuiAlert from "@mui/material/Alert";
 import CircularProgress from "@mui/material/CircularProgress";
 import Snackbar from "@mui/material/Snackbar";
-import MuiAlert from "@mui/material/Alert";
+import Cookies from "js-cookie";
+import { forwardRef, useState } from "react";
 
 const Alert = forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
 const SignIn = () => {
-  const router = useRouter();
   const [pass, setPass] = useState("");
   const [loading, setLoading] = useState(false);
 

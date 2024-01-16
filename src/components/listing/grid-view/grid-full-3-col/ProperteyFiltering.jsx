@@ -31,9 +31,9 @@ export default function ProperteyFiltering({ status, deals, all }) {
       case "/all-properties":
         return "All Properties";
       case "/premium-sales":
-        return "Premium Sales";
+        return "Premium Properties For Sale";
       case "/premium-rentals":
-        return "Premium Rentals";
+        return "Premium Properties For Rent";
       case "/studios":
         return "Studios";
       case "/1-beds":
