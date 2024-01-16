@@ -1,77 +1,85 @@
-import Link from "next/link";
-import React from "react";
+"use client";
+import { SignInApp } from "@/api/auth";
+import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
+import { forwardRef, useState } from "react";
+import CircularProgress from "@mui/material/CircularProgress";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
+
+const Alert = forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 const SignIn = () => {
-  return (
-    <form className="form-style1">
-      <div className="mb25">
-        <label className="form-label fw600 dark-color">Email</label>
-        <input
-          type="email"
-          className="form-control"
-          placeholder="Enter Email"
-          required
-        />
-      </div>
-      {/* End email */}
+  const router = useRouter();
+  const [pass, setPass] = useState("");
+  const [loading, setLoading] = useState(false);
 
+  const [openSnackbar, setOpenSnackBar] = useState(false);
+
+  const handleClick = () => {
+    setOpenSnackBar(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpenSnackBar(false);
+  };
+
+  const login = () => {
+    setLoading(true);
+    SignInApp(pass).then((res) => {
+      console.log(res);
+      if (res == "success") {
+        Cookies.set("auth", true);
+        router.replace("/");
+      } else {
+        handleClick();
+      }
+      setLoading(false);
+    });
+  };
+  return (
+    <div className="form-style1">
       <div className="mb15">
         <label className="form-label fw600 dark-color">Password</label>
         <input
-          type="text"
+          type="password"
           className="form-control"
           placeholder="Enter Password"
           required
+          onChange={(e) => setPass(e.target.value)}
         />
       </div>
-      {/* End Password */}
-
-      <div className="checkbox-style1 d-block d-sm-flex align-items-center justify-content-between mb10">
-        <label className="custom_checkbox fz14 ff-heading">
-          Remember me
-          <input type="checkbox" defaultChecked="checked" />
-          <span className="checkmark" />
-        </label>
-        <a className="fz14 ff-heading" href="#">
-          Lost your password?
-        </a>
-      </div>
-      {/* End  Lost your password? */}
 
       <div className="d-grid mb20">
-        <button className="ud-btn btn-thm" type="submit">
-          Sign in <i className="fal fa-arrow-right-long" />
+        <button className="ud-btn btn-thm" onClick={() => login()}>
+          {loading ? (
+            <CircularProgress size={25} color="inherit" className="mt5" />
+          ) : (
+            <>
+              Sign in <i className="fal fa-arrow-right-long" />
+            </>
+          )}
         </button>
       </div>
-      {/* End submit */}
 
-      <div className="hr_content mb20">
-        <hr />
-        <span className="hr_top_text">OR</span>
-      </div>
-
-      <div className="d-grid mb10">
-        <button className="ud-btn btn-white" type="button">
-          <i className="fab fa-google" /> Continue Google
-        </button>
-      </div>
-      <div className="d-grid mb10">
-        <button className="ud-btn btn-fb" type="button">
-          <i className="fab fa-facebook-f" /> Continue Facebook
-        </button>
-      </div>
-      <div className="d-grid mb20">
-        <button className="ud-btn btn-apple" type="button">
-          <i className="fab fa-apple" /> Continue Apple
-        </button>
-      </div>
-      <p className="dark-color text-center mb0 mt10">
-        Not signed up?{" "}
-        <Link className="dark-color fw600" href="/register">
-          Create an account.
-        </Link>
-      </p>
-    </form>
+      <Snackbar
+        // className="login-error-snackbar"
+        anchorOrigin={{ vertical : 'bottom', horizontal : 'center' }}
+        open={openSnackbar}
+        autoHideDuration={3000}
+        onClose={handleClose}
+      >
+        <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
+          Wrong password. Try again please!
+        </Alert>
+      </Snackbar>
+    </div>
   );
 };
 

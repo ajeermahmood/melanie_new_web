@@ -13,6 +13,7 @@ import PremiumRentals from "./premium_rentals";
 import AllDialogs from "./all-dialogs";
 import BottomNavigationMobile from "./bottom_nav_mobile";
 import WhyDubaiImg from "./why-dubai";
+import Cookies from "js-cookie";
 
 export const metadata = {
   title: "Indus Premium | Luxury Properties",

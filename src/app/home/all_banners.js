@@ -49,6 +49,24 @@ const AllBannersHome = () => {
   const [data, setData] = useState([]);
   const size = useWindowSize();
 
+  function findRealEstateMortgage(loanAmount, interestRate, loanTerm) {
+    // Step 1: Get user input for loan amount, interest rate, and loan term
+
+    // Step 2: Calculate monthly interest rate and loan term in months
+    const monthlyInterestRate = interestRate / 100 / 12;
+    const loanTermInMonths = loanTerm * 12;
+
+    // Step 3: Calculate monthly payment using the formula
+    const monthlyPayment =
+      (loanAmount * monthlyInterestRate) /
+      (1 - Math.pow(1 + monthlyInterestRate, -loanTermInMonths));
+
+    // Step 4: Display the monthly payment to the user
+    console.log(
+      `Your monthly mortgage payment is: $${monthlyPayment.toFixed(2)}`
+    );
+  }
+
   useEffect(() => {
     getAllBannersHome().then((res) => {
       setData(res);

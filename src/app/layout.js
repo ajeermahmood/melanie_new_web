@@ -1,5 +1,5 @@
 "use client";
-import ScrollToTop from "@/components/common/ScrollTop";
+// import ScrollToTop from "@/components/common/ScrollTop";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import { DM_Sans, Roboto } from "next/font/google";
