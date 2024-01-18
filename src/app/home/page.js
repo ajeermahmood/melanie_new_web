@@ -13,7 +13,6 @@ import PremiumRentals from "./premium_rentals";
 import AllDialogs from "./all-dialogs";
 import BottomNavigationMobile from "./bottom_nav_mobile";
 import WhyDubaiImg from "./why-dubai";
-import Cookies from "js-cookie";
 
 export const metadata = {
   title: "Indus Premium | Luxury Properties",
@@ -89,27 +88,42 @@ const HomePage = () => {
                   Best Opportunity to invest in Dubai
                 </p>
                 <p className="text-start mb30 mt0 font-style-2 fw400 fz20 lh-sm">
-                  Throughout the years, land financial specialists have earned
-                  unrivaled capital returns in the worldwide property showcase.
-                  Today, Dubai&apos;s land market is comparable to that of New
-                  York or London. It is controlled and maintainable.
+                  The investment climate in Dubai has long been favorable, and
+                  this is set to grow even further in 2024. Dubai&apos;s vibrant
+                  economy, favorable government policies, and robust
+                  infrastructure continue to attract both local and
+                  international investors who want to take advantage of its
+                  booming real estate market.
                 </p>
                 <ul className="p0">
                   <div className="row">
                     <div className="col-6">
+                      <li className="list-style-custom">Booming Economy</li>
                       <li className="list-style-custom">
-                        High return on investment (ROI)
+                        High demand for real estate
                       </li>
                       <li className="list-style-custom">
-                        World class Infrastructure
+                        Strong Return on Investment
                       </li>
                       <li className="list-style-custom">
-                        Political and social stability
+                        Competive Property Prices
+                      </li>
+                      <li className="list-style-custom">
+                        Thriving Rental Market
+                      </li>
+                      <li className="list-style-custom">
+                        Robust Tourism Industry
                       </li>
                     </div>
                     <div className="col-6">
                       <li className="list-style-custom">
-                        High demand for real estate
+                        World class Infrastructure
+                      </li>
+                      <li className="list-style-custom">
+                        Tax Free Environment
+                      </li>
+                      <li className="list-style-custom">
+                        Political & Social Stability
                       </li>
                       <li className="list-style-custom">
                         Favorable business regulations
@@ -128,27 +142,42 @@ const HomePage = () => {
                   Best Opportunity to invest in Dubai
                 </p>
                 <p className="text-start mb30 mt0 font-style-2 fw400 fz20 lh-sm">
-                  Throughout the years, land financial specialists have earned
-                  unrivaled capital returns in the worldwide property showcase.
-                  Today, Dubai&apos;s land market is comparable to that of New
-                  York or London. It is controlled and maintainable.
+                  The investment climate in Dubai has long been favorable, and
+                  this is set to grow even further in 2024. Dubai&apos;s vibrant
+                  economy, favorable government policies, and robust
+                  infrastructure continue to attract both local and
+                  international investors who want to take advantage of its
+                  booming real estate market.
                 </p>
                 <ul className="p0">
                   <div className="row">
                     <div className="col-6">
+                      <li className="list-style-custom">Booming Economy</li>
                       <li className="list-style-custom">
-                        High return on investment (ROI)
+                        High demand for real estate
                       </li>
                       <li className="list-style-custom">
-                        World class Infrastructure
+                        Strong Return on Investment
                       </li>
                       <li className="list-style-custom">
-                        Political and social stability
+                        Competive Property Prices
+                      </li>
+                      <li className="list-style-custom">
+                        Thriving Rental Market
+                      </li>
+                      <li className="list-style-custom">
+                        Robust Tourism Industry
                       </li>
                     </div>
                     <div className="col-6">
                       <li className="list-style-custom">
-                        High demand for real estate
+                        World class Infrastructure
+                      </li>
+                      <li className="list-style-custom">
+                        Tax Free Environment
+                      </li>
+                      <li className="list-style-custom">
+                        Political & Social Stability
                       </li>
                       <li className="list-style-custom">
                         Favorable business regulations

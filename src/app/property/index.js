@@ -95,8 +95,6 @@ const PropertyDetailsPage = ({ data }) => {
     commonDialog.current?.handleOpen(text);
   };
 
-  console.log(data);
-
   return (
     <>
       <CommonFormDialog ref={commonDialog} />
@@ -746,7 +744,7 @@ const PropertyDetailsPage = ({ data }) => {
                           className="underline-text color-black-grey-2"
                           href={`/all-properties?t=${data.cat_id}`}
                         >
-                         Completion : {data.completion_date}
+                          Completion : {data.completion_date}
                         </Link>
                       </h6>
                       <h6 className="title fz15 mb10 fw300 color-black-grey lh-1 underline-text color-black-grey-2">
