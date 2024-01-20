@@ -141,8 +141,8 @@ const AllBannersHome = () => {
                     </p>
 
                     <p className="banner-title text-light fw400 mb0 fz12">
+                      {item.cat_name} <span className="color-gold">|</span>{" "}
                       {item.beds} Beds <span className="color-gold">|</span>{" "}
-                      {item.baths} Baths <span className="color-gold">|</span>{" "}
                       {new Intl.NumberFormat("en-AE", {
                         maximumSignificantDigits: 3,
                       }).format(item.area)}{" "}
@@ -159,7 +159,7 @@ const AllBannersHome = () => {
                 <div className="position-absolute home-banner-inner-content pc-hide">
                   <div className="home-inner-banner-box">
                     {item.prop_id == "2" ? (
-                      <p className="banner-title text-light fw500 mb0 fz12">
+                      <p className="banner-title text-light fw500 mb0 fz10">
                         Waterfront Villa <span className="color-gold">|</span>{" "}
                         Impeccable Upgrades{" "}
                         <span className="color-gold">|</span> Marina View
@@ -168,7 +168,7 @@ const AllBannersHome = () => {
                       <></>
                     )}
                     {item.prop_id == "39" ? (
-                      <p className="banner-title text-light fw500 mb0 fz12">
+                      <p className="banner-title text-light fw500 mb0 fz10">
                         Panoramic Views <span className="color-gold">|</span>{" "}
                         Private Pool <span className="color-gold">|</span> Luxe
                         Penthouse
@@ -176,13 +176,14 @@ const AllBannersHome = () => {
                     ) : (
                       <></>
                     )}
-                    <p className="banner-title text-light fw400 mb0 lh-base fz12">
+                    <p className="banner-title text-light fw400 mb0 lh-base fz10">
                       {currencyFormatter.format(item.price)}
                     </p>
-                    <p className="banner-title text-light fz13 fw500 mb0 lh-base">
+                    <p className="banner-title text-light fz10 fw500 mb0 lh-base">
                       {item.address}
                     </p>
-                    <p className="banner-title text-light fw400 mb5 fz12">
+                    <p className="banner-title text-light fw400 mb5 fz10">
+                      {item.cat_name} <span className="color-gold">|</span>{" "}
                       {item.beds} Beds <span className="color-gold">|</span>{" "}
                       {new Intl.NumberFormat("en-AE", {
                         maximumSignificantDigits: 3,
@@ -191,7 +192,7 @@ const AllBannersHome = () => {
                     </p>
                     <Link
                       href={`/property/${item.prop_id}`}
-                      className="ud-btn banner-btn fw500 btn-thm mt10 mt0-xs inner-banner-btn"
+                      className="ud-btn banner-btn fw500 btn-thm mt10 mt0-xs inner-banner-btn fz9"
                     >
                       View Property
                     </Link>

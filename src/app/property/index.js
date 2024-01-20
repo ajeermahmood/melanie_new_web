@@ -141,7 +141,7 @@ const PropertyDetailsPage = ({ data }) => {
                 width={
                   size != undefined && size.width > 500 ? 1652 : size.width
                 }
-                height={size.width != undefined && size.width > 500 ? 640 : 500}
+                height={size.width != undefined && size.width > 500 ? 640 : 300}
               />
             ) : (
               <></>
@@ -158,7 +158,7 @@ const PropertyDetailsPage = ({ data }) => {
               width={
                 size.width != undefined && size.width > 500 ? 425 : size.width
               }
-              height={500}
+              height={350}
               className={`pc-hide ${
                 mainImageLoading
                   ? "opacity-0 position-absolute w-100 cover"
