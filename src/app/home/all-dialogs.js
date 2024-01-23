@@ -7,16 +7,22 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
+  Skeleton,
   TextField,
   styled,
 } from "@mui/material";
 import { useState } from "react";
+
+import { getAllAgents } from "@/api/listings";
+import Image from "next/image";
 
 const AllDialogs = () => {
   const [openBuyingGuide, setOpenBuyingGuide] = useState(false);
   const [openTalkToUs, setOpenTalkToUs] = useState(false);
   const [openListProperty, setOpenListProperty] = useState(false);
   const [openTeam, setOpenTeam] = useState(false);
+
+  const [team, setTeam] = useState([]);
 
   const handleClickOpenBuyingGuide = () => {
     setOpenBuyingGuide(true);
@@ -44,6 +50,10 @@ const AllDialogs = () => {
 
   const handleClickOpenTeam = () => {
     setOpenTeam(true);
+    getAllAgents().then((data) => {
+      console.log(data);
+      setTeam(data);
+    });
   };
 
   const handleCloseTeam = () => {
@@ -272,11 +282,15 @@ const AllDialogs = () => {
         </DialogActions>
       </Dialog>
 
-      <Dialog open={openTeam} onClose={handleCloseTeam}>
+      <Dialog open={openTeam} onClose={handleCloseTeam} maxWidth={"md"}>
         <DialogTitle className="mt10" align="center">
           Our Team
         </DialogTitle>
-        <DialogContent>
+        <DialogContent
+          style={{
+            height: "33rem",
+          }}
+        >
           <DialogContentText
             className="font-style-2"
             fontSize={20}
@@ -290,6 +304,60 @@ const AllDialogs = () => {
             it&apos;s making a sound property investment, finding the perfect
             property, or obtaining the accurate price for your property.
           </DialogContentText>
+
+          <div className="row m0 mt30 justify-content-center">
+            {team.length === 0 && (
+              <>
+                <div className="col team-dialog-imgs-wrapper">
+                  <Skeleton
+                    style={{ marginTop: "-85px" }}
+                    width={200}
+                    height={400}
+                  />
+                  <Skeleton
+                    style={{ marginTop: "-60px" }}
+                    width={150}
+                    height={20}
+                  />
+                  <Skeleton width={150} height={20} />
+                  <Skeleton width={150} height={20} />
+                </div>
+                <div className="col team-dialog-imgs-wrapper">
+                  <Skeleton
+                    className="mt20-mbl"
+                    style={{ marginTop: "-85px" }}
+                    width={200}
+                    height={400}
+                  />
+                  <Skeleton
+                    style={{ marginTop: "-60px" }}
+                    width={150}
+                    height={20}
+                  />
+                  <Skeleton width={150} height={20} />
+                  <Skeleton width={150} height={20} />
+                </div>
+              </>
+            )}
+            {team.map((item, index) => (
+              <div className="col team-dialog-imgs-wrapper" key={index}>
+                <Image
+                  src={`https://premium.indusre.com/Admin/pages/forms/uploads/agents/${item.image_name}`}
+                  alt="team"
+                  className={`w-100 h-100 cover agent-img ${
+                    index != 0 ? "mt85-mbl" : ""
+                  }`}
+                  width={500}
+                  height={500}
+                />
+                <p className="text-center mt10 fz17 mb0 lh-1">{item.name}</p>
+                <p className="text-center mt-1 fz15 mb0 lh-1">{item.email}</p>
+                <p className="text-center mt-1 fz15 lh-sm">
+                  +971 {item.phone_no}
+                </p>
+              </div>
+            ))}
+          </div>
         </DialogContent>
         <DialogActions>
           <Button className="color-gold" onClick={handleCloseTeam}>

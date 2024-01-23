@@ -6,6 +6,12 @@ export async function getAllBannersHome() {
   );
   return response.data;
 }
+export async function getAllAgents() {
+  const response = await axios.get(
+    "https://indusspeciality.com/api/melanie/home/get_all_agents.php"
+  );
+  return response.data;
+}
 
 export async function getAllPropertyCategories() {
   const response = await axios.get(
