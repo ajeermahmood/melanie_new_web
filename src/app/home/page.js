@@ -81,13 +81,13 @@ const HomePage = () => {
             <div className="row h-100 pt30 pb30">
               <div className="col-3 mobile-hide"></div>
               <div className="col-9 my-auto pr50 mobile-hide">
-                <p className="text-dark text-start fz20 fw500 mb10">
+                <p className="text-dark text-center fz20 fw500 mb10">
                   Why Dubai
                 </p>
-                <p className="text-dark text-start fw300 fz20 mb0 color-gold">
+                {/* <p className="text-dark text-start fw300 fz20 mb0 color-gold">
                   Best Opportunity to invest in Dubai
-                </p>
-                <p className="text-start mb30 mt0 font-style-2 fw400 fz20 lh-sm">
+                </p> */}
+                <p className="text-center mb30 mt0 font-style-2 fw400 fz20 lh-sm">
                   The investment climate in Dubai has long been favorable, and
                   this is set to grow even further in 2024. Dubai&apos;s vibrant
                   economy, favorable government policies, and robust
@@ -135,13 +135,13 @@ const HomePage = () => {
                 <button className="custom-btn-2 h-75 mt20">Contact Us</button>
               </div>
               <div className="col-12 my-auto px30 pc-hide">
-                <p className="text-dark text-start fz20 fw500 mb10">
+                <p className="text-dark text-center fz20 fw500 mb10">
                   Why Dubai
                 </p>
-                <p className="text-dark text-start fw300 fz20 mb0 color-gold">
+                {/* <p className="text-dark text-start fw300 fz20 mb0 color-gold">
                   Best Opportunity to invest in Dubai
-                </p>
-                <p className="text-start mb30 mt0 font-style-2 fw400 fz20 lh-sm">
+                </p> */}
+                <p className="text-center mb30 mt0 font-style-2 fw400 fz20 lh-sm">
                   The investment climate in Dubai has long been favorable, and
                   this is set to grow even further in 2024. Dubai&apos;s vibrant
                   economy, favorable government policies, and robust

@@ -13,6 +13,22 @@ const FeaturedListings = ({ data, colstyle, loading }) => {
     minimumFractionDigits: 0,
   });
 
+  const getBeds = (listing) => {
+    if (listing.is_project == "1") {
+      if (listing.beds == "0" || listing.beds == "") {
+        return "";
+      } else {
+        return " · " + listing.proj_data.price_range;
+      }
+    } else {
+      if (listing.beds == "0" || listing.beds == "") {
+        return " · " + "Studio";
+      } else {
+        return " · " + listing.beds + " " + "Beds";
+      }
+    }
+  };
+
   const router = useRouter();
   return loading
     ? skeletonLoader.map((listing, index) => (
@@ -131,12 +147,8 @@ const FeaturedListings = ({ data, colstyle, loading }) => {
                     : "Price On Application"}
                 </p>
                 <p className="list-text text-dark lh-base">
-                  {listing.cat_name} 
-                  {listing.is_project == "1" && listing.beds == "0"
-                    ? ""
-                    : listing.beds != "0"
-                    ? " · " + listing.beds + " " + "Beds"
-                    :  " · " + "Studio"}{" "}
+                  {listing.cat_name}
+                  {getBeds(listing)}{" "}
                   {" · "}{" "}
                   {new Intl.NumberFormat("en-AE", {
                     maximumSignificantDigits: 3,
