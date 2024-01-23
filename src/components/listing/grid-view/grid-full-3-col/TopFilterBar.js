@@ -75,41 +75,45 @@ const TopFilterBar = ({
             )}
 
             {/* End li Property Type */}
+            {deals != "projects" && deals != "no" ? (
+              <li className="list-inline-item position-relative">
+                <button
+                  type="button"
+                  className="open-btn mb15 dropdown-toggle color-black-grey-2 fw300"
+                  data-bs-toggle="dropdown"
+                  data-bs-auto-close="outside"
+                >
+                  Price <i className="fa fa-angle-down ms-2" />
+                </button>
 
-            <li className="list-inline-item position-relative">
-              <button
-                type="button"
-                className="open-btn mb15 dropdown-toggle color-black-grey-2 fw300"
-                data-bs-toggle="dropdown"
-                data-bs-auto-close="outside"
-              >
-                Price <i className="fa fa-angle-down ms-2" />
-              </button>
-
-              <div className="dropdown-menu dd3">
-                <div className="widget-wrapper bdrb1 pb25 mb0 pl20 pr30">
-                  {/* <h6 className="list-title">Price Range</h6> */}
-                  {/* Range Slider Desktop Version */}
-                  <div className="range-slider-style1 mt10">
-                    <PriceRange filterFunctions={filterFunctions} />
+                <div className="dropdown-menu dd3">
+                  <div className="widget-wrapper bdrb1 pb25 mb0 pl20 pr30">
+                    {/* <h6 className="list-title">Price Range</h6> */}
+                    {/* Range Slider Desktop Version */}
+                    <div className="range-slider-style1 mt10">
+                      <PriceRange filterFunctions={filterFunctions} />
+                    </div>
+                  </div>
+                  <div className="text-end mt10 pr10">
+                    <button
+                      type="button"
+                      className="done-btn ud-btn btn-thm drop_btn3"
+                      onClick={() => {
+                        filterFunctions.setListings([]);
+                        filterFunctions.setPriceRangeSetted(
+                          filterFunctions.priceRangeSetted + 1
+                        );
+                      }}
+                    >
+                      Done
+                    </button>
                   </div>
                 </div>
-                <div className="text-end mt10 pr10">
-                  <button
-                    type="button"
-                    className="done-btn ud-btn btn-thm drop_btn3"
-                    onClick={() => {
-                      filterFunctions.setListings([]);
-                      filterFunctions.setPriceRangeSetted(
-                        filterFunctions.priceRangeSetted + 1
-                      );
-                    }}
-                  >
-                    Done
-                  </button>
-                </div>
-              </div>
-            </li>
+              </li>
+            ) : (
+              <></>
+            )}
+
             {/* End li Price */}
             {deals == "no" ? (
               <li className="list-inline-item position-relative">

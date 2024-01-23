@@ -131,8 +131,12 @@ const FeaturedListings = ({ data, colstyle, loading }) => {
                     : "Price On Application"}
                 </p>
                 <p className="list-text text-dark lh-base">
-                  {listing.cat_name} {" · "}{" "}
-                  {listing.beds != "0" ? listing.beds + " " + "Beds" : "Studio"}{" "}
+                  {listing.cat_name} 
+                  {listing.is_project == "1" && listing.beds == "0"
+                    ? ""
+                    : listing.beds != "0"
+                    ? " · " + listing.beds + " " + "Beds"
+                    :  " · " + "Studio"}{" "}
                   {" · "}{" "}
                   {new Intl.NumberFormat("en-AE", {
                     maximumSignificantDigits: 3,

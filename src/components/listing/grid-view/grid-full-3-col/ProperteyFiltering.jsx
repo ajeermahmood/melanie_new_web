@@ -88,7 +88,7 @@ export default function ProperteyFiltering({ status, deals, all }) {
         getAllListingsSale(9, currentPage, {
           search: search,
           prop_types: propertyTypes,
-          price_range: priceRange,
+          // price_range: priceRange,
           beds: bedrooms,
           location: location,
           sqft_range: squirefeet,
@@ -105,7 +105,7 @@ export default function ProperteyFiltering({ status, deals, all }) {
         getAllListingsRent(9, currentPage, {
           search: search,
           prop_types: propertyTypes,
-          price_range: priceRange,
+          // price_range: priceRange,
           beds: bedrooms,
           location: location,
           sqft_range: squirefeet,
@@ -123,7 +123,7 @@ export default function ProperteyFiltering({ status, deals, all }) {
           search: search,
           prop_types: propertyTypes,
           status: propStatus,
-          price_range: priceRange,
+          // price_range: priceRange,
           beds: bedrooms,
           location: location,
           sqft_range: squirefeet,
