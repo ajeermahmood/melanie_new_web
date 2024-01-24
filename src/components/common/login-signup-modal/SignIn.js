@@ -53,6 +53,7 @@ const SignIn = () => {
       <div className="mb15">
         <label className="form-label fw600 dark-color">Password</label>
         <input
+          style={{ fontSize: "16px" }}
           type="password"
           className="form-control"
           placeholder="Enter Password"
