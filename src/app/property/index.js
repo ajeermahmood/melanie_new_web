@@ -89,6 +89,8 @@ const PropertyDetailsPage = ({ data }) => {
     setAllPhotos(JSON.parse(data.gallary.imgs).imgs);
   }, []);
 
+  const ref = useRef(null);
+
   const commonDialog = useRef();
 
   const openCommonDialog = (text) => {
@@ -222,8 +224,16 @@ const PropertyDetailsPage = ({ data }) => {
           </AppBar>
 
           <div className="col-lg-12 row m0-mbl mt100 mobile-hide">
-            <div className="col-lg-5">
-              <h2 className="sp-lg-title text-center mb20 fz35 fw400 position-fixed all-photos-address">
+            <div className="col-lg-5" ref={ref}>
+              <h2
+                className="sp-lg-title text-center mb20 fz35 fw400 position-fixed all-photos-address"
+                style={{
+                  overflowWrap: "break-word",
+                  inlineSize: `${
+                    ref.current ? ref.current.offsetWidth - 100 : 400
+                  }px`,
+                }}
+              >
                 {data.address}
               </h2>
             </div>
