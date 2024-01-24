@@ -344,16 +344,23 @@ const AllDialogs = () => {
                 <Image
                   src={`https://premium.indusre.com/Admin/pages/forms/uploads/agents/${item.image_name}`}
                   alt="team"
-                  className={`w-100 h-100 cover agent-img ${
-                    index != 0 ? "mt85-mbl" : ""
-                  }`}
+                  className={`w-100 team-avatar-img-height mt20-pc cover agent-img`}
                   width={500}
                   height={500}
                 />
                 <p className="text-center mt10 fz17 mb0 lh-1">{item.name}</p>
-                <p className="text-center mt-1 fz15 mb0 lh-1">{item.email}</p>
+                <p className="text-center mt-1 fz15 mb0 lh-1">
+                  <a href={`mailto:${item.email}`}>{item.email}</a>
+                </p>
                 <p className="text-center mt-1 fz15 lh-sm">
-                  +971 {item.phone_no}
+                  <a href={`tel:+971${item.phone_no}`}>
+                    +971{" "}
+                    {new String(item.phone_no)
+                      .split("")
+                      .map((letter, index) =>
+                        index == 1 || index == 4 ? `${letter} ` : letter
+                      )}
+                  </a>
                 </p>
               </div>
             ))}

@@ -146,7 +146,6 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
 
 .team-dialog-imgs-wrapper {
   max-width: 13rem;
-  max-height: 15rem;
 
   .agent-img {
     color: transparent;
@@ -340,6 +339,20 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
   }
 }
 
+.team-avatar-img-height {
+  height: 200px;
+}
+
+@media (min-width: 1300px) {
+  .mt100-pc {
+    margin-top: 100px !important;
+  }
+
+  .mt20-pc{
+    margin-top: 20px !important;
+  }
+}
+
 .login-error-snackbar {
   bottom: -35px;
   left: 30%;
@@ -351,6 +364,9 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
 }
 
 @media (max-width: 500px) {
+  .team-avatar-img-height {
+    height: 160px;
+  }
   .mt85-mbl {
     margin-top: 85px !important;
   }
