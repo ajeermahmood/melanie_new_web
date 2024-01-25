@@ -1,18 +1,33 @@
 import React from "react";
 
-const professionalInfoData = [
-  { label: "Broker address", content: "House on the Northridge" },
-  { label: "Office", content: "(484) 524-3699" },
-  { label: "Mobile", content: "(484) 524-7963" },
-  { label: "Fax", content: "(484) 524-1023" },
-  { label: "Websites", content: "www.realton.com" },
-  { label: "Member since", content: "10-01-2022" },
-];
+const ProfessionalInfo = ({ data }) => {
+  var professionalInfoData = [
+    { label: "Nationality", content: data.nationality },
+    { label: "BRN", content: data.brn },
+  ];
 
-const ProfessionalInfo = () => {
+  if (data.exp_since != "0") {
+    professionalInfoData.push({
+      label: "Experience Since",
+      content: data.exp_since,
+    });
+  }
+
+  if (JSON.parse(data.languages).length != 0) {
+    professionalInfoData.push({
+      label: "Languages",
+      content: JSON.parse(data.languages).join(", "),
+    });
+  }
+  if (JSON.parse(data.areas).length != 0) {
+    professionalInfoData.push({
+      label: "Areas",
+      content: JSON.parse(data.areas).join(", "),
+    });
+  }
   return (
     <div className="widget-wrapper mb-0">
-      <h6 className="title fz17 mb35">Professional Information</h6>
+      <h6 className="title fz17 mb35">More Information</h6>
       {professionalInfoData.map((info, index) => (
         <div
           key={index}

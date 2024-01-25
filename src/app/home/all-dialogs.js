@@ -15,6 +15,7 @@ import { useState } from "react";
 
 import { getAllAgents } from "@/api/listings";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const AllDialogs = () => {
   const [openBuyingGuide, setOpenBuyingGuide] = useState(false);
@@ -23,6 +24,8 @@ const AllDialogs = () => {
   const [openTeam, setOpenTeam] = useState(false);
 
   const [team, setTeam] = useState([]);
+
+  const router = useRouter();
 
   const handleClickOpenBuyingGuide = () => {
     setOpenBuyingGuide(true);
@@ -342,13 +345,19 @@ const AllDialogs = () => {
             {team.map((item, index) => (
               <div className="col team-dialog-imgs-wrapper" key={index}>
                 <Image
+                  onClick={() => router.push(`/agent/${item.id}`)}
                   src={`https://premium.indusre.com/Admin/pages/forms/uploads/agents/${item.image_name}`}
                   alt="team"
-                  className={`w-100 team-avatar-img-height mt20-pc cover agent-img`}
+                  className={`w-100 team-avatar-img-height mt20-pc cover agent-img cursor-pointer`}
                   width={500}
                   height={500}
                 />
-                <p className="text-center mt10 fz17 mb0 lh-1">{item.name}</p>
+                <p
+                  className="text-center mt10 fz17 mb0 lh-1 cursor-pointer"
+                  onClick={() => router.push(`/agent/${item.id}`)}
+                >
+                  {item.name}
+                </p>
                 <p className="text-center mt-1 fz15 mb0 lh-1">
                   <a href={`mailto:${item.email}`}>{item.email}</a>
                 </p>
