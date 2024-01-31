@@ -353,16 +353,30 @@ const PropertyDetailsPage = ({ data }) => {
                   {data.infocus == null ? (
                     <>
                       <span className="text fz13 mb-0 bdrrn-sm fw300 pc-hide">
-                        <Link
-                          className="color-black-grey-2 underline-text"
-                          href={`/all-properties?bd=${data.beds}`}
-                        >
-                          {data.beds} Beds
-                        </Link>
+                        {data.beds != "0" ? (
+                          <>
+                            <Link
+                              className="color-black-grey-2 underline-text"
+                              href={`/all-properties?bd=${data.beds}`}
+                            >
+                              {data.beds} Beds
+                            </Link>
+                            <span className="dot-after pc-hide"></span>
+                          </>
+                        ) : (
+                          <></>
+                        )}
                       </span>
-                      <span className="dot-after pc-hide"></span>
+
                       <span className="text fz13 mb-0 bdrrn-sm fw300 color-black-grey-2 pc-hide">
-                        {data.baths} Baths
+                        {data.beds != "0" ? (
+                          <>
+                            <span>{data.baths} Baths</span>
+                            <span className="dot-after pc-hide"></span>
+                          </>
+                        ) : (
+                          <></>
+                        )}
                       </span>
                     </>
                   ) : (
@@ -372,7 +386,7 @@ const PropertyDetailsPage = ({ data }) => {
                       </span>
                     </>
                   )}
-                  <span className="dot-after pc-hide"></span>
+
                   <span className="text fz13 mb-0 bdrrn-sm fw300 color-black-grey-2 pc-hide">
                     {data.infocus == null
                       ? new Intl.NumberFormat("en-AE", {
@@ -398,18 +412,31 @@ const PropertyDetailsPage = ({ data }) => {
                   <li className="dot-after"></li>
                   {data.infocus == null ? (
                     <>
-                      <p className="text fz13 mb-0 bdrrn-sm fw300">
-                        <Link
-                          className="color-black-grey-2 underline-text"
-                          href={`/all-properties?bd=${data.beds}`}
-                        >
-                          {data.beds} Beds
-                        </Link>
-                      </p>
-                      <li className="dot-after"></li>
-                      <p className="text fz13 mb-0 bdrrn-sm fw300 color-black-grey-2">
-                        {data.baths} Baths
-                      </p>
+                      {data.beds != "0" ? (
+                        <>
+                          <p className="text fz13 mb-0 bdrrn-sm fw300">
+                            <Link
+                              className="color-black-grey-2 underline-text"
+                              href={`/all-properties?bd=${data.beds}`}
+                            >
+                              {data.beds} Beds
+                            </Link>
+                          </p>
+                          <li className="dot-after"></li>
+                        </>
+                      ) : (
+                        <></>
+                      )}
+                      {data.baths != "0" ? (
+                        <>
+                          <p className="text fz13 mb-0 bdrrn-sm fw300 color-black-grey-2">
+                            {data.baths} Baths
+                          </p>
+                          <li className="dot-after"></li>
+                        </>
+                      ) : (
+                        <></>
+                      )}
                     </>
                   ) : (
                     <>
@@ -418,7 +445,7 @@ const PropertyDetailsPage = ({ data }) => {
                       </p>
                     </>
                   )}
-                  <li className="dot-after"></li>
+
                   <p className="text fz13 mb-0 bdrrn-sm fw300 color-black-grey-2">
                     {data.infocus == null
                       ? new Intl.NumberFormat("en-AE", {

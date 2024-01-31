@@ -87,7 +87,7 @@ const AllBannersHome = () => {
           modules={[Autoplay, EffectFade]}
           // navigation={{ enabled: false }}
           className="hero_9"
-          style={{ height: `${size.width > 500 ? "40rem" : "25rem"}` }}
+          style={{ height: `${size.width > 500 ? "40rem" : "18rem"}` }}
         >
           {data.map((item, index) => (
             <SwiperSlide key={index}>
@@ -100,7 +100,7 @@ const AllBannersHome = () => {
                 <Image
                   src={`https://premium.indusre.com/Admin/pages/forms/uploads/property/${item.image1}`}
                   alt="img"
-                  className="w-100 h-100 cover zoom-efct"
+                  className={`w-100 h-100 cover ${size.width < 500 ? "" : "zoom-efct"}`}
                   width={size.width > 500 ? 1652 : 390}
                   height={size.width > 500 ? 640 : 432}
                 />
@@ -158,7 +158,7 @@ const AllBannersHome = () => {
                 </div>
                 <div className="position-absolute home-banner-inner-content pc-hide">
                   <div className="home-inner-banner-box">
-                    {item.prop_id == "2" ? (
+                    {/* {item.prop_id == "2" ? (
                       <p className="banner-title text-light fw500 mb0 fz10">
                         Waterfront Villa <span className="color-gold">|</span>{" "}
                         Impeccable Upgrades{" "}
@@ -189,10 +189,10 @@ const AllBannersHome = () => {
                         maximumSignificantDigits: 3,
                       }).format(item.area)}{" "}
                       sq. ft.
-                    </p>
+                    </p> */}
                     <Link
                       href={`/property/${item.prop_id}`}
-                      className="ud-btn banner-btn fw500 btn-thm mt10 mt0-xs inner-banner-btn fz9"
+                      className="ud-btn banner-btn fw500 btn-thm mt10 mt0-xs inner-banner-btn-2"
                     >
                       View Property
                     </Link>
