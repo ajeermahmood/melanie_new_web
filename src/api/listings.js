@@ -2,7 +2,7 @@ import axios from "axios";
 
 export async function getAllBannersHome() {
   const response = await axios.get(
-    "https://indusspeciality.com/api/melanie/home/get_home_banners.php",
+    "https://indusspeciality.com/api/melanie/home/get_home_banners.php"
   );
   return response.data;
 }
@@ -73,11 +73,12 @@ export async function getAllListings(limit, pageNumber, filter) {
 export async function getAllListingsSale(limit, pageNumber, filter) {
   const response = await axios.post(
     "https://indusspeciality.com/api/melanie/home/get_all_listings_sale.php",
+
     {
       limit: limit,
       pageNumber: pageNumber,
       filter: filter,
-    }
+    },
   );
   return response.data;
 }
@@ -105,7 +106,6 @@ export async function getAllDeals(limit, pageNumber, filter) {
   );
   return response.data;
 }
-
 
 export async function getPremiumRentalsTopText() {
   const response = await axios.get(

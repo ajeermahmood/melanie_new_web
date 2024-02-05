@@ -19,7 +19,7 @@ export async function generateMetadata({ params }) {
   const staticData = await fetch(
     `https://indusspeciality.com/api/melanie/home/get_property_details.php`,
     {
-      cache: "force-cache",
+      cache: "no-store",
       method: "POST",
       body: JSON.stringify({
         prop_id: params.id,
@@ -37,7 +37,7 @@ async function PropertyPage({ params }) {
   const staticData = await fetch(
     `https://indusspeciality.com/api/melanie/home/get_property_details.php`,
     {
-      cache: "force-cache",
+      cache: "no-store",
       method: "POST",
       body: JSON.stringify({
         prop_id: params.id,
@@ -51,3 +51,5 @@ async function PropertyPage({ params }) {
 }
 
 export default PropertyPage;
+
+export const revalidate = 0
