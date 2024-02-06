@@ -99,7 +99,7 @@ const FeaturedListings = ({ data, colstyle, loading }) => {
                   width={382}
                   height={248}
                   className="w-100 cover"
-                  src={`https://premium.indusre.com/Admin/pages/forms/uploads/property/${listing.image1}`}
+                  src={`https://premium.indusre.com/Admin/pages/forms/uploads/property/${listing.image1}?${new Date().getTime()}`}
                   alt="listings"
                 />
                 <div className="sale-sticker-wrap">
