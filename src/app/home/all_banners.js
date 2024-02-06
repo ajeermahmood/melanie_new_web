@@ -100,7 +100,9 @@ const AllBannersHome = () => {
                 <Image
                   src={`https://premium.indusre.com/Admin/pages/forms/uploads/property/${item.image1}`}
                   alt="img"
-                  className={`w-100 h-100 cover ${size.width < 500 ? "" : "zoom-efct"}`}
+                  className={`w-100 h-100 cover ${
+                    size.width < 500 ? "" : "zoom-efct"
+                  }`}
                   width={size.width > 500 ? 1652 : 390}
                   height={size.width > 500 ? 640 : 432}
                 />
@@ -132,6 +134,25 @@ const AllBannersHome = () => {
                       <></>
                     )}
 
+                    {item.prop_id == "1029" ? (
+                      <p className="banner-title text-light fw500 mb0 fz13">
+                        G + 2 <span className="color-gold">|</span> Iconic Views{" "}
+                        <span className="color-gold">|</span> Ideal Al Fresco
+                        Entertaining
+                      </p>
+                    ) : (
+                      <></>
+                    )}
+                    {item.prop_id == "1041" ? (
+                      <p className="banner-title text-light fw500 mb0 fz13">
+                        On The Lake <span className="color-gold">|</span> Private Pool{" "}
+                        <span className="color-gold">|</span> Vacant{" "}
+                        <span className="color-gold">|</span> Brand New
+                      </p>
+                    ) : (
+                      <></>
+                    )}
+
                     <p className="banner-title text-light fw400 mb0 fz11">
                       {currencyFormatter.format(item.price)}
                     </p>
@@ -158,16 +179,7 @@ const AllBannersHome = () => {
                 </div>
                 <div className="position-absolute home-banner-inner-content pc-hide">
                   <div className="home-inner-banner-box">
-                    {/* {item.prop_id == "2" ? (
-                      <p className="banner-title text-light fw500 mb0 fz10">
-                        Waterfront Villa <span className="color-gold">|</span>{" "}
-                        Impeccable Upgrades{" "}
-                        <span className="color-gold">|</span> Marina View
-                      </p>
-                    ) : (
-                      <></>
-                    )}
-                    {item.prop_id == "39" ? (
+                    {/* {item.prop_id == "39" ? (
                       <p className="banner-title text-light fw500 mb0 fz10">
                         Panoramic Views <span className="color-gold">|</span>{" "}
                         Private Pool <span className="color-gold">|</span> Luxe
