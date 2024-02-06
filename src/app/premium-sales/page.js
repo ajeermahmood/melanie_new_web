@@ -29,7 +29,9 @@ const PremiumSales = () => {
           <div className="row">
             <div className="col-lg-12">
               <div className="breadcumb-style1">
-                <h2 className="title fw400 text-center">Premium Properties for Sale</h2>
+                <h2 className="title fw400 text-center">
+                  Premium Properties for Sale
+                </h2>
               </div>
             </div>
           </div>
@@ -54,3 +56,4 @@ const PremiumSales = () => {
 };
 
 export default PremiumSales;
+

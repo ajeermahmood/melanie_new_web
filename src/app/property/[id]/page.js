@@ -24,6 +24,9 @@ export async function generateMetadata({ params }) {
       body: JSON.stringify({
         prop_id: params.id,
       }),
+      next: {
+        revalidate: 0,
+      },
     }
   );
 
@@ -42,6 +45,9 @@ async function PropertyPage({ params }) {
       body: JSON.stringify({
         prop_id: params.id,
       }),
+      next: {
+        revalidate: 0,
+      },
     }
   );
 
@@ -51,5 +57,3 @@ async function PropertyPage({ params }) {
 }
 
 export default PropertyPage;
-
-export const revalidate = 0
