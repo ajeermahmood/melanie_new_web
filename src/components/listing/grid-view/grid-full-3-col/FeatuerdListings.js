@@ -99,7 +99,9 @@ const FeaturedListings = ({ data, colstyle, loading }) => {
                   width={382}
                   height={248}
                   className="w-100 cover"
-                  src={`https://premium.indusre.com/Admin/pages/forms/uploads/property/${listing.image1}?${new Date().getTime()}`}
+                  src={`https://premium.indusre.com/Admin/pages/forms/uploads/property/${
+                    listing.image1
+                  }?${new Date().getTime()}`}
                   alt="listings"
                 />
                 <div className="sale-sticker-wrap">
@@ -148,8 +150,7 @@ const FeaturedListings = ({ data, colstyle, loading }) => {
                 </p>
                 <p className="list-text text-dark lh-base">
                   {listing.cat_name}
-                  {getBeds(listing)}{" "}
-                  {" · "}{" "}
+                  {getBeds(listing)} {" · "}{" "}
                   {new Intl.NumberFormat("en-AE", {
                     maximumSignificantDigits: 3,
                   }).format(listing.area)}{" "}

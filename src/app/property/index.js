@@ -167,9 +167,7 @@ const PropertyDetailsPage = ({ data }) => {
                   : "opacity-100 w-100 cover position-relative"
               }}`}
               role="button"
-              src={`https://premium.indusre.com/Admin/pages/forms/uploads/property/${
-                data.image1
-              }?${new Date().getTime()}`}
+              src={`https://premium.indusre.com/Admin/pages/forms/uploads/property/${data.image1}?${new Date().getTime()}`}
               alt={"img"}
               onLoadingComplete={() => setMainImageLoading(false)}
               onClick={handleClickOpenShowAllPhotosDialog}
@@ -183,9 +181,7 @@ const PropertyDetailsPage = ({ data }) => {
                   : "opacity-100 w-100 cover position-relative"
               }}`}
               role="button"
-              src={`https://premium.indusre.com/Admin/pages/forms/uploads/property/${
-                data.image1
-              }?${new Date().getTime()}`}
+              src={`https://premium.indusre.com/Admin/pages/forms/uploads/property/${data.image1}?${new Date().getTime()}`}
               alt={"img"}
               onLoadingComplete={() => setMainImageLoading(false)}
               onClick={handleClickOpenShowAllPhotosDialog}

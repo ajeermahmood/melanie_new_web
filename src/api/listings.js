@@ -71,16 +71,20 @@ export async function getAllListings(limit, pageNumber, filter) {
 }
 
 export async function getAllListingsSale(limit, pageNumber, filter) {
-  const response = await axios.post(
-    "https://indusspeciality.com/api/melanie/home/get_all_listings_sale.php",
-
-    {
-      limit: limit,
-      pageNumber: pageNumber,
-      filter: filter,
-    },
-  );
-  return response.data;
+  try {
+    const response = await axios.post(
+      "https://indusspeciality.com/api/melanie/home/get_all_listings_sale.php",
+      {
+        limit: limit,
+        pageNumber: pageNumber,
+        filter: filter,
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching listings:", error);
+    throw error; // Rethrow the error to handle it outside this function
+  }
 }
 
 export async function getAllListingsRent(limit, pageNumber, filter) {
